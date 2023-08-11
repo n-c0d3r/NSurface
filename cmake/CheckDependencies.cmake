@@ -1,5 +1,5 @@
 
-message(STATUS "NRendering Check dependencies")
+message(STATUS "NSurface Check dependencies")
 
 find_package(Doxygen REQUIRED)
 
@@ -22,4 +22,4 @@ endif()
 
 
 
-message(STATUS "NRendering Check dependencies done")
+message(STATUS "NSurface Check dependencies done")
