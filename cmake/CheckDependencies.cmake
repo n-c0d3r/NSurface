@@ -16,8 +16,8 @@ else()
 endif()
 
 if(NOT DEFINED NCPP_ADDED)
-set(NCPP_ADDED TRUE)
-add_subdirectory(${NCPP_SOURCE_DIRECTORY})
+    set(NCPP_ADDED TRUE)
+    add_subdirectory(${NCPP_SOURCE_DIRECTORY})
 endif()
 
 

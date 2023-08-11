@@ -23,6 +23,10 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CheckDependencies.cmake)
 
 
 
+add_subdirectory(nsurface)
+
+
+
 option(${NPROJECT_NAME_UPPERCASE}_GENERATE_DOCS "Generate External And Internal Docs" ON)
 if(${${NPROJECT_NAME_UPPERCASE}_GENERATE_DOCS})
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/GenerateDocs.cmake)
