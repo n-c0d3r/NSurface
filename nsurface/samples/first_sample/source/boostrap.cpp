@@ -4,6 +4,14 @@
 
 int main() {
 
+	{
+
+		ncpp::log_memory_stats();
+
+	}
+
+
+
 	ncpp::log_memory_stats();
 
 	system("pause");

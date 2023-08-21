@@ -9,6 +9,7 @@ endif()
 
 
 # nsurface options
+# set(NSURFACE_STYLE_CMD_QUEUE_CAPCITY 128 CACHE STRING "Default Max Category Count In A Tagged Heap")
 
 
 
@@ -28,11 +29,22 @@ file(GLOB source_files
 )
 source_group("source\\nsurface" FILES ${source_files})
 
+if(WIN32)
+    file(GLOB windows_source_files
+        "source/nsurface/windows/*.cpp"
+        "source/nsurface/windows/*.hpp"
+    )
+    source_group("source\\nsurface\\windows" FILES ${windows_source_files})
+else()
+    set(windows_source_files "")
+endif()
+
 
 
 # Create nsurface target
 add_library(nsurface STATIC
     ${source_files}
+    ${windows_source_files}
 )
 
 
