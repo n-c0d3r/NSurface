@@ -1,3 +1,4 @@
-[submodule "dependencies/ncpp"]
-	path = dependencies/ncpp
+
+[submodule "submodules/ncpp"]
+	path = submodules/ncpp
 	url = https://github.com/n-c0d3r/ncpp
