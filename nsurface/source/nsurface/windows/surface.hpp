@@ -54,30 +54,26 @@
 
 namespace nsurface {
 
-	namespace windows {
+	class windows_surface {
 
-		class surface {
+	private:
+		style style_;
 
-		private:
-			style style_;
-
-		public:
-			inline style& get_style() { return style_; }
-			inline const style& get_style() const { return style_; }
+	public:
+		inline style& get_style() { return style_; }
+		inline const style& get_style() const { return style_; }
 
 
 
-		public:
-			surface();
-			surface(const style& src_style);
-			~surface();
+	public:
+		surface();
+		surface(const style& src_style);
+		~surface();
 
-		};
-
-	}
+	};
 
 
 
-	using surface = windows::surface;
+	using surface = windows_surface;
 
 }

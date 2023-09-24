@@ -48,20 +48,16 @@
 
 namespace nsurface {
 
-	namespace windows {
+	struct windows_style {
 
-		struct style {
+	public:
+		style();
+		~style();
 
-		public:
-			style();
-			~style();
-
-		};
-
-	}
+	};
 
 
 
-	using style = windows::style;
+	using style = windows_style;
 
 }
