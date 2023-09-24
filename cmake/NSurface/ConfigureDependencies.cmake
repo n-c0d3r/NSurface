@@ -1,5 +1,5 @@
 
-message(STATUS "<NSURFACE::Dependencies> Start configuring dependencies")
+message(STATUS "<NSurface::ConfigureDependencies> Start configuring dependencies")
 
 
 
@@ -14,4 +14,4 @@ endif()
 
 
 
-message(STATUS "<NSURFACE::Dependencies> Configure dependencies done")
+message(STATUS "<NSurface::ConfigureDependencies> Configure dependencies done")

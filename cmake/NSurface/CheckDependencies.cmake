@@ -1,12 +1,5 @@
 
-message(STATUS "<NSURFACE::Dependencies> Start checking dependencies")
-
-
-
-#####################################################################################
-#   This file can be used in script mode so that need to add the CMAKE_MODULE_PATH
-#####################################################################################
-set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_LIST_DIR}")
+message(STATUS "<NSurface::CheckDependencies> Start checking dependencies")
 
 
 
@@ -26,4 +19,4 @@ endif()
 
 
 
-message(STATUS "<NSURFACE::Dependencies> Check dependencies done")
+message(STATUS "<NSurface::CheckDependencies> Check dependencies done")
