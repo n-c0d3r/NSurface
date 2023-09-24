@@ -57,7 +57,6 @@ NCPP_VersionUtils_CreateVersionMacros(
 
 
 
-
 #####################################################################################
 #   Global variables
 #####################################################################################
@@ -68,6 +67,7 @@ NCPP_ApplyGlobal(
     NSURFACE_SCRIPTS_DIR
     NSURFACE_SUBMODULES_DIR
     NSURFACE_CMAKE_MODULE_DIR 
+    NSURFACE_GENERATED_FILES_DIR
 )
 
 
