@@ -73,7 +73,7 @@ if(NSURFACE_ENABLE_DOCUMENTATIONS)
     include(NCPP/DocsUtils)
 
     NCPP_DocsUtils_CreateTarget(
-        NAME NSURFACE
+        NAME NSurface
         BRIEF "Ncoder's Learning Aimed C++ Surface Library."
 
         TARGET_NAME nsurface.documentations
