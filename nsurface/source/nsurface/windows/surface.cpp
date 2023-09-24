@@ -4,6 +4,7 @@
 
 namespace nsurface {
 
+#ifdef NCPP_WINDOWS_PLATFORM
 	windows_surface::windows_surface() {
 
 
@@ -21,5 +22,6 @@ namespace nsurface {
 
 
 	}
+#endif
 
 }

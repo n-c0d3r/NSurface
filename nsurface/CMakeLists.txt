@@ -20,22 +20,11 @@ configure_file(source/nsurface/.config "${NSURFACE_GENERATED_FILES_DIR}/config.h
 set(NSURFACE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source" PARENT_SCOPE)
 
 # nsurface target source files
-file(GLOB source_files
-    "source/nsurface/*.cpp"
-    "source/nsurface/*.hpp"
+file(GLOB_RECURSE source_files
+    "source/*.cpp"
+    "source/*.hpp"
 )
-source_group("source\\nsurface" FILES ${source_files})
-
-# windows source files, only enable for Windows platform
-if(WIN32)
-    file(GLOB windows_source_files
-        "source/nsurface/windows/*.cpp"
-        "source/nsurface/windows/*.hpp"
-    )
-    source_group("source\\nsurface\\windows" FILES ${windows_source_files})
-else()
-    set(windows_source_files "")
-endif()
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/source PREFIX source FILES ${source_files})
 
 file(GLOB_RECURSE generated_files
     "${CMAKE_CURRENT_BINARY_DIR}/generated_files/*.cpp"
@@ -50,7 +39,6 @@ source_group(TREE "${CMAKE_CURRENT_BINARY_DIR}/generated_files" PREFIX generated
 #####################################################################################
 add_library(nsurface STATIC
     ${source_files}
-    ${windows_source_files}
     ${generated_files}
 )
 
