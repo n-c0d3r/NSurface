@@ -2,3 +2,6 @@
 [submodule "submodules/ncpp"]
 	path = submodules/ncpp
 	url = https://github.com/n-c0d3r/ncpp
+[submodule "submodules/nevent"]
+	path = submodules/nevent
+	url = https://github.com/n-c0d3r/nevent
