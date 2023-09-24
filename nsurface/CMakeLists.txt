@@ -1,21 +1,22 @@
 
-set(NCPP_CXX_STANDARD 20 CACHE STRING "CXX Standard")
 set(CMAKE_CXX_STANDARD ${NCPP_CXX_STANDARD})
 
 
 
-# nsurface generated files dir
+#####################################################################################
+#   Generated files
+#####################################################################################
 set(NSURFACE_GENERATED_FILES_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated_files/nsurface")
-
 
 # nsurface target configure file
 configure_file(source/nsurface/.config "${NSURFACE_GENERATED_FILES_DIR}/config.hpp")
 
 
 
+#####################################################################################
+#   nsurface target's files
+#####################################################################################
 set(NSURFACE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source" PARENT_SCOPE)
-
-
 
 # nsurface target source files
 file(GLOB source_files
@@ -24,6 +25,7 @@ file(GLOB source_files
 )
 source_group("source\\nsurface" FILES ${source_files})
 
+# windows source files, only enable for Windows platform
 if(WIN32)
     file(GLOB windows_source_files
         "source/nsurface/windows/*.cpp"
@@ -42,7 +44,9 @@ source_group(TREE "${CMAKE_CURRENT_BINARY_DIR}/generated_files" PREFIX generated
 
 
 
-# Create nsurface target
+#####################################################################################
+#   Create nsurface target
+#####################################################################################
 add_library(nsurface STATIC
     ${source_files}
     ${windows_source_files}
@@ -51,7 +55,9 @@ add_library(nsurface STATIC
 
 
 
-# nsurface target settings
+#####################################################################################
+#   nsurface target settings
+#####################################################################################
 set_target_properties(nsurface
     PROPERTIES 
         FOLDER "nsurface"
@@ -66,11 +72,18 @@ target_include_directories(nsurface
         ${CMAKE_CURRENT_BINARY_DIR}/generated_files
 )
 
+
+
+#####################################################################################
+#   Dependencies
+#####################################################################################
 add_dependencies(nsurface ncpp)
 
 
 
-# sub directories
+#####################################################################################
+#   Add dependencies
+#####################################################################################
 add_subdirectory(tests)
 
 
