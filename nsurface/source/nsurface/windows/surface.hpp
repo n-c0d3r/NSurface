@@ -66,9 +66,9 @@ namespace nsurface {
 
 
 	public:
-		surface();
-		surface(const style& src_style);
-		~surface();
+		windows_surface();
+		windows_surface(const style& src_style);
+		~windows_surface();
 
 	};
 

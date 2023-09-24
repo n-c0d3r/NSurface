@@ -24,6 +24,7 @@ set(NSURFACE_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}")
 set(NSURFACE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/scripts")
 set(NSURFACE_SUBMODULES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/submodules")
 set(NSURFACE_CMAKE_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+set(NSURFACE_GENERATED_FILES_DIR "${CMAKE_CURRENT_BINARY_DIR}/nsurface/generated_files/nsurface")
 
 
 
@@ -45,7 +46,15 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${NCPP_CMAKE_MODULE_DIR}")
 #####################################################################################
 #   Version
 #####################################################################################
-include(NSurface/Version)
+include(NCPP/VersionUtils)
+NCPP_VersionUtils_CreateVersionMacros(
+    PROJECT_NAME NSURFACE
+    OUTPUT_FILE "${NSURFACE_GENERATED_FILES_DIR}/version.hpp"
+    MAJOR 0
+    MINOR 0
+    PATCH 0
+)
+
 
 
 

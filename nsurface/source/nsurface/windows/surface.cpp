@@ -1,21 +1,24 @@
-#include <nsurface/.hpp>
+#include <nsurface/windows/surface.hpp>
 
 
 
 namespace nsurface {
 
-	namespace windows {
-
-		surface::surface() {
+	windows_surface::windows_surface() {
 
 
 
-		}
-		surface::~surface() {
+	}
+	windows_surface::windows_surface(const style& src_style) :
+		style_(src_style)
+	{
 
 
 
-		}
+	}
+	windows_surface::~windows_surface() {
+
+
 
 	}
 

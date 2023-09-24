@@ -1,21 +1,17 @@
-#include <nsurface/.hpp>
+#include <nsurface/windows/style.hpp>
 
 
 
 namespace nsurface {
 
-	namespace windows {
-
-		style::style() {
+	windows_style::windows_style() {
 
 
 
-		}
-		style::~style() {
+	}
+	windows_style::~windows_style() {
 
 
-
-		}
 
 	}
 

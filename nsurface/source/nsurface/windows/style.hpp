@@ -51,8 +51,8 @@ namespace nsurface {
 	struct windows_style {
 
 	public:
-		style();
-		~style();
+		windows_style();
+		~windows_style();
 
 	};
 

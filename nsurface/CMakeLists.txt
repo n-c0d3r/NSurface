@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD ${NCPP_CXX_STANDARD})
 #####################################################################################
 #   Generated files
 #####################################################################################
-set(NSURFACE_GENERATED_FILES_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated_files/nsurface")
-
 # nsurface target configure file
 configure_file(source/nsurface/.config "${NSURFACE_GENERATED_FILES_DIR}/config.hpp")
 
