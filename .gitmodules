@@ -1,6 +1,9 @@
-[submodule "submodules/ncpp"]
-	path = submodules/ncpp
-	url = https://github.com/n-c0d3r/ncpp
-[submodule "submodules/nsurface"]
-	path = submodules/nsurface
-	url = https://github.com/n-c0d3r/nsurface
+[submodule "submodules/NCPP"]
+	path = submodules/NCPP
+	url = https://github.com/n-c0d3r/NCPP
+[submodule "submodules/NTaskSystem"]
+	path = submodules/NTaskSystem
+	url = https://github.com/n-c0d3r/NTaskSystem
+[submodule "submodules/NEvent"]
+	path = submodules/NEvent
+	url = https://github.com/n-c0d3r/NEvent
