@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/.hpp
+/** @file nsurface/surface_manager_base.hpp
 *
-*   Implements Windows platform functionalities.
+*   Implement base functionalities for surface manager.
 */
 
 
@@ -33,8 +33,9 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/windows/surface.hpp>
-#include <nsurface/windows/surface_manager.hpp>
+#include <nsurface/enums.hpp>
+#include <nsurface/surface_desc.hpp>
+#include <nsurface/typedef_cross_platform.hpp>
 
 #pragma endregion
 
@@ -56,6 +57,32 @@
 
 namespace nsurface {
 
+	NSURFACE_USING_NLIB_NAMESPACES();
 
+
+
+	class I_surface_manager {
+
+	private:
+		eastl::list<F_surface*> surface_p_list_;
+
+
+
+	protected:
+		I_surface_manager();
+		~I_surface_manager();
+
+
+
+	private:
+		void release_surfaces_internal();
+
+
+
+	public:
+		F_surface* create_surface(const F_surface_desc& desc);
+		void delete_surface(F_surface*);
+
+	};
 
 }

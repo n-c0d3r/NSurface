@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/surface_desc.hpp
+/** @file nsurface/enums.hpp
 *
-*   Implement nsurface desc.
+*   Implement enums.
 */
 
 
@@ -29,12 +29,6 @@
 
 #include <nsurface/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nsurface/enums.hpp>
-
 #pragma endregion
 
 
@@ -59,16 +53,10 @@ namespace nsurface {
 
 
 
-    struct F_surface_desc {
+    enum class E_surface_visibility {
 
-        eastl::wstring title;
-
-        i32 width = 1024;
-        i32 height = 728;
-        i32 offset_x = 0;
-        i32 offset_y = 0;
-
-        E_surface_visibility visibility = E_surface_visibility::VISIBLE;
+        VISIBLE,
+        HIDE
 
     };
 
