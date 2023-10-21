@@ -49,14 +49,18 @@
 
 namespace nsurface {
 
+    NSURFACE_USING_NLIB_NAMESPACES();
+
+
+
     struct F_surface_desc {
 
         eastl::wstring title;
 
-        int width = 1024;
-        int height = 1024;
-        int offset_x = 0;
-        int offset_y = 0;
+        i32 width = 1024;
+        i32 height = 1024;
+        i32 offset_x = 0;
+        i32 offset_y = 0;
 
     };
 

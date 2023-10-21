@@ -55,13 +55,27 @@
 
 namespace nsurface {
 
+    NSURFACE_USING_NLIB_NAMESPACES();
+
+
+
     class F_windows_surface {
+
+    private:
+        static b8 is_class_created_s_;
+        static const wchar_t class_name_cstr_s_[];
+
+
 
     private:
         F_surface_desc desc_;
 
+        HWND handle_ = 0;
+
     public:
         inline const F_surface_desc& desc() const { return desc_; }
+
+        inline b8 is_valid() const { return handle_; }
 
 
 
@@ -72,8 +86,15 @@ namespace nsurface {
 
 
     private:
+        static void create_window_class_internal();
+
         void create_window_internal();
         void release_window_internal();
+
+
+
+    public:
+        b8 check_input();
 
     };
 
