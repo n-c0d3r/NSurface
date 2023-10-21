@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 
 
 #####################################################################################
-#   Project NSurface
+#   Project NSURFACE
 #####################################################################################
 project(nsurface)
 
@@ -24,7 +24,17 @@ set(NSURFACE_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}")
 set(NSURFACE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/scripts")
 set(NSURFACE_SUBMODULES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/submodules")
 set(NSURFACE_CMAKE_MODULE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+set(NSURFACE_DEPENDENCIES_DIR "${CMAKE_CURRENT_BINARY_DIR}/dependencies")
 set(NSURFACE_GENERATED_FILES_DIR "${CMAKE_CURRENT_BINARY_DIR}/nsurface/generated_files/nsurface")
+set(NSURFACE_THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+
+
+
+#####################################################################################
+#   Setup NCPP
+#####################################################################################
+include(NSurface/CheckNCPP)
+include(NSurface/ConfigureNCPP)
 
 
 
@@ -33,13 +43,6 @@ set(NSURFACE_GENERATED_FILES_DIR "${CMAKE_CURRENT_BINARY_DIR}/nsurface/generated
 #####################################################################################
 include(NSurface/CheckDependencies)
 include(NSurface/ConfigureDependencies)
-
-
-
-#####################################################################################
-#   NCPP cmake module path
-#####################################################################################
-set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${NCPP_CMAKE_MODULE_DIR}")
 
 
 
@@ -67,6 +70,7 @@ NCPP_ApplyGlobal(
     NSURFACE_SCRIPTS_DIR
     NSURFACE_SUBMODULES_DIR
     NSURFACE_CMAKE_MODULE_DIR 
+    NSURFACE_DEPENDENCIES_DIR 
     NSURFACE_GENERATED_FILES_DIR
 )
 
@@ -82,7 +86,7 @@ if(NSURFACE_ENABLE_DOCUMENTATIONS)
     include(NCPP/DocsUtils)
 
     NCPP_DocsUtils_CreateTarget(
-        NAME NSurface
+        NAME NSURFACE
         BRIEF "Ncoder's Learning Aimed C++ Surface Library."
 
         TARGET_NAME nsurface.documentations
