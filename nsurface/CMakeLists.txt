@@ -25,15 +25,15 @@ file(GLOB_RECURSE source_files
     "source/*.hpp"
 )
 
-# Remove the posix platform files from the list if using windows
-if(WIN32)
-list(FILTER source_files EXCLUDE REGEX "source/nsurface/posix/*.*")
-endif(WIN32)
+# Exclude the windows platform files from the list if not using windows
+if(NOT WIN32)
+    list(FILTER source_files EXCLUDE REGEX "source/nsurface/windows/*.*")
+endif()
 
-# Remove the windows platform files from the list if using unix
-if(UNIX)
-list(FILTER source_files EXCLUDE REGEX "source/nsurface/windows/*.*")
-endif(UNIX)
+# Exclude the posix platform files from the list if not using posix
+if(NOT UNIX)
+    list(FILTER source_files EXCLUDE REGEX "source/nsurface/posix/*.*")
+endif()
 
 # create source group
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/source PREFIX source FILES ${source_files})
