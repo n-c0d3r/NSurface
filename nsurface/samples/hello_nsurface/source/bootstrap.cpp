@@ -116,15 +116,15 @@ int main() {
 
 
 
-	// enable mouse gook
-	mouse_manager.enable_mouse_hook();
+	// enable process
+	surface_manager.enable_process();
 
 
 
 	// main loop
 	while (surface_p->is_running()) {
 
-		if (!surface_manager.check_input()) {
+		if (!surface_manager.process()) {
 
 
 
@@ -134,8 +134,8 @@ int main() {
 
 
 
-	// disable mouse gook
-	mouse_manager.disable_mouse_hook();
+	// disable process
+	surface_manager.disable_process();
 
 
 

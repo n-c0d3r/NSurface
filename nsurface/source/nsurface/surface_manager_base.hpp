@@ -93,6 +93,14 @@ namespace nsurface {
 
 
 	public:
+		b8 process() {} // for documentations
+
+		void enable_process() {} // for documentations
+		void disable_process() {} // for documentations
+
+
+
+	public:
 		inline F_surface_manager* as_current_platform_p() { return reinterpret_cast<F_surface_manager*>(this); }
 		inline F_surface_manager& as_current_platform() { return *reinterpret_cast<F_surface_manager*>(this); }
 

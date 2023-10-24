@@ -85,7 +85,10 @@ namespace nsurface {
 
 
     public:
-        b8 check_input();
+        b8 process();
+
+        void enable_process();
+        void disable_process();
 
     };
 

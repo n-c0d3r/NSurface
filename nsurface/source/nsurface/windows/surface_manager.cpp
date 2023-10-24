@@ -33,7 +33,7 @@ namespace nsurface {
 
 	}
 
-	b8 F_windows_surface_manager::check_input() {
+	b8 F_windows_surface_manager::process() {
 
 		MSG msg = { };
 
@@ -43,6 +43,17 @@ namespace nsurface {
 		DispatchMessage(&msg);
 
 		return !has_msg;
+	}
+
+	void F_windows_surface_manager::enable_process() {
+
+		mouse_manager().enable_mouse_hook();
+
+	}
+	void F_windows_surface_manager::disable_process() {
+
+		mouse_manager().disable_mouse_hook();
+
 	}
 
 }
