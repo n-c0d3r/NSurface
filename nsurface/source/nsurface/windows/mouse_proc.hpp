@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/surface.hpp
+/** @file nsurface/windows/mouse_proc.hpp
 *
-*   Implements Windows platform surface.
+*   Implements mouse proc.
 */
 
 
@@ -29,13 +29,6 @@
 
 #include <nsurface/prerequisites.hpp>
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-#include <nsurface/surface_base.hpp>
-#include <nsurface/windows/window_proc.hpp>
-
 #pragma endregion
 
 
@@ -60,41 +53,6 @@ namespace nsurface {
 
 
 
-    class F_windows_surface : public I_surface {
-
-    public:
-        friend class I_surface_manager;
-        friend LRESULT window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
-
-
-    private:
-        HWND handle_ = 0;
-
-    public:
-        inline b8 is_valid() const { return handle_; }
-
-
-
-    protected:
-        F_windows_surface(const F_surface_desc& desc);
-        ~F_windows_surface();
-
-
-
-    private:
-        void create_window_internal();
-        void release_window_internal();
-
-
-
-    public:        
-        void set_visibility(E_surface_visibility visibility);
-
-        void set_offset(int offset_x, int offset_y);
-        void resize(int width, int height);
-        void set_rect(int offset_x, int offset_y, int width, int height);
-
-    };
+    LRESULT mouse_proc(int nCode, WPARAM wParam, LPARAM lParam);
 
 }

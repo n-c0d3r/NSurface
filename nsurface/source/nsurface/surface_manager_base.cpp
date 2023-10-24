@@ -38,7 +38,7 @@ namespace nsurface {
 
 	F_surface* I_surface_manager::create_surface(const F_surface_desc& desc) {
 
-		F_surface* surface_p = new F_surface(reinterpret_cast<F_surface_manager*>(this), desc);
+		F_surface* surface_p = new F_surface(desc);
 
 		surface_p_list_.push_back(surface_p);
 

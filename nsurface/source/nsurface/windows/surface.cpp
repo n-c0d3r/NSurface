@@ -5,8 +5,8 @@
 
 namespace nsurface {
 
-	F_windows_surface::F_windows_surface(F_surface_manager* surface_manager_p, const F_surface_desc& desc) :
-		I_surface(surface_manager_p, desc)
+	F_windows_surface::F_windows_surface(const F_surface_desc& desc) :
+		I_surface(desc)
 	{
 
 		create_window_internal();
@@ -72,6 +72,69 @@ namespace nsurface {
 			break;
 		default:
 			break;
+		}
+
+	}
+
+	void F_windows_surface::set_offset(int offset_x, int offset_y) {
+
+		if (
+			SetWindowPos(
+				handle_,
+				0,
+				offset_x,
+				offset_y,
+				0,
+				0,
+				SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW
+			)
+		) {
+
+			desc_.offset_x = offset_x;
+			desc_.offset_y = offset_y;
+
+		}
+
+	}
+	void F_windows_surface::resize(int width, int height) {
+
+		if (
+			SetWindowPos(
+				handle_,
+				0,
+				0,
+				0,
+				width,
+				height,
+				SWP_NOZORDER | SWP_NOMOVE | SWP_SHOWWINDOW
+			)
+		) {
+
+			desc_.width = width;
+			desc_.height = height;
+
+		}
+
+	}
+	void F_windows_surface::set_rect(int offset_x, int offset_y, int width, int height) {
+
+		if (
+			SetWindowPos(
+				handle_,
+				0,
+				offset_x,
+				offset_y,
+				width,
+				height,
+				SWP_NOZORDER | SWP_SHOWWINDOW
+			)
+		) {
+
+			desc_.offset_x = offset_x;
+			desc_.offset_y = offset_y;
+			desc_.width = width;
+			desc_.height = height;
+
 		}
 
 	}

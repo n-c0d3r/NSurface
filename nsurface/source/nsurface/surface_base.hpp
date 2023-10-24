@@ -33,6 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
+#include <nsurface/events/.hpp>
 #include <nsurface/enums.hpp>
 #include <nsurface/surface_desc.hpp>
 #include <nsurface/typedef_cross_platform.hpp>
@@ -73,8 +74,6 @@ namespace nsurface {
 
         b8 is_running_ = false;
 
-		F_surface_manager* manager_p_ = 0;
-
 		typename eastl::list<F_surface*>::iterator iterator_ = {};
 
     public:
@@ -82,13 +81,48 @@ namespace nsurface {
 
         inline b8 is_running() const { return is_running_; }
 
-        inline F_surface_manager* manager_p() { return manager_p_; }
+
+
+	private:
+		F_surface_destroy_event destroy_event_;
+
+		F_surface_post_resize_event post_resize_event_;
+		F_surface_resizing_event resizing_event_;
+
+		F_surface_post_move_event post_move_event_;
+		F_surface_moving_event moving_event_;
+
+	public:
+		NCPP_DECLARE_STATIC_EVENTS(
+			destroy_event_,
+
+			post_resize_event_,
+			resizing_event_,
+
+			post_move_event_,
+			moving_event_
+		);
 
 
 
 	protected:
-		I_surface(F_surface_manager* surface_manager_p, const F_surface_desc& desc);
-		~I_surface();
+		I_surface(const F_surface_desc& desc);
+		virtual ~I_surface();
+
+
+
+	public:
+		void set_visibility(E_surface_visibility visibility) {} // for documentations
+
+		void set_offset(int offset_x, int offset_y) {} // for documentations
+		void resize(int width, int height) {} // for documentations
+		void set_rect(int offset_x, int offset_y, int width, int height) {} // for documentations
+
+
+
+	public:
+		inline F_surface* as_current_platform_p() { return reinterpret_cast<F_surface*>(this); }
+		inline F_surface& as_current_platform() { return *reinterpret_cast<F_surface*>(this); }
 
 	};
 

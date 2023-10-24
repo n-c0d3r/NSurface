@@ -58,6 +58,7 @@ namespace nsurface {
     ////////////////////////////////////////////////////////////////////////////////////
     class I_surface;
     class I_surface_manager;
+    class I_mouse_manager;
 
 
 
@@ -67,6 +68,7 @@ namespace nsurface {
 #ifdef EA_PLATFORM_WINDOWS
     class F_windows_surface;
     class F_windows_surface_manager;
+    class F_windows_mouse_manager;
 #endif
 
 
@@ -77,6 +79,7 @@ namespace nsurface {
 #ifdef EA_PLATFORM_WINDOWS
     using F_surface = F_windows_surface;
     using F_surface_manager = F_windows_surface_manager;
+    using F_mouse_manager = F_windows_mouse_manager;
 #endif
 
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/surface_manager.hpp
+/** @file nsurface/mouse_manager.hpp
 *
-*   Implements Windows platform surface manager.
+*   Includes platform specified mouse manager implement.
 */
 
 
@@ -33,8 +33,9 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/surface_manager_base.hpp>
-#include <nsurface/windows/window_proc.hpp>
+#ifdef EA_PLATFORM_WINDOWS
+#include <nsurface/windows/mouse_manager.hpp>
+#endif
 
 #pragma endregion
 
@@ -56,37 +57,6 @@
 
 namespace nsurface {
 
-    NSURFACE_USING_NLIB_NAMESPACES();
 
-
-
-    class F_windows_surface_manager : 
-        public I_surface_manager,
-        public utilities::TI_singleton<F_surface_manager>
-    {
-
-    private:
-        static const wchar_t window_class_name_cstr_s_[];
-
-    public:
-        static inline const wchar_t* window_class_name_cstr() { return window_class_name_cstr_s_; };
-
-
-
-    public:
-        F_windows_surface_manager();
-        ~F_windows_surface_manager();
-
-
-
-    private:
-        static void create_window_class_internal();
-
-
-
-    public:
-        b8 check_input();
-
-    };
 
 }
