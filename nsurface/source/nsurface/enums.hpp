@@ -60,4 +60,15 @@ namespace nsurface {
 
     };
 
+
+
+    enum class E_mouse_button_flag {
+
+        NONE = 0x0,
+        LEFT = 0x1,
+        MIDDLE = 0x2,
+        RIGHT = 0x4
+
+    };
+
 }

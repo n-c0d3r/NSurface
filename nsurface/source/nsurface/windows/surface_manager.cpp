@@ -37,12 +37,12 @@ namespace nsurface {
 
 		MSG msg = { };
 
-		b8 has_msg = GetMessage(&msg, NULL, 0, 0);
+		b8 has_msg = PeekMessage(&msg, 0, 0, 0, PM_REMOVE);
 
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 
-		return has_msg;
+		return !has_msg;
 	}
 
 }

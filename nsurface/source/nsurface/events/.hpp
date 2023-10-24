@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/.hpp
+/** @file nsurface/events/.hpp
 *
-*   Implements Windows platform functionalities.
+*   Implements surface events.
 */
 
 
@@ -33,9 +33,26 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/windows/surface.hpp>
-#include <nsurface/windows/surface_manager.hpp>
-#include <nsurface/windows/mouse_manager.hpp>
+#include <nsurface/events/surface_event.hpp>
+
+#include <nsurface/events/surface_destroy_event.hpp>
+
+#include <nsurface/events/surface_post_resize_event.hpp>
+#include <nsurface/events/surface_resizing_event.hpp>
+
+#include <nsurface/events/surface_post_move_event.hpp>
+#include <nsurface/events/surface_moving_event.hpp>
+
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+#include <nsurface/events/mouse_event.hpp>
+
+#include <nsurface/events/mouse_button_event.hpp>
+#include <nsurface/events/mouse_button_down_event.hpp>
+#include <nsurface/events/mouse_button_up_event.hpp>
+#include <nsurface/events/mouse_move_event.hpp>
 
 #pragma endregion
 
@@ -57,6 +74,6 @@
 
 namespace nsurface {
 
-
+    
 
 }

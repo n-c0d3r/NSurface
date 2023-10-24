@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/surface_manager.hpp
+/** @file nsurface/windows/mouse_manager.hpp
 *
-*   Implements Windows platform surface manager.
+*   Implements Windows platform mouse manager.
 */
 
 
@@ -33,8 +33,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/surface_manager_base.hpp>
-#include <nsurface/windows/window_proc.hpp>
+#include <nsurface/mouse_manager_base.hpp>
+#include <nsurface/windows/mouse_proc.hpp>
 
 #pragma endregion
 
@@ -60,32 +60,25 @@ namespace nsurface {
 
 
 
-    class F_windows_surface_manager : 
-        public I_surface_manager,
-        public utilities::TI_singleton<F_surface_manager>
+    class F_windows_mouse_manager : 
+        public I_mouse_manager,
+        public utilities::TI_singleton<F_mouse_manager>
     {
 
     private:
-        static const wchar_t window_class_name_cstr_s_[];
-
-    public:
-        static inline const wchar_t* window_class_name_cstr() { return window_class_name_cstr_s_; };
+        HHOOK mouse_hook_ = 0;
 
 
 
     public:
-        F_windows_surface_manager();
-        ~F_windows_surface_manager();
-
-
-
-    private:
-        static void create_window_class_internal();
+        F_windows_mouse_manager();
+        ~F_windows_mouse_manager();
 
 
 
     public:
-        b8 check_input();
+        void enable_mouse_hook();
+        void disable_mouse_hook();
 
     };
 

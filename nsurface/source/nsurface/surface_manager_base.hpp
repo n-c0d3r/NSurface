@@ -37,6 +37,8 @@
 #include <nsurface/surface_desc.hpp>
 #include <nsurface/typedef_cross_platform.hpp>
 
+#include <nsurface/mouse_manager.hpp>
+
 #pragma endregion
 
 
@@ -66,11 +68,16 @@ namespace nsurface {
 	private:
 		eastl::list<F_surface*> surface_p_list_;
 
+		F_mouse_manager mouse_manager_;
+
+	public:
+		inline F_mouse_manager& mouse_manager() { return mouse_manager_; }
+
 
 
 	protected:
 		I_surface_manager();
-		~I_surface_manager();
+		virtual ~I_surface_manager();
 
 
 
@@ -82,6 +89,12 @@ namespace nsurface {
 	public:
 		F_surface* create_surface(const F_surface_desc& desc);
 		void delete_surface(F_surface*);
+
+
+
+	public:
+		inline F_surface_manager* as_current_platform_p() { return reinterpret_cast<F_surface_manager*>(this); }
+		inline F_surface_manager& as_current_platform() { return *reinterpret_cast<F_surface_manager*>(this); }
 
 	};
 
