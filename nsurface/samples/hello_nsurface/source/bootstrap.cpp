@@ -124,11 +124,7 @@ int main() {
 	// main loop
 	while (surface_p->is_running()) {
 
-		if (!surface_manager.process()) {
-
-
-
-		}
+		surface_manager.process();
 
 	}
 

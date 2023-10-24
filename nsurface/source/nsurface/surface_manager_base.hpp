@@ -93,7 +93,7 @@ namespace nsurface {
 
 
 	public:
-		b8 process() {} // for documentations
+		void process() {} // for documentations
 
 		void enable_process() {} // for documentations
 		void disable_process() {} // for documentations

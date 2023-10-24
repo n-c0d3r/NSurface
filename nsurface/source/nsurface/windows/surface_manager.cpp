@@ -33,16 +33,21 @@ namespace nsurface {
 
 	}
 
-	b8 F_windows_surface_manager::process() {
+	void F_windows_surface_manager::process() {
 
-		MSG msg = { };
+		b8 has_msg = true;
 
-		b8 has_msg = PeekMessage(&msg, 0, 0, 0, PM_REMOVE);
+		do {
 
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+			MSG msg = { };
 
-		return !has_msg;
+			has_msg = PeekMessage(&msg, 0, 0, 0, PM_REMOVE);
+
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+
+		} while (!has_msg);
+
 	}
 
 	void F_windows_surface_manager::enable_process() {
