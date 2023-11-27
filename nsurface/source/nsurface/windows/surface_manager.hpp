@@ -84,9 +84,11 @@ namespace nsurface {
 
 
 
-    public:
-        void process();
+    private:
+        void process_internal();
+        void run_internal();
 
+    public:
         void enable_process();
         void disable_process();
 

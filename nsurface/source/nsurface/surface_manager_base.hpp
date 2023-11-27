@@ -65,13 +65,24 @@ namespace nsurface {
 
 	class I_surface_manager {
 
+	public:
+		using F_update = void(F_surface_manager*);
+		using F_update_functor = eastl::function<F_update>;
+
+
+
 	private:
 		eastl::list<F_surface*> surface_p_list_;
 
 		F_mouse_manager mouse_manager_;
 
+	protected:
+		F_update_functor update_functor_;
+
 	public:
 		NCPP_FORCE_INLINE F_mouse_manager& mouse_manager() { return mouse_manager_; }
+
+        b8 is_there_any_surface_running() const;
 
 
 
@@ -92,11 +103,25 @@ namespace nsurface {
 
 
 
-	public:
-		void process() {} // for documentations
+	private:
+		void process_internal() {} // for documentations
+        void run_internal();
 
+    public:
 		void enable_process() {} // for documentations
 		void disable_process() {} // for documentations
+
+
+
+	public:
+		template<typename F_update_functor__>
+        inline void T_run(F_update_functor__&& update_functor) {
+
+			update_functor_ = std::forward<F_update_functor__>(update_functor);
+
+            run_internal();
+
+		}
 
 
 

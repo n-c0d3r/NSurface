@@ -86,6 +86,20 @@ if(MSVC)
   target_compile_options(nsurface PUBLIC /GT)
 endif()
 
+# MacOS libs
+if(APPLE)
+    # Find the Cocoa lib
+    find_library(COCOA_LIBRARY Cocoa)
+    if (NOT COCOA_LIBRARY)
+        message(FATAL_ERROR "Cocoa not found")
+    endif()
+ 
+    target_link_libraries(nsurface
+        PRIVATE
+            ${COCOA_LIBRARY}
+    )
+endif()
+
 
 
 #####################################################################################

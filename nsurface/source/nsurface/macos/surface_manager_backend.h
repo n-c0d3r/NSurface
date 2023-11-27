@@ -61,7 +61,7 @@ namespace nsurface {
 
 
 
-@interface F_surface_manager_backend : NSObject
+@interface F_surface_manager_backend : NSApplication
 
 
 

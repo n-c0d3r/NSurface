@@ -1,5 +1,6 @@
 #include <nsurface/surface_manager_base.hpp>
 #include <nsurface/surface.hpp>
+#include <nsurface/surface_manager.hpp>
 
 
 
@@ -16,6 +17,30 @@ namespace nsurface {
 		release_surfaces_internal();
 
 	}
+
+
+
+    b8 I_surface_manager::is_there_any_surface_running() const {
+        
+        for (auto it = surface_p_list_.begin(); it != surface_p_list_.end(); ++it) {
+
+            if((*it)->is_running()) {
+
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+
+
+    void I_surface_manager::run_internal(){
+        
+        as_current_platform_p()->run_internal();
+        
+    }
 
 
 

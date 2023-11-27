@@ -59,16 +59,36 @@ namespace nsurface {
 
 
 
+    namespace internal {
+
+        void*& macos_surface_manager_inject_handle(F_surface_manager* surface_manager_p);
+
+    }
+
+
+
     class F_macos_surface_manager : 
         public I_surface_manager,
         public utilities::TI_singleton<F_surface_manager>
     {
 
-    private:
-        static const wchar_t window_class_name_cstr_s_[];
+    public:
+        friend class I_surface_manager;
+
+
 
     public:
-        static NCPP_FORCE_INLINE const wchar_t* window_class_name_cstr() { return window_class_name_cstr_s_; };
+        friend void*& internal::macos_surface_manager_inject_handle(F_surface_manager* surface_manager_p);
+
+
+
+    private:
+        void* handle_ = 0;
+
+    public:
+       NCPP_FORCE_INLINE void* handle() { return handle_; }
+        
+       NCPP_FORCE_INLINE b8 is_valid() const { return handle_; }
 
 
 
@@ -79,16 +99,24 @@ namespace nsurface {
 
 
     private:
-        static void create_window_class_internal();
-
-
+        void process_internal();
+        void run_internal();
 
     public:
-        void process();
-
         void enable_process();
         void disable_process();
 
     };
+
+
+
+    namespace internal {
+
+        NCPP_FORCE_INLINE void*& macos_surface_manager_inject_handle(F_surface_manager* surface_manager_p) {
+
+            return surface_manager_p->handle_;
+        }
+
+    }
 
 }

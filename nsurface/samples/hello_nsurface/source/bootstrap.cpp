@@ -116,22 +116,11 @@ int main() {
 
 
 
-	// enable process
-	surface_manager.enable_process();
-
-
-
-	// main loop
-	while (surface_p->is_running()) {
-
-		surface_manager.process();
-
-	}
-
-
-
-	// disable process
-	surface_manager.disable_process();
+    surface_manager.T_run([](F_surface_manager* surface_manager_p){
+        
+        std::cout << surface_manager_p << std::endl;
+        
+    });
 
 
 

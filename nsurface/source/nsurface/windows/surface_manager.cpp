@@ -33,7 +33,7 @@ namespace nsurface {
 
 	}
 
-	void F_windows_surface_manager::process() {
+	void F_windows_surface_manager::process_internal() {
 
 		b8 has_msg = true;
 
@@ -47,6 +47,19 @@ namespace nsurface {
 			DispatchMessage(&msg);
 
 		} while (!has_msg);
+
+	}
+	void F_windows_surface_manager::run_internal(){
+
+		enable_process();
+
+		while(is_there_any_surface_running()){
+
+			process_internal();
+
+		}
+
+		disable_process();
 
 	}
 

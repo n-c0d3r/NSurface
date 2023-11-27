@@ -59,7 +59,8 @@ namespace nsurface {
 
     namespace internal {
 
-        
+        extern void macos_surface_manager_init(F_surface_manager* surface_manager_p);
+        extern void macos_surface_manager_loop(F_surface_manager* surface_manager_p);
 
     }
 

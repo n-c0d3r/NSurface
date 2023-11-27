@@ -7,13 +7,9 @@
 
 namespace nsurface {
 
-	const wchar_t F_macos_surface_manager::window_class_name_cstr_s_[] = L"nsurface::window_class";
-
-
-
 	F_macos_surface_manager::F_macos_surface_manager() {
 
-		create_window_class_internal();
+		internal::macos_surface_manager_init(this);
 
 	}
 	F_macos_surface_manager::~F_macos_surface_manager() {
@@ -24,31 +20,18 @@ namespace nsurface {
 
 
 
-	void F_macos_surface_manager::create_window_class_internal() {
+	void F_macos_surface_manager::process_internal() {
 
-		// WNDCLASS wc = { };
-
-		// wc.lpfnWndProc = window_proc;
-		// wc.lpszClassName = window_class_name_cstr_s_;
-
-		// RegisterClass(&wc);
+        
 
 	}
+	void F_macos_surface_manager::run_internal(){
 
-	void F_macos_surface_manager::process() {
+		enable_process();
 
-		// b8 has_msg = true;
+		internal::macos_surface_manager_loop(this);
 
-		// do {
-
-		// 	MSG msg = { };
-
-		// 	has_msg = PeekMessage(&msg, 0, 0, 0, PM_REMOVE);
-
-		// 	TranslateMessage(&msg);
-		// 	DispatchMessage(&msg);
-
-		// } while (!has_msg);
+		disable_process();
 
 	}
 
