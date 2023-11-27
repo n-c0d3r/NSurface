@@ -62,10 +62,20 @@ namespace nsurface {
 
 
 
+	namespace internal {
+
+		NCPP_FORCE_INLINE b8& surface_inject_is_running(I_surface* surface_p);
+
+	}
+
+
+
 	class I_surface {
 
 	public:
 		friend class I_surface_manager;
+
+		friend b8& internal::surface_inject_is_running(I_surface* surface_p);
 
 
 
@@ -77,9 +87,9 @@ namespace nsurface {
 		typename eastl::list<F_surface*>::iterator iterator_ = {};
 
     public:
-        inline const F_surface_desc& desc() const { return desc_; }
+        NCPP_FORCE_INLINE const F_surface_desc& desc() const { return desc_; }
 
-        inline b8 is_running() const { return is_running_; }
+        NCPP_FORCE_INLINE b8 is_running() const { return is_running_; }
 
 
 
@@ -121,9 +131,25 @@ namespace nsurface {
 
 
 	public:
-		inline F_surface* as_current_platform_p() { return reinterpret_cast<F_surface*>(this); }
-		inline F_surface& as_current_platform() { return *reinterpret_cast<F_surface*>(this); }
+		NCPP_FORCE_INLINE F_surface* as_current_platform_p() { return reinterpret_cast<F_surface*>(this); }
+        NCPP_FORCE_INLINE F_surface& as_current_platform() { return *reinterpret_cast<F_surface*>(this); }
 
 	};
+
+
+
+	namespace internal {
+
+		NCPP_FORCE_INLINE F_surface_desc& surface_inject_desc(I_surface* surface_p){
+
+            return (F_surface_desc&)(surface_p->desc());
+		}
+
+		NCPP_FORCE_INLINE b8& surface_inject_is_running(I_surface* surface_p){
+
+			return surface_p->is_running_;
+		}
+
+	}
 
 }

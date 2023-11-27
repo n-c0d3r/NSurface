@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/surface.hpp
+/** @file nsurface/macos/surface_manager.hpp
 *
-*   Includes platform specified surface implement.
+*   Implements Macos platform surface manager.
 */
 
 
@@ -33,13 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#ifdef EA_PLATFORM_WINDOWS
-#include <nsurface/windows/surface.hpp>
-#endif
-
-#ifdef EA_PLATFORM_OSX
-#include <nsurface/macos/surface.hpp>
-#endif
+#include <nsurface/surface_manager_base.hpp>
 
 #pragma endregion
 
@@ -61,6 +55,40 @@
 
 namespace nsurface {
 
+    NSURFACE_USING_NLIB_NAMESPACES();
 
+
+
+    class F_macos_surface_manager : 
+        public I_surface_manager,
+        public utilities::TI_singleton<F_surface_manager>
+    {
+
+    private:
+        static const wchar_t window_class_name_cstr_s_[];
+
+    public:
+        static NCPP_FORCE_INLINE const wchar_t* window_class_name_cstr() { return window_class_name_cstr_s_; };
+
+
+
+    public:
+        F_macos_surface_manager();
+        ~F_macos_surface_manager();
+
+
+
+    private:
+        static void create_window_class_internal();
+
+
+
+    public:
+        void process();
+
+        void enable_process();
+        void disable_process();
+
+    };
 
 }

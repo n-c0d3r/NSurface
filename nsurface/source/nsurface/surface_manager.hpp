@@ -37,6 +37,10 @@
 #include <nsurface/windows/surface_manager.hpp>
 #endif
 
+#ifdef EA_PLATFORM_OSX
+#include <nsurface/macos/surface_manager.hpp>
+#endif
+
 #pragma endregion
 
 

@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/surface.hpp
+/** @file nsurface/macos/mouse_manager.hpp
 *
-*   Includes platform specified surface implement.
+*   Implements Macos platform mouse manager.
 */
 
 
@@ -33,13 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#ifdef EA_PLATFORM_WINDOWS
-#include <nsurface/windows/surface.hpp>
-#endif
-
-#ifdef EA_PLATFORM_OSX
-#include <nsurface/macos/surface.hpp>
-#endif
+#include <nsurface/mouse_manager_base.hpp>
 
 #pragma endregion
 
@@ -61,6 +55,30 @@
 
 namespace nsurface {
 
+    NSURFACE_USING_NLIB_NAMESPACES();
 
+
+
+    class F_macos_mouse_manager : 
+        public I_mouse_manager,
+        public utilities::TI_singleton<F_mouse_manager>
+    {
+
+    private:
+        // HHOOK mouse_hook_ = 0;
+
+
+
+    public:
+        F_macos_mouse_manager();
+        ~F_macos_mouse_manager();
+
+
+
+    public:
+        void enable_mouse_hook();
+        void disable_mouse_hook();
+
+    };
 
 }

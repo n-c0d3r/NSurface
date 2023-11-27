@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/surface.hpp
+/** @file nsurface/macos/mouse_manager_backend.hpp
 *
-*   Includes platform specified surface implement.
+*   Implements Macos platform mouse manager backend.
 */
 
 
@@ -33,13 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#ifdef EA_PLATFORM_WINDOWS
-#include <nsurface/windows/surface.hpp>
-#endif
-
-#ifdef EA_PLATFORM_OSX
-#include <nsurface/macos/surface.hpp>
-#endif
+#include <nsurface/mouse_manager_base.hpp>
 
 #pragma endregion
 
@@ -61,6 +55,12 @@
 
 namespace nsurface {
 
+    NSURFACE_USING_NLIB_NAMESPACES();
 
+    namespace internal {
+
+        
+
+    }
 
 }

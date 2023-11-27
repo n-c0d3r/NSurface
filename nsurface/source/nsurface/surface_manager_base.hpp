@@ -71,7 +71,7 @@ namespace nsurface {
 		F_mouse_manager mouse_manager_;
 
 	public:
-		inline F_mouse_manager& mouse_manager() { return mouse_manager_; }
+		NCPP_FORCE_INLINE F_mouse_manager& mouse_manager() { return mouse_manager_; }
 
 
 
@@ -101,8 +101,8 @@ namespace nsurface {
 
 
 	public:
-		inline F_surface_manager* as_current_platform_p() { return reinterpret_cast<F_surface_manager*>(this); }
-		inline F_surface_manager& as_current_platform() { return *reinterpret_cast<F_surface_manager*>(this); }
+		NCPP_FORCE_INLINE F_surface_manager* as_current_platform_p() { return reinterpret_cast<F_surface_manager*>(this); }
+		NCPP_FORCE_INLINE F_surface_manager& as_current_platform() { return *reinterpret_cast<F_surface_manager*>(this); }
 
 	};
 

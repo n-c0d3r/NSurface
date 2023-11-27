@@ -37,6 +37,10 @@
 #include <nsurface/windows/mouse_manager.hpp>
 #endif
 
+#ifdef EA_PLATFORM_OSX
+#include <nsurface/macos/mouse_manager.hpp>
+#endif
+
 #pragma endregion
 
 

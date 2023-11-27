@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/surface.hpp
+/** @file nsurface/macos/surface.hpp
 *
-*   Implements Windows platform surface.
+*   Implements Macos platform surface.
 */
 
 
@@ -34,7 +34,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nsurface/surface_base.hpp>
-#include <nsurface/windows/window_proc.hpp>
 
 #pragma endregion
 
@@ -60,27 +59,36 @@ namespace nsurface {
 
 
 
-    class F_windows_surface : public I_surface {
+    namespace internal {
+
+        void*& macos_surface_inject_handle(F_surface* surface_p);
+
+    }
+
+
+
+    class F_macos_surface : public I_surface {
 
     public:
         friend class I_surface_manager;
-        friend LRESULT window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+        
+        friend void*& internal::macos_surface_inject_handle(F_surface* surface_p);
 
 
 
     private:
-        HWND handle_ = 0;
+       void* handle_ = 0;
 
     public:
-        inline HWND handle() { return handle_; }
-
-        inline b8 is_valid() const { return handle_; }
+       NCPP_FORCE_INLINE void* handle() { return handle_; }
+        
+       NCPP_FORCE_INLINE b8 is_valid() const { return handle_; }
 
 
 
     protected:
-        F_windows_surface(const F_surface_desc& desc);
-        ~F_windows_surface();
+        F_macos_surface(const F_surface_desc& desc);
+        ~F_macos_surface();
 
 
 
@@ -98,5 +106,16 @@ namespace nsurface {
         void set_rect(int offset_x, int offset_y, int width, int height);
 
     };
+
+
+
+    namespace internal {
+
+        NCPP_FORCE_INLINE void*& macos_surface_inject_handle(F_surface* surface_p){
+
+            return surface_p->handle_;
+        }
+
+    }
 
 }

@@ -70,6 +70,11 @@ namespace nsurface {
     class F_windows_surface_manager;
     class F_windows_mouse_manager;
 #endif
+#ifdef EA_PLATFORM_OSX
+    class F_macos_surface;
+    class F_macos_surface_manager;
+    class F_macos_mouse_manager;
+#endif
 
 
 
@@ -80,6 +85,11 @@ namespace nsurface {
     using F_surface = F_windows_surface;
     using F_surface_manager = F_windows_surface_manager;
     using F_mouse_manager = F_windows_mouse_manager;
+#endif
+#ifdef EA_PLATFORM_OSX
+    using F_surface = F_macos_surface;
+    using F_surface_manager = F_macos_surface_manager;
+    using F_mouse_manager = F_macos_mouse_manager;
 #endif
 
 }

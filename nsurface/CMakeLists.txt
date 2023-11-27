@@ -23,11 +23,19 @@ set(NSURFACE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source" PARENT_SCOPE)
 file(GLOB_RECURSE source_files
     "source/*.cpp"
     "source/*.hpp"
+
+    "source/*.mm"
+    "source/*.h"
 )
 
 # Exclude the windows platform files from the list if not using windows
 if(NOT WIN32)
     list(FILTER source_files EXCLUDE REGEX "source/nsurface/windows/*.*")
+endif()
+
+# Exclude the macos platform files from the list if not using windows
+if(NOT APPLE)
+    list(FILTER source_files EXCLUDE REGEX "source/nsurface/apple/*.*")
 endif()
 
 # Exclude the posix platform files from the list if not using posix
