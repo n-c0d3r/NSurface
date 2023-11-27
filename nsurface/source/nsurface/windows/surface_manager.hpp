@@ -65,6 +65,11 @@ namespace nsurface {
         public utilities::TI_singleton<F_surface_manager>
     {
 
+    public:
+        friend class I_surface_manager;
+
+
+
     private:
         static const wchar_t window_class_name_cstr_s_[];
 

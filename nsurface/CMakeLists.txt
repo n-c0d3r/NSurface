@@ -33,9 +33,9 @@ if(NOT WIN32)
     list(FILTER source_files EXCLUDE REGEX "source/nsurface/windows/*.*")
 endif()
 
-# Exclude the macos platform files from the list if not using windows
+# Exclude the apple platform files from the list if not using apple platforms
 if(NOT APPLE)
-    list(FILTER source_files EXCLUDE REGEX "source/nsurface/apple/*.*")
+    list(FILTER source_files EXCLUDE REGEX "source/nsurface/macos/*.*")
 endif()
 
 # Exclude the posix platform files from the list if not using posix
