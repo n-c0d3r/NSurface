@@ -14,7 +14,7 @@ namespace nsurface {
 	}
 	F_macos_surface_manager::~F_macos_surface_manager() {
 
-
+		internal::macos_surface_manager_release(this);
 
 	}
 

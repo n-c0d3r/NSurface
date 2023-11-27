@@ -61,7 +61,7 @@ namespace nsurface {
 
     struct F_surface_desc {
 
-        eastl::wstring title;
+        ncpp::F_wstring title;
 
         i32 offset_x = 0;
         i32 offset_y = 0;

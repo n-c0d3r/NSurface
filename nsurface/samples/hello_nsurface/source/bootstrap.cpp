@@ -16,7 +16,7 @@ int main() {
 		F_surface_desc {
 	
 			// title
-			eastl::wstring(L"Hello NSurface ") + NCPP_TEXT(NSURFACE_VERSION_STR)
+			ncpp::F_wstring(L"Hello NSurface ") + NCPP_TEXT(NSURFACE_VERSION_STR)
 	
 		}
 	);

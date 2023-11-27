@@ -72,7 +72,7 @@ namespace nsurface {
 
 
 	private:
-		eastl::list<F_surface*> surface_p_list_;
+		ncpp::TF_list<F_surface*> surface_p_list_;
 
 		F_mouse_manager mouse_manager_;
 
