@@ -72,15 +72,15 @@ set_target_properties(nsurface
         FOLDER "nsurface"
 )
 
+target_precompile_headers(nsurface
+    PRIVATE
+        source/nsurface/prerequisites.hpp
+)
+
 target_include_directories(nsurface
     PUBLIC 
         ${CMAKE_CURRENT_SOURCE_DIR}/source
         ${CMAKE_CURRENT_BINARY_DIR}/generated_files
-)
-
-target_precompile_headers(nsurface
-    PRIVATE
-        source/nsurface/prerequisites.hpp
 )
 
 target_link_libraries(nsurface
