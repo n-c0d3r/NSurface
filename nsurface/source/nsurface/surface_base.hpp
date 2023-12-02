@@ -84,7 +84,7 @@ namespace nsurface {
 
         b8 is_running_ = false;
 
-		typename ncpp::TF_list<F_surface*>::iterator iterator_ = {};
+		typename ncpp::TG_list<F_surface*>::iterator iterator_ = {};
 
     public:
         NCPP_FORCE_INLINE const F_surface_desc& desc() const { return desc_; }

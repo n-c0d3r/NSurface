@@ -16,7 +16,7 @@ int main() {
 		F_surface_desc {
 	
 			// title
-			ncpp::F_text(L"Hello NSurface ") + NCPP_TEXT(NSURFACE_VERSION_STR)
+			ncpp::G_text(L"Hello NSurface ") + NCPP_TEXT(NSURFACE_VERSION_STR)
 	
 		}
 	);
