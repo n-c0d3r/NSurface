@@ -86,6 +86,7 @@ target_include_directories(nsurface
 target_link_libraries(nsurface
     PUBLIC
         ncpp
+        nmath
 )
 
 # MSVC compile options
@@ -112,7 +113,10 @@ endif()
 #####################################################################################
 #   Dependencies
 #####################################################################################
-add_dependencies(nsurface ncpp)
+add_dependencies(nsurface
+    ncpp
+    nmath
+)
 
 
 

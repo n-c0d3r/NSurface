@@ -5,7 +5,7 @@ using namespace nsurface;
 
 
 
-int main() {
+NCPP_ENTRY_POINT() {
 	
 	F_surface_manager surface_manager;
 
