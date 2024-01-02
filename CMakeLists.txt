@@ -49,13 +49,13 @@ include(NSurface/ConfigureDependencies)
 #####################################################################################
 #   Version
 #####################################################################################
-include(NCPP/VersionUtils)
-NCPP_VersionUtils_CreateVersionMacros(
+include(NCPP/Utilities/VersionHelper)
+NCPP_VersionHelper_CreateVersionMacros(
     PROJECT_NAME NSURFACE
     OUTPUT_FILE "${NSURFACE_GENERATED_FILES_DIR}/version.hpp"
     MAJOR 0
     MINOR 0
-    PATCH 0
+    PATCH 3
 )
 
 
@@ -63,7 +63,7 @@ NCPP_VersionUtils_CreateVersionMacros(
 #####################################################################################
 #   Global variables
 #####################################################################################
-include(NCPP/ApplyGlobal)
+include(NCPP/Utilities/ApplyGlobal)
 NCPP_ApplyGlobal(
     NSURFACE_ROOT_DIR
     NSURFACE_BINARY_DIR
