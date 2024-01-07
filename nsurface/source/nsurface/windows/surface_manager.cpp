@@ -3,6 +3,10 @@
 
 
 
+NCPP_DEFINE_SINGLETON(nsurface::F_surface_manager);
+
+
+
 namespace nsurface {
 
 	const wchar_t F_windows_surface_manager::window_class_name_cstr_s_[] = L"nsurface::window_class";

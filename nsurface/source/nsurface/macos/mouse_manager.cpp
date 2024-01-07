@@ -4,6 +4,10 @@
 
 
 
+NCPP_DEFINE_SINGLETON(nsurface::F_mouse_manager);
+
+
+
 namespace nsurface {
 
 	F_macos_mouse_manager::F_macos_mouse_manager()

@@ -3,6 +3,10 @@
 
 
 
+NCPP_DEFINE_SINGLETON(nsurface::F_mouse_manager);
+
+
+
 namespace nsurface {
 
 	F_windows_mouse_manager::F_windows_mouse_manager()

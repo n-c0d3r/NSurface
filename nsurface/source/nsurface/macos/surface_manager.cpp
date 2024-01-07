@@ -5,6 +5,10 @@
 
 
 
+NCPP_DEFINE_SINGLETON(nsurface::F_surface_manager);
+
+
+
 namespace nsurface {
 
 	F_macos_surface_manager::F_macos_surface_manager() {
