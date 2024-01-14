@@ -59,7 +59,7 @@ namespace nsurface {
 
 
 
-    class F_mouse_button_up_event : public I_mouse_button_event {
+    class F_mouse_button_up_event : public F_mouse_button_event {
 
         NSURFACE_APPLY_MOUSE_EVENT_FRIENDS();
 

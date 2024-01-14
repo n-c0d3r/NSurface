@@ -59,7 +59,7 @@ namespace nsurface {
 
 
 
-    class F_surface_moving_event : public I_surface_event {
+    class F_surface_moving_event : public F_surface_event {
 
         NSURFACE_APPLY_SURFACE_EVENT_FRIENDS();
 
@@ -77,7 +77,7 @@ namespace nsurface {
 
     public:
         inline F_surface_moving_event(F_surface& surface) :
-            I_surface_event(surface)
+                F_surface_event(surface)
         {
 
 

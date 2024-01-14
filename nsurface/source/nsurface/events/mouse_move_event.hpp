@@ -59,7 +59,7 @@ namespace nsurface {
 
 
 
-    class F_mouse_move_event : public I_mouse_event {
+    class F_mouse_move_event : public F_mouse_event {
 
         NSURFACE_APPLY_MOUSE_EVENT_FRIENDS();
 

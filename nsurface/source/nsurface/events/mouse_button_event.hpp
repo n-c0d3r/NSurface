@@ -59,7 +59,7 @@ namespace nsurface {
 
 
 
-    class I_mouse_button_event : public I_mouse_event {
+    class F_mouse_button_event : public F_mouse_event {
 
         NSURFACE_APPLY_MOUSE_EVENT_FRIENDS();
 
@@ -74,13 +74,8 @@ namespace nsurface {
 
 
     public:
-        inline I_mouse_button_event()
-        {
-
-
-
-        }
-        ~I_mouse_button_event() {}
+        F_mouse_button_event() = default;
+        ~F_mouse_button_event() {}
 
     };
 

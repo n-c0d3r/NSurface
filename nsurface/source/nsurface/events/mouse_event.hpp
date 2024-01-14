@@ -64,16 +64,11 @@ namespace nsurface {
 
 
 
-    class I_mouse_event : public F_event {
+    class F_mouse_event : public F_event {
 
     public:
-        inline I_mouse_event()
-        {
-
-
-
-        }
-        ~I_mouse_event(){}
+        F_mouse_event() = default;
+        ~F_mouse_event(){}
 
     };
 
