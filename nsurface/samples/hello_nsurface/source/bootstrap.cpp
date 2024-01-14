@@ -27,7 +27,7 @@ NCPP_ENTRY_POINT() {
 	surface_p->T_get_event<F_surface_destroy_event>().T_push_back_listener(
 		[](auto& e) {
 
-			std::cout << "surface is destroyed" << std::endl;
+			NCPP_INFO() << "surface is destroyed";
 
 		}
 	);
@@ -35,14 +35,14 @@ NCPP_ENTRY_POINT() {
 	surface_p->T_get_event<F_surface_resizing_event>().T_push_back_listener(
 		[](auto& e) {
 
-			std::cout << "resizing " << ((F_surface_resizing_event&)e).width() << " " << ((F_surface_resizing_event&)e).height() << std::endl;
+			NCPP_INFO() << "resizing " << ((F_surface_resizing_event&)e).width() << " " << ((F_surface_resizing_event&)e).height();
 
 		}
 	);
 	surface_p->T_get_event<F_surface_post_resize_event>().T_push_back_listener(
 		[](auto& e) {
 
-			std::cout << "post resize " << ((F_surface_post_resize_event&)e).width() << " " << ((F_surface_post_resize_event&)e).height() << std::endl;
+			NCPP_INFO() << "post resize " << ((F_surface_post_resize_event&)e).width() << " " << ((F_surface_post_resize_event&)e).height();
 
 		}
 	);
@@ -50,14 +50,14 @@ NCPP_ENTRY_POINT() {
 	surface_p->T_get_event<F_surface_moving_event>().T_push_back_listener(
 		[](auto& e) {
 
-			std::cout << "moving " << ((F_surface_moving_event&)e).offset_x() << " " << ((F_surface_moving_event&)e).offset_y() << std::endl;
+			NCPP_INFO() << "moving " << ((F_surface_moving_event&)e).offset_x() << " " << ((F_surface_moving_event&)e).offset_y();
 
 		}
 	);
 	surface_p->T_get_event<F_surface_post_move_event>().T_push_back_listener(
 		[](auto& e) {
 
-			std::cout << "post move " << ((F_surface_post_move_event&)e).offset_x() << " " << ((F_surface_post_move_event&)e).offset_y() << std::endl;
+			NCPP_INFO() << "post move " << ((F_surface_post_move_event&)e).offset_x() << " " << ((F_surface_post_move_event&)e).offset_y();
 
 		}
 	);
@@ -76,13 +76,13 @@ NCPP_ENTRY_POINT() {
 			switch (((I_mouse_button_event&)e).button_flag())
 			{
 			case E_mouse_button_flag::LEFT:
-				std::cout << "mouse button down L" << std::endl;
+				NCPP_INFO() << "mouse button down L";
 				break;
 			case E_mouse_button_flag::MIDDLE:
-				std::cout << "mouse button down M" << std::endl;
+				NCPP_INFO() << "mouse button down M";
 				break;
 			case E_mouse_button_flag::RIGHT:
-				std::cout << "mouse button down R" << std::endl;
+				NCPP_INFO() << "mouse button down R";
 				break;
 			}
 
@@ -94,13 +94,13 @@ NCPP_ENTRY_POINT() {
 			switch (((I_mouse_button_event&)e).button_flag())
 			{
 			case E_mouse_button_flag::LEFT:
-				std::cout << "mouse button up L" << std::endl;
+				NCPP_INFO() << "mouse button up L";
 				break;
 			case E_mouse_button_flag::MIDDLE:
-				std::cout << "mouse button up M" << std::endl;
+				NCPP_INFO() << "mouse button up M";
 				break;
 			case E_mouse_button_flag::RIGHT:
-				std::cout << "mouse button up R" << std::endl;
+				NCPP_INFO() << "mouse button up R";
 				break;
 			}
 
@@ -109,7 +109,7 @@ NCPP_ENTRY_POINT() {
 	mouse_manager.T_get_event<F_mouse_move_event>().T_push_back_listener(
 		[](auto& e) {
 
-			std::cout << "mouse move " << ((F_mouse_move_event&)e).position_x() << " " << ((F_mouse_move_event&)e).position_y() << std::endl;
+			NCPP_INFO() << "mouse move " << ((F_mouse_move_event&)e).position_x() << " " << ((F_mouse_move_event&)e).position_y();
 
 		}
 	);
@@ -118,7 +118,7 @@ NCPP_ENTRY_POINT() {
 
     surface_manager.T_run([](F_surface_manager* surface_manager_p){
         
-        std::cout << surface_manager_p << std::endl;
+        NCPP_INFO() << "update, surface manager: " << T_cout_value(surface_manager_p);
         
     });
 

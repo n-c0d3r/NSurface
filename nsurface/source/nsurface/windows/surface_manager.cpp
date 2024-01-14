@@ -52,6 +52,10 @@ namespace nsurface {
 
 		} while (!has_msg);
 
+
+
+        update_functor_(this);
+
 	}
 	void F_windows_surface_manager::run_internal(){
 
