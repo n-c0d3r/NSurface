@@ -84,6 +84,9 @@ NCPP_ENTRY_POINT() {
 			case E_mouse_button_flag::RIGHT:
 				NCPP_INFO() << "mouse button down R";
 				break;
+            case E_mouse_button_flag::NONE:
+                NCPP_ASSERT() << "unknown mouse button down";
+                break;
 			}
 
 		}
@@ -102,6 +105,9 @@ NCPP_ENTRY_POINT() {
 			case E_mouse_button_flag::RIGHT:
 				NCPP_INFO() << "mouse button up R";
 				break;
+            case E_mouse_button_flag::NONE:
+                NCPP_ASSERT() << "unknown mouse button up";
+                break;
 			}
 
 		}
