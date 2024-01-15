@@ -110,9 +110,13 @@ namespace nsurface {
 
 
 
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Internal platform specific interface
+        ////////////////////////////////////////////////////////////////////////////////////
+
 	private:
 		void process_internal() {} // for documentations
-        void run_internal();
+        void run_internal(); // for documentations
 
     private:
 		void enable_process_internal() {} // for documentations
