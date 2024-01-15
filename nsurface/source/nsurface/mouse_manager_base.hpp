@@ -61,7 +61,12 @@ namespace nsurface {
 
 
 
-	class I_mouse_manager {
+	class A_mouse_manager {
+
+    public:
+        NSURFACE_FRIEND_CLASSES
+
+
 
 	private:
 		F_mouse_button_down_event button_down_event_;
@@ -78,14 +83,16 @@ namespace nsurface {
 
 
 	protected:
-		I_mouse_manager();
-		virtual ~I_mouse_manager();
+		A_mouse_manager();
+
+    public:
+		virtual ~A_mouse_manager();
 
 
 
-	public:
-		void enable_mouse_hook() {} // for documentations
-		void disable_mouse_hook() {} // for documentations
+    private:
+		void enable_mouse_hook_internal() {} // for documentations
+		void disable_mouse_hook_internal() {} // for documentations
 
 
 

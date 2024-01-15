@@ -4,7 +4,7 @@
 
 namespace nsurface {
 
-	I_surface::I_surface(const F_surface_desc& desc) :
+	A_surface::A_surface(const F_surface_desc& desc) :
 		desc_(desc),
 
 		destroy_event_(as_current_platform()),
@@ -19,7 +19,7 @@ namespace nsurface {
 
 
 	}
-	I_surface::~I_surface() {
+	A_surface::~A_surface() {
 
 
 

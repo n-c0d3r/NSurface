@@ -59,7 +59,7 @@ namespace nsurface {
 	}
 	void F_windows_surface_manager::run_internal(){
 
-		enable_process();
+		enable_process_internal();
 
 		while(is_there_any_surface_running()){
 
@@ -67,18 +67,18 @@ namespace nsurface {
 
 		}
 
-		disable_process();
+		disable_process_internal();
 
 	}
 
-	void F_windows_surface_manager::enable_process() {
+	void F_windows_surface_manager::enable_process_internal() {
 
-		mouse_manager().enable_mouse_hook();
+		mouse_manager().enable_mouse_hook_internal();
 
 	}
-	void F_windows_surface_manager::disable_process() {
+	void F_windows_surface_manager::disable_process_internal() {
 
-		mouse_manager().disable_mouse_hook();
+		mouse_manager().disable_mouse_hook_internal();
 
 	}
 

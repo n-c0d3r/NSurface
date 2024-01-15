@@ -64,18 +64,23 @@ namespace nsurface {
 
 	namespace internal {
 
-		NCPP_FORCE_INLINE b8& surface_inject_is_running(I_surface* surface_p);
+		NCPP_FORCE_INLINE b8& surface_inject_is_running(A_surface* surface_p);
 
 	}
 
 
 
-	class I_surface {
+	class A_surface {
+
+    public:
+        NSURFACE_FRIEND_CLASSES
+
+
 
 	public:
-		friend class I_surface_manager;
+		friend class A_surface_manager;
 
-		friend b8& internal::surface_inject_is_running(I_surface* surface_p);
+		friend b8& internal::surface_inject_is_running(A_surface* surface_p);
 
 
 
@@ -116,8 +121,10 @@ namespace nsurface {
 
 
 	protected:
-		I_surface(const F_surface_desc& desc);
-		virtual ~I_surface();
+		A_surface(const F_surface_desc& desc);
+
+    public:
+		virtual ~A_surface();
 
 
 
@@ -140,12 +147,12 @@ namespace nsurface {
 
 	namespace internal {
 
-		NCPP_FORCE_INLINE F_surface_desc& surface_inject_desc(I_surface* surface_p){
+		NCPP_FORCE_INLINE F_surface_desc& surface_inject_desc(A_surface* surface_p){
 
             return (F_surface_desc&)(surface_p->desc());
 		}
 
-		NCPP_FORCE_INLINE b8& surface_inject_is_running(I_surface* surface_p){
+		NCPP_FORCE_INLINE b8& surface_inject_is_running(A_surface* surface_p){
 
 			return surface_p->is_running_;
 		}

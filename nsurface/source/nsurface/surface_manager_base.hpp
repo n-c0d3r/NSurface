@@ -63,7 +63,12 @@ namespace nsurface {
 
 
 
-	class I_surface_manager {
+	class A_surface_manager {
+
+    public:
+        NSURFACE_FRIEND_CLASSES
+
+
 
 	public:
 		using F_update = void(F_surface_manager*);
@@ -87,8 +92,10 @@ namespace nsurface {
 
 
 	protected:
-		I_surface_manager();
-		virtual ~I_surface_manager();
+		A_surface_manager();
+
+    public:
+		virtual ~A_surface_manager();
 
 
 
@@ -107,9 +114,9 @@ namespace nsurface {
 		void process_internal() {} // for documentations
         void run_internal();
 
-    public:
-		void enable_process() {} // for documentations
-		void disable_process() {} // for documentations
+    private:
+		void enable_process_internal() {} // for documentations
+		void disable_process_internal() {} // for documentations
 
 
 

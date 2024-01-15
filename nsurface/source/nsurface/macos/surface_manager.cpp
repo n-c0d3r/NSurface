@@ -31,22 +31,22 @@ namespace nsurface {
 	}
 	void F_macos_surface_manager::run_internal(){
 
-		enable_process();
+		enable_process_internal();
 
 		internal::macos_surface_manager_loop(this);
 
-		disable_process();
+		disable_process_internal();
 
 	}
 
-	void F_macos_surface_manager::enable_process() {
+	void F_macos_surface_manager::enable_process_internal() {
 
-		mouse_manager().enable_mouse_hook();
+		mouse_manager().enable_mouse_hook_internal();
 
 	}
-	void F_macos_surface_manager::disable_process() {
+	void F_macos_surface_manager::disable_process_internal() {
 
-		mouse_manager().disable_mouse_hook();
+		mouse_manager().disable_mouse_hook_internal();
 
 	}
 
