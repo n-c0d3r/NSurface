@@ -60,7 +60,7 @@ namespace nsurface {
 
 
 
-        update_functor_(this);
+        update_functor_(*this);
 
 	}
 	void F_windows_surface_manager::run_internal(){

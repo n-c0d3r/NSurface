@@ -71,7 +71,7 @@ namespace nsurface {
 
 
 	public:
-		using F_update = void(F_surface_manager*);
+		using F_update = void(F_surface_manager&);
 		using F_update_functor = eastl::function<F_update>;
 
 
