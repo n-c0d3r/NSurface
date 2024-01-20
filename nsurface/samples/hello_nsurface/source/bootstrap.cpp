@@ -122,9 +122,9 @@ NCPP_ENTRY_POINT() {
 
 
 
-    surface_manager.T_run([](F_surface_manager* surface_manager_p){
+    surface_manager.T_run([](F_surface_manager& surface_manager_p){
         
-        NCPP_INFO() << "update, surface manager: " << T_cout_value(surface_manager_p);
+        NCPP_INFO() << "update, surface manager: " << T_cout_value(&surface_manager_p);
         
     });
 
