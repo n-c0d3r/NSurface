@@ -42,10 +42,17 @@ namespace nsurface {
 
 				auto& e = surface_p->T_get_event<F_surface_post_resize_event>();
 
-				e.width_ = LOWORD(lParam);
-				e.height_ = HIWORD(lParam);
+                RECT rect;
+                if(GetWindowRect(hwnd, &rect))
+                {
+                    e.width_ = rect.right - rect.left;
+                    e.height_ = rect.bottom - rect.top;
+                }
 
-				e.invoke();
+                surface_p->desc_.width = e.width_;
+                surface_p->desc_.height = e.height_;
+
+                e.invoke();
 
 				return 0;
 			}
@@ -54,8 +61,15 @@ namespace nsurface {
 
 				auto& e = surface_p->T_get_event<F_surface_resizing_event>();
 
-				e.width_ = LOWORD(lParam);
-				e.height_ = HIWORD(lParam);
+                RECT rect;
+                if(GetWindowRect(hwnd, &rect))
+                {
+                    e.width_ = rect.right - rect.left;
+                    e.height_ = rect.bottom - rect.top;
+                }
+
+                surface_p->desc_.width = e.width_;
+                surface_p->desc_.height = e.height_;
 
 				e.invoke();
 
