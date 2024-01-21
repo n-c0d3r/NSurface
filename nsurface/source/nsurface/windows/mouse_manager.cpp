@@ -32,7 +32,7 @@ namespace nsurface {
 		if (mouse_hook_)
 			return;
 
-		mouse_hook_ = SetWindowsHookEx(WH_MOUSE_LL, mouse_proc, NULL, 0);
+		mouse_hook_ = SetWindowsHookEx(WH_MOUSE, mouse_proc, GetModuleHandle(0), GetCurrentThreadId());
 
 	}
 	void F_windows_mouse_manager::disable_mouse_hook_internal() {
