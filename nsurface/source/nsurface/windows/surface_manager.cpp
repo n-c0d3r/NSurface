@@ -45,20 +45,17 @@ namespace nsurface {
 
 	void F_windows_surface_manager::process_internal() {
 
-		b8 has_msg = true;
-
-		do {
+		while(true) {
 
 			MSG msg = { };
 
-			has_msg = PeekMessage(&msg, 0, 0, 0, PM_REMOVE);
+			if(!PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+				break;
 
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 
-		} while (!has_msg);
-
-
+		}
 
         update_functor_(*this);
 
