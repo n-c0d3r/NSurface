@@ -60,10 +60,11 @@ namespace nsurface {
 
 
 
-    class F_windows_surface : public A_surface {
+    class F_windows_surface : public A2_surface {
 
     public:
         NSURFACE_FRIEND_CLASSES;
+        NCPP_OBJECT_FRIEND_CLASSES();
 
 
 
@@ -74,6 +75,7 @@ namespace nsurface {
 
     private:
         HWND handle_ = 0;
+        b8 is_user_delete_ = false;
 
     public:
         inline HWND handle() { return handle_; }
@@ -84,6 +86,8 @@ namespace nsurface {
 
     protected:
         F_windows_surface(const F_surface_desc& desc);
+
+    public:
         ~F_windows_surface();
 
 

@@ -8,7 +8,7 @@
 namespace nsurface {
 
 	F_macos_surface::F_macos_surface(const F_surface_desc& desc) :
-		A_surface(desc)
+		A2_surface(desc)
 	{
 
 		create_window_internal();

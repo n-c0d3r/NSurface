@@ -66,8 +66,8 @@ namespace nsurface {
 
 
     public:
-        inline F_surface_destroy_event(F_surface& surface) :
-                F_surface_event(surface)
+        inline F_surface_destroy_event(F2_surface& surface) :
+            F_surface_event(surface)
         {
 
 

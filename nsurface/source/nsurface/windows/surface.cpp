@@ -6,7 +6,7 @@
 namespace nsurface {
 
 	F_windows_surface::F_windows_surface(const F_surface_desc& desc) :
-            A_surface(desc)
+        A2_surface(desc)
 	{
 
 		create_window_internal();
@@ -16,7 +16,11 @@ namespace nsurface {
 	}
 	F_windows_surface::~F_windows_surface() {
 
+        T_get_event<F_surface_destroy_event>().invoke();
+
 		release_window_internal();
+
+        is_running_ = false;
 
 	}
 
@@ -48,13 +52,11 @@ namespace nsurface {
 	}
 	void F_windows_surface::release_window_internal() {
 
-		if (handle_) {
+		if (handle_ && !is_user_delete_) {
 
-
+            CloseWindow(handle_);
 
 		}
-
-		is_running_ = false;
 
 	}
 

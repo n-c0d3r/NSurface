@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/events/post_resize_event.hpp
+/** @file nsurface/events/destroy_request_event.hpp
 *
-*   Implements post resize event.
+*   Implements destroy_request event.
 */
 
 
@@ -59,26 +59,26 @@ namespace nsurface {
 
 
 
-    class F_surface_post_resize_event : public F_surface_event {
+    class F_surface_user_destroy_request_event : public F_surface_event {
 
         NSURFACE_APPLY_SURFACE_EVENT_FRIENDS();
 
 
 
-    private:
-        F_vector2_i32 size_;
-
     public:
-        inline F_vector2_i32 size() const { return size_; }
+        b8 destroyable = true;
 
 
 
     public:
-        inline F_surface_post_resize_event(F_surface& surface) :
+        inline F_surface_user_destroy_request_event(F2_surface& surface) :
             F_surface_event(surface)
         {
+
+
+
         }
-        ~F_surface_post_resize_event(){}
+        ~F_surface_user_destroy_request_event() {}
 
     };
 

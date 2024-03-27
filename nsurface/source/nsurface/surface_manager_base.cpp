@@ -61,21 +61,20 @@ namespace nsurface {
 
 
 
-	F_surface* A_surface_manager::create_surface(const F_surface_desc& desc) {
+	TK2_oref<F2_surface> A_surface_manager::create_surface(const F_surface_desc& desc) {
 
-		F_surface* surface_p = new F_surface(desc);
+		auto unique_surface_p = TU2_oref<F2_surface>()(desc);
+		auto surface_p = unique_surface_p.keyed();
 
-		surface_p_list_.push_back(surface_p);
+		surface_p_list_.push_back(std::move(unique_surface_p));
 
-		surface_p->iterator_ = --surface_p_list_.end();
+        surface_p->iterator_ = --surface_p_list_.end();
 
 		return surface_p;
 	}
-	void A_surface_manager::delete_surface(F_surface* surface_p) {
+	void A_surface_manager::delete_surface(TK2_oref<F2_surface> surface_p) {
 
 		surface_p_list_.erase(surface_p->iterator_);
-
-		delete surface_p;
 
 	}
 

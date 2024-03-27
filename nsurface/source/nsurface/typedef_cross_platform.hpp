@@ -56,7 +56,7 @@ namespace nsurface {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Declare base classes
     ////////////////////////////////////////////////////////////////////////////////////
-    class A_surface;
+    class A2_surface;
     class A_surface_manager;
     class A_mouse_manager;
 
@@ -83,7 +83,7 @@ namespace nsurface {
     //  Typedef classes and define platform specific friend classes
     ////////////////////////////////////////////////////////////////////////////////////
 #ifdef EA_PLATFORM_WINDOWS
-    using F_surface = F_windows_surface;
+    using F2_surface = F_windows_surface;
     using F_surface_manager = F_windows_surface_manager;
     using F_mouse_manager = F_windows_mouse_manager;
 
@@ -93,7 +93,7 @@ namespace nsurface {
             friend class nsurface::F_windows_mouse_manager;
 
 #elif defined(EA_PLATFORM_OSX)
-    using F_surface = F_macos_surface;
+    using F2_surface = F_macos_surface;
     using F_surface_manager = F_macos_surface_manager;
     using F_mouse_manager = F_macos_mouse_manager;
 
@@ -112,7 +112,7 @@ namespace nsurface {
     //  Base friend classes
     ////////////////////////////////////////////////////////////////////////////////////
 #define NSURFACE_BASE_FRIEND_CLASSES \
-        friend class A_surface;\
+        friend class A2_surface;\
         friend class A_surface_manager;\
         friend class A_mouse_manager;
 

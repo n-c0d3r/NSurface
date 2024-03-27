@@ -67,15 +67,15 @@ namespace nsurface {
     class F_surface_event : public F_event {
 
     private:
-        F_surface& surface_;
+        F2_surface& surface_;
 
     public:
-        inline F_surface& surface() { return surface_; }
+        inline F2_surface& surface() { return surface_; }
 
 
 
     public:
-        NCPP_FORCE_INLINE F_surface_event(F_surface& surface) :
+        NCPP_FORCE_INLINE F_surface_event(F2_surface& surface) :
             surface_(surface)
         {}
         ~F_surface_event(){}

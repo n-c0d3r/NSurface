@@ -12,7 +12,7 @@ NCPP_ENTRY_POINT() {
 
 
 	// create surface
-	F_surface* surface_p = surface_manager.create_surface(
+	TK2_oref<F2_surface> surface_p = surface_manager.create_surface(
 		F_surface_desc {
 	
 			// title
@@ -31,41 +31,21 @@ NCPP_ENTRY_POINT() {
 
 		}
 	);
-
-	surface_p->T_get_event<F_surface_resizing_event>().T_push_back_listener(
+	surface_p->T_get_event<F_surface_resize_event>().T_push_back_listener(
 		[](auto& e) {
 
-            F_vector2_i32 size = ((F_surface_resizing_event&)e).size();
+            F_vector2_i32 size = ((F_surface_resize_event&)e).size();
 
-			NCPP_INFO() << "resizing " << size.x << " " << size.y;
+			NCPP_INFO() << "surface is resized " << size.x << " " << size.y;
 
 		}
 	);
-	surface_p->T_get_event<F_surface_post_resize_event>().T_push_back_listener(
+	surface_p->T_get_event<F_surface_move_event>().T_push_back_listener(
 		[](auto& e) {
 
-            F_vector2_i32 size = ((F_surface_post_resize_event&)e).size();
+            F_vector2_i32 offset = ((F_surface_move_event&)e).offset();
 
-            NCPP_INFO() << "post resize " << size.x << " " << size.y;
-
-		}
-	);
-
-	surface_p->T_get_event<F_surface_moving_event>().T_push_back_listener(
-		[](auto& e) {
-
-            F_vector2_i32 offset = ((F_surface_moving_event&)e).offset();
-
-			NCPP_INFO() << "moving " << offset.x << " " << offset.y;
-
-		}
-	);
-	surface_p->T_get_event<F_surface_post_move_event>().T_push_back_listener(
-		[](auto& e) {
-
-            F_vector2_i32 offset = ((F_surface_post_move_event&)e).offset();
-
-			NCPP_INFO() << "post move " << offset.x << " " << offset.y;
+			NCPP_INFO() << "surface is moved " << offset.x << " " << offset.y;
 
 		}
 	);
@@ -132,11 +112,13 @@ NCPP_ENTRY_POINT() {
 
 
 
-    surface_manager.T_run([](F_surface_manager& surface_manager){
-        
-        NCPP_INFO() << "update, surface manager: " << T_cout_value(&surface_manager);
-        
-    });
+    surface_manager.T_run(
+        [](F_surface_manager& surface_manager){
+
+            NCPP_INFO() << "update, surface manager: " << T_cout_value(&surface_manager);
+
+        }
+    );
 
 
 

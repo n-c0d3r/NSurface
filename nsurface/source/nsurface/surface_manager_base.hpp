@@ -66,7 +66,8 @@ namespace nsurface {
 	class A_surface_manager {
 
     public:
-        NSURFACE_FRIEND_CLASSES
+        NSURFACE_FRIEND_CLASSES;
+        NCPP_OBJECT_FRIEND_CLASSES();
 
 
 
@@ -77,7 +78,7 @@ namespace nsurface {
 
 
 	private:
-		ncpp::TF_list<F_surface*> surface_p_list_;
+		TF_list<TU2_oref<F2_surface>> surface_p_list_;
 
 		F_mouse_manager mouse_manager_;
 
@@ -105,8 +106,8 @@ namespace nsurface {
 
 
 	public:
-		F_surface* create_surface(const F_surface_desc& desc);
-		void delete_surface(F_surface*);
+		TK2_oref<F2_surface> create_surface(const F_surface_desc& desc);
+		void delete_surface(TK2_oref<F2_surface>);
 
 
 

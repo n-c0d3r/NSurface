@@ -11,7 +11,11 @@ namespace nsurface {
 	LRESULT CALLBACK window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 
-		F_surface* surface_p = reinterpret_cast<F_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+		F2_surface* raw_surface_p = reinterpret_cast<F2_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+        TK2_oref<F2_surface> surface_p;
+
+        if (raw_surface_p)
+            surface_p = TK2_oref<F2_surface>::unsafe(raw_surface_p);
 
 		switch (uMsg)
 		{
@@ -29,18 +33,26 @@ namespace nsurface {
 			case WM_DESTROY:
 			{
 
-				surface_p->T_get_event<F_surface_destroy_event>().invoke();
+                auto& event = surface_p->T_get_event<F_surface_user_destroy_request_event>();
 
-				surface_p->release_window_internal();
+                event.destroyable = true;
+                event.invoke();
 
-				PostQuitMessage(0);
+                if (event.destroyable){
+
+                    surface_p->is_user_delete_ = true;
+                    F_surface_manager::instance().delete_surface(surface_p);
+
+                    PostQuitMessage(0);
+                }
+
 				return 0;
 			}
 
 			case WM_SIZE:
 			{
 
-				auto& e = surface_p->T_get_event<F_surface_post_resize_event>();
+				auto& e = surface_p->T_get_event<F_surface_resize_event>();
 
                 RECT rect;
                 if(GetWindowRect(hwnd, &rect))
@@ -58,7 +70,7 @@ namespace nsurface {
 			case WM_SIZING:
 			{
 
-				auto& e = surface_p->T_get_event<F_surface_resizing_event>();
+				auto& e = surface_p->T_get_event<F_surface_resize_event>();
 
                 RECT rect;
                 if(GetWindowRect(hwnd, &rect))
@@ -77,7 +89,7 @@ namespace nsurface {
 			case WM_MOVE:
 			{
 
-				auto& e = surface_p->T_get_event<F_surface_post_move_event>();
+				auto& e = surface_p->T_get_event<F_surface_move_event>();
 
 				e.offset_.x = LOWORD(lParam);
 				e.offset_.y = HIWORD(lParam);
@@ -89,7 +101,7 @@ namespace nsurface {
 			case WM_MOVING:
 			{
 
-				auto& e = surface_p->T_get_event<F_surface_moving_event>();
+				auto& e = surface_p->T_get_event<F_surface_move_event>();
 
 				e.offset_.x = LOWORD(lParam);
 				e.offset_.y = HIWORD(lParam);

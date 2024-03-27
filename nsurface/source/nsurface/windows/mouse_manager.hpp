@@ -67,6 +67,7 @@ namespace nsurface {
 
     public:
         NSURFACE_FRIEND_CLASSES;
+        NCPP_OBJECT_FRIEND_CLASSES();
 
 
 
@@ -75,8 +76,10 @@ namespace nsurface {
 
 
 
-    public:
+    protected:
         F_windows_mouse_manager();
+
+    public:
         ~F_windows_mouse_manager();
 
 

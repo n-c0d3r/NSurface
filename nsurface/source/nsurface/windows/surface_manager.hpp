@@ -67,6 +67,7 @@ namespace nsurface {
 
     public:
         NSURFACE_FRIEND_CLASSES;
+        NCPP_OBJECT_FRIEND_CLASSES();
 
 
 

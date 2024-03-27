@@ -36,12 +36,9 @@
 #include <nsurface/events/surface_event.hpp>
 
 #include <nsurface/events/surface_destroy_event.hpp>
-
-#include <nsurface/events/surface_post_resize_event.hpp>
-#include <nsurface/events/surface_resizing_event.hpp>
-
-#include <nsurface/events/surface_post_move_event.hpp>
-#include <nsurface/events/surface_moving_event.hpp>
+#include <nsurface/events/surface_user_destroy_request_event.hpp>
+#include <nsurface/events/surface_resize_event.hpp>
+#include <nsurface/events/surface_move_event.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
