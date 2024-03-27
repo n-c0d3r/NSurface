@@ -31,7 +31,7 @@ namespace nsurface {
 			WS_OVERLAPPEDWINDOW,
 
 			// Size and position
-			desc_.offset_x, desc_.offset_y, desc_.width, desc_.height,
+			desc_.offset.x, desc_.offset.y, desc_.size.x, desc_.size.y,
 
 			NULL,
 			NULL,
@@ -76,66 +76,56 @@ namespace nsurface {
 
 	}
 
-	void F_windows_surface::set_offset(int offset_x, int offset_y) {
+	void F_windows_surface::set_offset(PA_vector2_i32 offset) {
 
-		if (
-			SetWindowPos(
-				handle_,
-				0,
-				offset_x,
-				offset_y,
-				0,
-				0,
-				SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW
-			)
-		) {
+        NCPP_ASSERT(
+            SetWindowPos(
+                handle_,
+                0,
+                offset.x,
+                offset.y,
+                0,
+                0,
+                SWP_NOZORDER | SWP_NOSIZE | SWP_SHOWWINDOW
+            )
+        ) << "can't set surface's offset";
 
-			desc_.offset_x = offset_x;
-			desc_.offset_y = offset_y;
-
-		}
+        desc_.offset = offset;
 
 	}
-	void F_windows_surface::resize(int width, int height) {
+	void F_windows_surface::resize(PA_vector2_i32 size) {
 
-		if (
+        NCPP_ASSERT(
 			SetWindowPos(
 				handle_,
 				0,
 				0,
 				0,
-				width,
-				height,
+                size.x,
+                size.y,
 				SWP_NOZORDER | SWP_NOMOVE | SWP_SHOWWINDOW
 			)
-		) {
+		) << "can't resize surface";
 
-			desc_.width = width;
-			desc_.height = height;
-
-		}
+        desc_.size = size;
 
 	}
-	void F_windows_surface::set_rect(int offset_x, int offset_y, int width, int height) {
+	void F_windows_surface::set_rect(PA_vector2_i32 offset, PA_vector2_i32 size) {
 
-		if (
+		NCPP_ASSERT(
 			SetWindowPos(
 				handle_,
 				0,
-				offset_x,
-				offset_y,
-				width,
-				height,
+				offset.x,
+				offset.y,
+                size.x,
+                size.y,
 				SWP_NOZORDER | SWP_SHOWWINDOW
 			)
-		) {
+		) << "can't set surface's rect";
 
-			desc_.offset_x = offset_x;
-			desc_.offset_y = offset_y;
-			desc_.width = width;
-			desc_.height = height;
-
-		}
+        desc_.offset = offset;
+        desc_.size = size;
 
 	}
 

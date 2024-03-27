@@ -66,22 +66,17 @@ namespace nsurface {
 
 
     private:
-        i32 offset_x_ = 0;
-        i32 offset_y_ = 0;
+        F_vector2_i32 offset_;
 
     public:
-        inline i32 offset_x() const { return offset_x_; }
-        inline i32 offset_y() const { return offset_y_; }
+        inline F_vector2_i32 offset() const { return offset_; }
 
 
 
     public:
         inline F_surface_moving_event(F_surface& surface) :
-                F_surface_event(surface)
+            F_surface_event(surface)
         {
-
-
-
         }
         ~F_surface_moving_event() {}
 

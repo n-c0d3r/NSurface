@@ -66,22 +66,17 @@ namespace nsurface {
 
 
     private:
-        u32 width_ = 0;
-        u32 height_ = 0;
+        F_vector2_i32 size_;
 
     public:
-        inline u32 width() const { return width_; }
-        inline u32 height() const { return height_; }
+        inline F_vector2_i32 size() const { return size_; }
 
 
 
     public:
         inline F_surface_post_resize_event(F_surface& surface) :
-                F_surface_event(surface)
+            F_surface_event(surface)
         {
-
-
-
         }
         ~F_surface_post_resize_event(){}
 

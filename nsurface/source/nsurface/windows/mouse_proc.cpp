@@ -63,8 +63,8 @@ namespace nsurface {
                     MSLLHOOKSTRUCT* pMouseStruct = (MSLLHOOKSTRUCT*)lParam;
 
                     auto& e = F_mouse_manager::instance().T_get_event<F_mouse_move_event>();
-                    e.position_x_ = pMouseStruct->pt.x;
-                    e.position_y_ = pMouseStruct->pt.y;
+                    e.position_.x = pMouseStruct->pt.x;
+                    e.position_.y = pMouseStruct->pt.y;
                     e.invoke();
                     break;
                 }

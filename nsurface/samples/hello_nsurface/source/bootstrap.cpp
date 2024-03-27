@@ -16,7 +16,7 @@ NCPP_ENTRY_POINT() {
 		F_surface_desc {
 	
 			// title
-			ncpp::G_text(L"Hello NSurface ") + NCPP_TEXT(NSURFACE_VERSION_STR)
+			.title = ncpp::G_text(L"Hello NSurface ") + NCPP_TEXT(NSURFACE_VERSION_STR)
 	
 		}
 	);
@@ -35,14 +35,18 @@ NCPP_ENTRY_POINT() {
 	surface_p->T_get_event<F_surface_resizing_event>().T_push_back_listener(
 		[](auto& e) {
 
-			NCPP_INFO() << "resizing " << ((F_surface_resizing_event&)e).width() << " " << ((F_surface_resizing_event&)e).height();
+            F_vector2_i32 size = ((F_surface_resizing_event&)e).size();
+
+			NCPP_INFO() << "resizing " << size.x << " " << size.y;
 
 		}
 	);
 	surface_p->T_get_event<F_surface_post_resize_event>().T_push_back_listener(
 		[](auto& e) {
 
-			NCPP_INFO() << "post resize " << ((F_surface_post_resize_event&)e).width() << " " << ((F_surface_post_resize_event&)e).height();
+            F_vector2_i32 size = ((F_surface_post_resize_event&)e).size();
+
+            NCPP_INFO() << "post resize " << size.x << " " << size.y;
 
 		}
 	);
@@ -50,14 +54,18 @@ NCPP_ENTRY_POINT() {
 	surface_p->T_get_event<F_surface_moving_event>().T_push_back_listener(
 		[](auto& e) {
 
-			NCPP_INFO() << "moving " << ((F_surface_moving_event&)e).offset_x() << " " << ((F_surface_moving_event&)e).offset_y();
+            F_vector2_i32 offset = ((F_surface_moving_event&)e).offset();
+
+			NCPP_INFO() << "moving " << offset.x << " " << offset.y;
 
 		}
 	);
 	surface_p->T_get_event<F_surface_post_move_event>().T_push_back_listener(
 		[](auto& e) {
 
-			NCPP_INFO() << "post move " << ((F_surface_post_move_event&)e).offset_x() << " " << ((F_surface_post_move_event&)e).offset_y();
+            F_vector2_i32 offset = ((F_surface_post_move_event&)e).offset();
+
+			NCPP_INFO() << "post move " << offset.x << " " << offset.y;
 
 		}
 	);
@@ -115,16 +123,18 @@ NCPP_ENTRY_POINT() {
 	mouse_manager.T_get_event<F_mouse_move_event>().T_push_back_listener(
 		[](auto& e) {
 
-			NCPP_INFO() << "mouse move " << ((F_mouse_move_event&)e).position_x() << " " << ((F_mouse_move_event&)e).position_y();
+            F_vector2_i32 position = ((F_mouse_move_event&)e).position();
+
+			NCPP_INFO() << "mouse move " << position.x << " " << position.y;
 
 		}
 	);
 
 
 
-    surface_manager.T_run([](F_surface_manager& surface_manager_p){
+    surface_manager.T_run([](F_surface_manager& surface_manager){
         
-        NCPP_INFO() << "update, surface manager: " << T_cout_value(&surface_manager_p);
+        NCPP_INFO() << "update, surface manager: " << T_cout_value(&surface_manager);
         
     });
 

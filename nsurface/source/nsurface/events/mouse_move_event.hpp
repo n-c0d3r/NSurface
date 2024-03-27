@@ -66,21 +66,16 @@ namespace nsurface {
 
 
     private:
-        i32 position_x_ = 0;
-        i32 position_y_ = 0;
+        F_vector2_i32 position_;
 
     public:
-        inline i32 position_x() const { return position_x_; }
-        inline i32 position_y() const { return position_y_; }
+        inline F_vector2_i32 position() const { return position_; }
 
 
 
     public:
         inline F_mouse_move_event()
         {
-
-
-
         }
         ~F_mouse_move_event() {}
 

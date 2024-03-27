@@ -45,12 +45,11 @@ namespace nsurface {
                 RECT rect;
                 if(GetWindowRect(hwnd, &rect))
                 {
-                    e.width_ = rect.right - rect.left;
-                    e.height_ = rect.bottom - rect.top;
+                    e.size_.x = rect.right - rect.left;
+                    e.size_.y = rect.bottom - rect.top;
                 }
 
-                surface_p->desc_.width = e.width_;
-                surface_p->desc_.height = e.height_;
+                surface_p->desc_.size = e.size_;
 
                 e.invoke();
 
@@ -64,12 +63,11 @@ namespace nsurface {
                 RECT rect;
                 if(GetWindowRect(hwnd, &rect))
                 {
-                    e.width_ = rect.right - rect.left;
-                    e.height_ = rect.bottom - rect.top;
+                    e.size_.x = rect.right - rect.left;
+                    e.size_.y = rect.bottom - rect.top;
                 }
 
-                surface_p->desc_.width = e.width_;
-                surface_p->desc_.height = e.height_;
+                surface_p->desc_.size = e.size_;
 
 				e.invoke();
 
@@ -81,8 +79,8 @@ namespace nsurface {
 
 				auto& e = surface_p->T_get_event<F_surface_post_move_event>();
 
-				e.offset_x_ = LOWORD(lParam);
-				e.offset_y_ = HIWORD(lParam);
+				e.offset_.x = LOWORD(lParam);
+				e.offset_.y = HIWORD(lParam);
 
 				e.invoke();
 
@@ -93,8 +91,8 @@ namespace nsurface {
 
 				auto& e = surface_p->T_get_event<F_surface_moving_event>();
 
-				e.offset_x_ = LOWORD(lParam);
-				e.offset_y_ = HIWORD(lParam);
+				e.offset_.x = LOWORD(lParam);
+				e.offset_.y = HIWORD(lParam);
 
 				e.invoke();
 

@@ -97,9 +97,9 @@ namespace nsurface {
     public:        
         void set_visibility(E_surface_visibility visibility);
 
-        void set_offset(int offset_x, int offset_y);
-        void resize(int width, int height);
-        void set_rect(int offset_x, int offset_y, int width, int height);
+        void set_offset(PA_vector2_i32 offset);
+        void resize(PA_vector2_i32 size);
+        void set_rect(PA_vector2_i32 offset, PA_vector2_i32 size);
 
     };
 
