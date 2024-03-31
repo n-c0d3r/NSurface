@@ -12,10 +12,10 @@ namespace nsurface {
 	{
 
 		F2_surface* raw_surface_p = reinterpret_cast<F2_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
-        TK2_oref<F2_surface> surface_p;
+        TK2_valid<F2_surface> surface_p;
 
         if (raw_surface_p)
-            surface_p = TK2_oref<F2_surface>::unsafe(raw_surface_p);
+            surface_p = TK2_valid<F2_surface>::unsafe(raw_surface_p);
 
 		switch (uMsg)
 		{

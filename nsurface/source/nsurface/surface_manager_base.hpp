@@ -78,7 +78,7 @@ namespace nsurface {
 
 
 	private:
-		TF_list<TU2_oref<F2_surface>> surface_p_list_;
+		TF_list<TU2_valid<F2_surface>> surface_p_list_;
 
 		F_mouse_manager mouse_manager_;
 
@@ -106,8 +106,8 @@ namespace nsurface {
 
 
 	public:
-		TK2_oref<F2_surface> create_surface(const F_surface_desc& desc);
-		void delete_surface(TK2_oref<F2_surface>);
+		TK2_valid<F2_surface> create_surface(const F_surface_desc& desc);
+		void delete_surface(TK2_valid<F2_surface>);
 
 
 
