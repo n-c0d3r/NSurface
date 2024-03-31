@@ -63,14 +63,10 @@ namespace nsurface {
 
 	TK2_valid<F2_surface> A_surface_manager::create_surface(const F_surface_desc& desc) {
 
-		auto unique_surface_p = TU2<F2_surface>()(desc);
-		auto surface_p = F_valid_requirements::T_forward(
-            unique_surface_p.keyed()
-        );
+		auto unique_surface_p = TU2_valid<F2_surface>::T_make(desc);
+		auto surface_p = unique_surface_p.keyed();
 
-		surface_p_list_.push_back(
-            F_valid_requirements::T_move(unique_surface_p)
-        );
+		surface_p_list_.push_back(std::move(unique_surface_p));
 
         surface_p->iterator_ = --surface_p_list_.end();
 
