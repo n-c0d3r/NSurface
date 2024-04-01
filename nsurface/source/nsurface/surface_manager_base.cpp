@@ -61,9 +61,9 @@ namespace nsurface {
 
 
 
-	TK2_valid<F2_surface> A_surface_manager::create_surface(const F_surface_desc& desc) {
+	TK_valid<F_surface> A_surface_manager::create_surface(const F_surface_desc& desc) {
 
-		auto unique_surface_p = TU2_valid<F2_surface>::T_make(desc);
+		auto unique_surface_p = TU_valid<F_surface>::T_make(desc);
 		auto surface_p = unique_surface_p.keyed();
 
 		surface_p_list_.push_back(std::move(unique_surface_p));
@@ -72,7 +72,7 @@ namespace nsurface {
 
 		return surface_p;
 	}
-	void A_surface_manager::delete_surface(TK2_valid<F2_surface> surface_p) {
+	void A_surface_manager::delete_surface(TK_valid<F_surface> surface_p) {
 
 		surface_p_list_.erase(surface_p->iterator_);
 

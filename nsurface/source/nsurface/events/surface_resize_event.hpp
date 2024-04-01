@@ -74,7 +74,7 @@ namespace nsurface {
 
 
     public:
-        inline F_surface_resize_event(F2_surface& surface) :
+        inline F_surface_resize_event(F_surface& surface) :
             F_surface_event(surface)
         {
         }

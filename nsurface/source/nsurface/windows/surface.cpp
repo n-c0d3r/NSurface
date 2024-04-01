@@ -6,7 +6,7 @@
 namespace nsurface {
 
 	F_windows_surface::F_windows_surface(const F_surface_desc& desc) :
-        A2_surface(desc)
+        A_surface(desc)
 	{
 
 		create_window_internal();

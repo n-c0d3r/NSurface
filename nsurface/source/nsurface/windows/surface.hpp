@@ -60,7 +60,7 @@ namespace nsurface {
 
 
 
-    class F_windows_surface : public A2_surface {
+    class F_windows_surface : public A_surface {
 
     public:
         NSURFACE_FRIEND_CLASSES;

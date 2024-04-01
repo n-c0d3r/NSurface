@@ -11,11 +11,11 @@ namespace nsurface {
 	LRESULT CALLBACK window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 
-		F2_surface* raw_surface_p = reinterpret_cast<F2_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
-        TK2_valid<F2_surface> surface_p;
+		F_surface* raw_surface_p = reinterpret_cast<F_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
+        TK_valid<F_surface> surface_p;
 
         if (raw_surface_p)
-            surface_p = TK2_valid<F2_surface>::unsafe(raw_surface_p);
+            surface_p = TK_valid<F_surface>::unsafe(raw_surface_p);
 
 		switch (uMsg)
 		{

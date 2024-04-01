@@ -64,13 +64,13 @@ namespace nsurface {
 
 	namespace internal {
 
-		NCPP_FORCE_INLINE b8& surface_inject_is_running(A2_surface* surface_p);
+		NCPP_FORCE_INLINE b8& surface_inject_is_running(A_surface* surface_p);
 
 	}
 
 
 
-	class A2_surface {
+	class A_surface {
 
     public:
         NSURFACE_FRIEND_CLASSES;
@@ -81,7 +81,7 @@ namespace nsurface {
 	public:
 		friend class A_surface_manager;
 
-		friend b8& internal::surface_inject_is_running(A2_surface* surface_p);
+		friend b8& internal::surface_inject_is_running(A_surface* surface_p);
 
 
 
@@ -90,7 +90,7 @@ namespace nsurface {
 
         b8 is_running_ = false;
 
-		typename TG_list<TU2_valid<F2_surface>>::iterator iterator_ = {};
+		typename TG_list<TU_valid<F_surface>>::iterator iterator_ = {};
 
     public:
         NCPP_FORCE_INLINE const F_surface_desc& desc() const { return desc_; }
@@ -116,10 +116,10 @@ namespace nsurface {
 
 
 	protected:
-		A2_surface(const F_surface_desc& desc);
+		A_surface(const F_surface_desc& desc);
 
     public:
-		virtual ~A2_surface();
+		virtual ~A_surface();
 
 
 
@@ -133,8 +133,8 @@ namespace nsurface {
 
 
 	public:
-		NCPP_FORCE_INLINE F2_surface* as_current_platform_p() { return reinterpret_cast<F2_surface*>(this); }
-        NCPP_FORCE_INLINE F2_surface& as_current_platform() { return *reinterpret_cast<F2_surface*>(this); }
+		NCPP_FORCE_INLINE F_surface* as_current_platform_p() { return reinterpret_cast<F_surface*>(this); }
+        NCPP_FORCE_INLINE F_surface& as_current_platform() { return *reinterpret_cast<F_surface*>(this); }
 
 	};
 
@@ -142,12 +142,12 @@ namespace nsurface {
 
 	namespace internal {
 
-		NCPP_FORCE_INLINE F_surface_desc& surface_inject_desc(A2_surface* surface_p){
+		NCPP_FORCE_INLINE F_surface_desc& surface_inject_desc(A_surface* surface_p){
 
             return (F_surface_desc&)(surface_p->desc());
 		}
 
-		NCPP_FORCE_INLINE b8& surface_inject_is_running(A2_surface* surface_p){
+		NCPP_FORCE_INLINE b8& surface_inject_is_running(A_surface* surface_p){
 
 			return surface_p->is_running_;
 		}

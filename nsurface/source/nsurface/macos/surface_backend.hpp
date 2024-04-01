@@ -59,16 +59,16 @@ namespace nsurface {
 
     namespace internal {
 
-        extern void macos_surface_create_window(F2_surface* surface_p);
-        extern void macos_surface_release_window(F2_surface* surface_p);
+        extern void macos_surface_create_window(F_surface* surface_p);
+        extern void macos_surface_release_window(F_surface* surface_p);
 
 
 
-        extern void macos_surface_set_visibility(F2_surface* surface_p, E_surface_visibility visibility);
+        extern void macos_surface_set_visibility(F_surface* surface_p, E_surface_visibility visibility);
 
-        extern void macos_surface_set_offset(F2_surface* surface_p, int offset_x, int offset_y);
-        extern void macos_surface_resize(F2_surface* surface_p, int width, int height);
-        extern void macos_surface_set_rect(F2_surface* surface_p, int offset_x, int offset_y, int width, int height);
+        extern void macos_surface_set_offset(F_surface* surface_p, int offset_x, int offset_y);
+        extern void macos_surface_resize(F_surface* surface_p, int width, int height);
+        extern void macos_surface_set_rect(F_surface* surface_p, int offset_x, int offset_y, int width, int height);
 
     }
 

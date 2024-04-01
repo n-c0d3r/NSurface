@@ -61,13 +61,13 @@ namespace nsurface {
 
     namespace internal {
 
-        void*& macos_surface_inject_handle(F2_surface* surface_p);
+        void*& macos_surface_inject_handle(F_surface* surface_p);
 
     }
 
 
 
-    class F_macos_surface : public A2_surface {
+    class F_macos_surface : public A_surface {
 
     public:
         NSURFACE_FRIEND_CLASSES;
@@ -75,7 +75,7 @@ namespace nsurface {
 
 
     public:
-        friend void*& internal::macos_surface_inject_handle(F2_surface* surface_p);
+        friend void*& internal::macos_surface_inject_handle(F_surface* surface_p);
 
 
 
@@ -114,7 +114,7 @@ namespace nsurface {
 
     namespace internal {
 
-        NCPP_FORCE_INLINE void*& macos_surface_inject_handle(F2_surface* surface_p){
+        NCPP_FORCE_INLINE void*& macos_surface_inject_handle(F_surface* surface_p){
 
             return surface_p->handle_;
         }

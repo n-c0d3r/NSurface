@@ -14,7 +14,7 @@ NCPP_ENTRY_POINT() {
 
 
         // create surface
-        TK2_valid<F2_surface> surface_p = surface_manager.create_surface(
+        TK_valid<F_surface> surface_p = surface_manager.create_surface(
             F_surface_desc{
 
                 // title
