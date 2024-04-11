@@ -1,6 +1,0 @@
-[submodule "submodules/NCPP"]
-	path = submodules/NCPP
-	url = https://github.com/Abytek/NCPP.git
-[submodule "submodules/NMath"]
-	path = submodules/NMath
-	url = https://github.com/Abytek/NMath.git
