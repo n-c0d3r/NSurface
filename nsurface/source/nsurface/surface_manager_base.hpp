@@ -78,7 +78,7 @@ namespace nsurface {
 
 
 	private:
-		TF_list<TU_valid<F_surface>> surface_p_list_;
+		TF_list<TU<F_surface>> surface_p_list_;
 
 		F_mouse_manager mouse_manager_;
 

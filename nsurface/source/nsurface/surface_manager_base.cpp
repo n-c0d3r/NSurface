@@ -51,7 +51,7 @@ namespace nsurface {
 			auto next = it;
 			++next;
 
-			delete_surface(*it);
+			delete_surface(F_valid_requirements::T_forward(*it));
 
 			it = next;
 
@@ -63,8 +63,8 @@ namespace nsurface {
 
 	TK_valid<F_surface> A_surface_manager::create_surface(const F_surface_desc& desc) {
 
-		auto unique_surface_p = TU_valid<F_surface>::T_make(desc);
-		auto surface_p = unique_surface_p.keyed();
+		auto unique_surface_p = TU<F_surface>()(desc);
+		auto surface_p = F_valid_requirements::T_forward(unique_surface_p.keyed());
 
 		surface_p_list_.push_back(std::move(unique_surface_p));
 

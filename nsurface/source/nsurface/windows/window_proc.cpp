@@ -12,10 +12,10 @@ namespace nsurface {
 	{
 
 		F_surface* raw_surface_p = reinterpret_cast<F_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
-        TK_valid<F_surface> surface_p;
+        TK<F_surface> surface_p;
 
         if (raw_surface_p)
-            surface_p = TK_valid<F_surface>::unsafe(raw_surface_p);
+            surface_p = TK<F_surface>::unsafe(raw_surface_p);
 
 		switch (uMsg)
 		{
@@ -41,7 +41,7 @@ namespace nsurface {
                 if (event.destroyable){
 
                     surface_p->is_user_delete_ = true;
-                    F_surface_manager::instance().delete_surface(surface_p);
+                    F_surface_manager::instance().delete_surface(F_valid_requirements::T_forward(surface_p));
 
                     PostQuitMessage(0);
                 }
