@@ -33,6 +33,8 @@ namespace nsurface {
 			case WM_DESTROY:
 			{
 
+                auto valid_surface_p = F_valid_requirements::T_forward(surface_p);
+
                 auto& event = surface_p->T_get_event<F_surface_user_destroy_request_event>();
 
                 event.destroyable = true;
@@ -40,8 +42,9 @@ namespace nsurface {
 
                 if (event.destroyable){
 
-                    surface_p->is_user_delete_ = true;
-                    F_surface_manager::instance().delete_surface(F_valid_requirements::T_forward(surface_p));
+                    valid_surface_p->is_user_delete_ = true;
+
+                    F_surface_manager::instance().delete_surface(valid_surface_p);
 
                     PostQuitMessage(0);
                 }

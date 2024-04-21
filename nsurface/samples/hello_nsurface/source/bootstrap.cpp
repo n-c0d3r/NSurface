@@ -61,7 +61,7 @@ NCPP_ENTRY_POINT() {
 
         // mouse events
         mouse_manager.T_get_event<F_mouse_button_down_event>().T_push_back_listener(
-            [](auto &e) {
+            [&](auto &e) {
 
                 switch (((F_mouse_button_event &) e).button_flag()) {
                     case E_mouse_button_flag::LEFT:
