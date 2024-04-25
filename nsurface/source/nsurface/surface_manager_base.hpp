@@ -107,7 +107,7 @@ namespace nsurface {
 
 	public:
 		TK_valid<F_surface> create_surface(const F_surface_desc& desc);
-		void delete_surface(TK_valid<F_surface>);
+		void delete_surface(TKPA_valid<F_surface>);
 
 
 

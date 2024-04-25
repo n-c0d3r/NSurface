@@ -72,7 +72,7 @@ namespace nsurface {
 
 		return surface_p;
 	}
-	void A_surface_manager::delete_surface(TK_valid<F_surface> surface_p) {
+	void A_surface_manager::delete_surface(TKPA_valid<F_surface> surface_p) {
 
 		surface_p_list_.erase(surface_p->iterator_);
 
