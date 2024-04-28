@@ -130,5 +130,12 @@ namespace nsurface {
         desc_.size = size;
 
 	}
+	void F_windows_surface::set_title(const G_wstring& title) {
+
+		SetWindowText(
+			handle_,
+			title.c_str()
+		);
+	}
 
 }
