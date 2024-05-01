@@ -37,6 +37,8 @@ namespace nsurface {
 
 	enum class E_windows_keycode {
 
+		NONE = 0,
+
 		BACKSPACE = (u32)VK_BACK,
 		TAB = (u32)VK_TAB,
 		ENTER = (u32)VK_RETURN,
