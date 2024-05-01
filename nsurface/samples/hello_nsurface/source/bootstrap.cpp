@@ -54,7 +54,7 @@ NCPP_ENTRY_POINT() {
 		surface_p->T_get_event<F_key_down_event>().T_push_back_listener(
 			[](auto &e) {
 
-				if((u32)flag_combine(((F_key_down_event&)e).keycode(), E_keycode::A))
+				if(((F_key_down_event&)e).keycode() == E_keycode::A)
 			  		NCPP_INFO() << "A key pressed";
 
 			}
