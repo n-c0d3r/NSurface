@@ -66,10 +66,10 @@ namespace nsurface {
 
 
     private:
-        F_vector2_i32 position_;
+        F_vector2_i position_;
 
     public:
-        inline F_vector2_i32 position() const { return position_; }
+        inline F_vector2_i position() const { return position_; }
 
 
 

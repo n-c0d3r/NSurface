@@ -66,10 +66,10 @@ namespace nsurface {
 
 
     private:
-        F_vector2_i32 size_;
+        F_vector2_i size_;
 
     public:
-        inline F_vector2_i32 size() const { return size_; }
+        inline F_vector2_i size() const { return size_; }
 
 
 

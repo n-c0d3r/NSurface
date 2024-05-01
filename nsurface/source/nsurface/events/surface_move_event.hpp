@@ -66,10 +66,10 @@ namespace nsurface {
 
 
     private:
-        F_vector2_i32 offset_;
+        F_vector2_i offset_;
 
     public:
-        inline F_vector2_i32 offset() const { return offset_; }
+        inline F_vector2_i offset() const { return offset_; }
 
 
 

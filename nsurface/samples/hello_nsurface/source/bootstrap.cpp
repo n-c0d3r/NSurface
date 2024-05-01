@@ -36,7 +36,7 @@ NCPP_ENTRY_POINT() {
         surface_p->T_get_event<F_surface_resize_event>().T_push_back_listener(
             [](auto &e) {
 
-                F_vector2_i32 size = ((F_surface_resize_event &) e).size();
+                F_vector2_i size = ((F_surface_resize_event &) e).size();
 
                 NCPP_INFO() << "surface is resized " << size.x << " " << size.y;
 
@@ -45,7 +45,7 @@ NCPP_ENTRY_POINT() {
         surface_p->T_get_event<F_surface_move_event>().T_push_back_listener(
             [](auto &e) {
 
-                F_vector2_i32 offset = ((F_surface_move_event &) e).offset();
+                F_vector2_i offset = ((F_surface_move_event &) e).offset();
 
                 NCPP_INFO() << "surface is moved " << offset.x << " " << offset.y;
 
@@ -103,7 +103,7 @@ NCPP_ENTRY_POINT() {
         mouse_manager.T_get_event<F_mouse_move_event>().T_push_back_listener(
             [](auto &e) {
 
-                F_vector2_i32 position = ((F_mouse_move_event &) e).position();
+                F_vector2_i position = ((F_mouse_move_event &) e).position();
 
                 NCPP_INFO() << "mouse move " << position.x << " " << position.y;
 

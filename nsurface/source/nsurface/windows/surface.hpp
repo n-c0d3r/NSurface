@@ -101,9 +101,9 @@ namespace nsurface {
     public:        
         void set_visibility(E_surface_visibility visibility);
 
-        void set_offset(PA_vector2_i32 offset);
-        void resize(PA_vector2_i32 size);
-        void set_rect(PA_vector2_i32 offset, PA_vector2_i32 size);
+        void set_offset(PA_vector2_i offset);
+        void resize(PA_vector2_i size);
+        void set_rect(PA_vector2_i offset, PA_vector2_i size);
 		void set_title(const G_wstring& title);
 
     };

@@ -78,7 +78,7 @@ namespace nsurface {
 
 	}
 
-	void F_windows_surface::set_offset(PA_vector2_i32 offset) {
+	void F_windows_surface::set_offset(PA_vector2_i offset) {
 
         NCPP_ASSERT(
             SetWindowPos(
@@ -95,7 +95,7 @@ namespace nsurface {
         desc_.offset = offset;
 
 	}
-	void F_windows_surface::resize(PA_vector2_i32 size) {
+	void F_windows_surface::resize(PA_vector2_i size) {
 
         NCPP_ASSERT(
 			SetWindowPos(
@@ -112,7 +112,7 @@ namespace nsurface {
         desc_.size = size;
 
 	}
-	void F_windows_surface::set_rect(PA_vector2_i32 offset, PA_vector2_i32 size) {
+	void F_windows_surface::set_rect(PA_vector2_i offset, PA_vector2_i size) {
 
 		NCPP_ASSERT(
 			SetWindowPos(

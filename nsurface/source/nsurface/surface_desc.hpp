@@ -63,8 +63,8 @@ namespace nsurface {
 
         ncpp::G_text title;
 
-        F_vector2_i32 offset = F_vector2_i32(0, 0);
-        F_vector2_i32 size = F_vector2_i32(1024, 728);
+        F_vector2_i offset = F_vector2_i(0, 0);
+        F_vector2_i size = F_vector2_i(1024, 728);
 
         E_surface_visibility visibility = E_surface_visibility::VISIBLE;
 
