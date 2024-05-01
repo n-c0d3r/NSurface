@@ -88,6 +88,9 @@ namespace nsurface {
 						auto& e = mouse_manager.T_get_event<F_mouse_visibility_change_event>();
 
 						e.is_visible_ = new_visibility;
+
+						inject_mouse_visibility(mouse_manager) = new_visibility;
+
 						e.invoke();
 					}
 				}
