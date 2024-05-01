@@ -50,6 +50,7 @@
 #include <nsurface/events/mouse_button_down_event.hpp>
 #include <nsurface/events/mouse_button_up_event.hpp>
 #include <nsurface/events/mouse_move_event.hpp>
+#include <nsurface/events/mouse_visibility_change_event.hpp>
 
 #pragma endregion
 

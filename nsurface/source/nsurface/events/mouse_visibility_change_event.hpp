@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/mouse_manager.hpp
+/** @file nsurface/events/mouse_visibility_change_event.hpp
 *
-*   Implements Windows platform mouse manager.
+*   Implements mouse button visibility change event.
 */
 
 
@@ -33,8 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/mouse_manager_base.hpp>
-#include <nsurface/windows/mouse_proc.hpp>
+#include <nsurface/events/mouse_event.hpp>
 
 #pragma endregion
 
@@ -56,49 +55,30 @@
 
 namespace nsurface {
 
-    NSURFACE_USING_NLIB_NAMESPACES();
+	NSURFACE_USING_NLIB_NAMESPACES();
 
 
 
-    class F_windows_mouse_manager : 
-        public A_mouse_manager,
-        public utilities::TI_singleton<F_mouse_manager>
-    {
+	class F_mouse_visibility_change_event : public F_mouse_event {
 
-    public:
-        NSURFACE_FRIEND_CLASSES;
-        NCPP_OBJECT_FRIEND_CLASSES();
+		NSURFACE_APPLY_MOUSE_EVENT_FRIENDS();
 
 
-
-    private:
-        HHOOK mouse_hook_ = 0;
-
-
-
-    protected:
-        F_windows_mouse_manager();
-
-    public:
-        ~F_windows_mouse_manager();
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Internal platform specific interface
-        ////////////////////////////////////////////////////////////////////////////////////
-
-    private:
-        void enable_mouse_hook_internal();
-        void disable_mouse_hook_internal();
 
 	private:
-        void update();
+		b8 is_visible_ = true;
 
 	public:
-		void set_mouse_position(PA_vector2_i new_mouse_position);
-		void set_mouse_visible(b8);
+		inline b8 is_visible() const { return is_visible_; }
 
-    };
+
+
+	public:
+		inline F_mouse_visibility_change_event()
+		{
+		}
+		~F_mouse_visibility_change_event() {}
+
+	};
 
 }

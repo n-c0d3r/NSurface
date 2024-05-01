@@ -57,6 +57,7 @@ namespace nsurface {
 
 		}
 
+        mouse_manager_.update();
         update_functor_(*this);
 
 	}

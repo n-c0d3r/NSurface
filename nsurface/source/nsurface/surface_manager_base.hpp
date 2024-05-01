@@ -116,12 +116,12 @@ namespace nsurface {
         ////////////////////////////////////////////////////////////////////////////////////
 
 	private:
-		void process_internal() {} // for documentations
+		void process_internal(); // for documentations
         void run_internal(); // for documentations
 
     private:
-		void enable_process_internal() {} // for documentations
-		void disable_process_internal() {} // for documentations
+		void enable_process_internal(); // for documentations
+		void disable_process_internal(); // for documentations
 
 
 

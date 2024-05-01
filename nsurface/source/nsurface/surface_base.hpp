@@ -124,12 +124,12 @@ namespace nsurface {
 
 
 	public:
-		void set_visibility(E_surface_visibility visibility) {} // for documentations
+		void set_visibility(E_surface_visibility visibility); // for documentations
 
-		void set_offset(PA_vector2_i32 offset) {} // for documentations
-		void resize(PA_vector2_i32 size) {} // for documentations
-		void set_rect(PA_vector2_i32 offset, PA_vector2_i32 size) {} // for documentations
-		void set_title(const G_wstring& title) {} // for documentations
+		void set_offset(PA_vector2_i32 offset); // for documentations
+		void resize(PA_vector2_i32 size); // for documentations
+		void set_rect(PA_vector2_i32 offset, PA_vector2_i32 size); // for documentations
+		void set_title(const G_wstring& title); // for documentations
 
 
 

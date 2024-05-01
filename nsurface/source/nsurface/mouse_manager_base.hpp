@@ -61,11 +61,18 @@ namespace nsurface {
 
 
 
+	F_vector2_i& inject_mouse_position(A_mouse_manager& mouse_manager);
+	b8& inject_mouse_visibility(A_mouse_manager& mouse_manager);
+
+
+
 	class A_mouse_manager {
 
     public:
         NSURFACE_FRIEND_CLASSES;
         NCPP_OBJECT_FRIEND_CLASSES();
+		friend F_vector2_i& nsurface::inject_mouse_position(A_mouse_manager& mouse_manager);
+		friend b8& inject_mouse_visibility(A_mouse_manager& mouse_manager);
 
 
 
@@ -73,13 +80,22 @@ namespace nsurface {
 		F_mouse_button_down_event button_down_event_;
 		F_mouse_button_up_event button_up_event_;
 		F_mouse_move_event move_event_;
+		F_mouse_visibility_change_event visibility_change_event_;
+
+	protected:
+		F_vector2_i mouse_position_;
+		b8 is_visible_ = true;
 
 	public:
 		NCPP_DECLARE_STATIC_EVENTS(
 			button_down_event_,
 			button_up_event_,
-			move_event_
+			move_event_,
+			visibility_change_event_
 		);
+
+		NCPP_FORCE_INLINE PA_vector2_i mouse_position() const noexcept { return mouse_position_; }
+		NCPP_FORCE_INLINE b8 is_visible() const noexcept { return is_visible_; }
 
 
 
@@ -96,8 +112,15 @@ namespace nsurface {
         ////////////////////////////////////////////////////////////////////////////////////
 
     private:
-		void enable_mouse_hook_internal() {} // for documentations
-		void disable_mouse_hook_internal() {} // for documentations
+		void enable_mouse_hook_internal(); // for documentations
+		void disable_mouse_hook_internal(); // for documentations
+
+	private:
+		void update(); // for documentations
+
+	public:
+		void set_mouse_position(PA_vector2_i new_mouse_position); // for documentations
+		void set_mouse_visible(b8); // for documentations
 
 
 
@@ -106,5 +129,16 @@ namespace nsurface {
 		inline F_mouse_manager& as_current_platform() { return *reinterpret_cast<F_mouse_manager*>(this); }
 
 	};
+
+
+
+	NCPP_FORCE_INLINE F_vector2_i& inject_mouse_position(A_mouse_manager& mouse_manager) {
+
+		return mouse_manager.mouse_position_;
+	}
+	NCPP_FORCE_INLINE b8& inject_mouse_visibility(A_mouse_manager& mouse_manager) {
+
+		return mouse_manager.is_visible_;
+	}
 
 }
