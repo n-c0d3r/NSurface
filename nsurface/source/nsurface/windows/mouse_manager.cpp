@@ -14,7 +14,7 @@ namespace nsurface {
 	}
 	F_windows_mouse_manager::~F_windows_mouse_manager() {
 
-		disable_mouse_hook_internal();
+		disable_hook_internal();
 	}
 
 
@@ -23,7 +23,7 @@ namespace nsurface {
     //  Internal platform specific interface
     ////////////////////////////////////////////////////////////////////////////////////
 
-	void F_windows_mouse_manager::enable_mouse_hook_internal() {
+	void F_windows_mouse_manager::enable_hook_internal() {
 
 		if (mouse_hook_)
 			return;
@@ -32,7 +32,7 @@ namespace nsurface {
 
 		set_mouse_visible(true);
 	}
-	void F_windows_mouse_manager::disable_mouse_hook_internal() {
+	void F_windows_mouse_manager::disable_hook_internal() {
 
 		if (!mouse_hook_)
 			return;
@@ -41,9 +41,6 @@ namespace nsurface {
 
 		mouse_hook_ = 0;
 
-	}
-
-	void F_windows_mouse_manager::update() {
 	}
 
 	void F_windows_mouse_manager::set_mouse_position(PA_vector2_i new_mouse_position) {

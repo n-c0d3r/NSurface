@@ -112,11 +112,8 @@ namespace nsurface {
         ////////////////////////////////////////////////////////////////////////////////////
 
     private:
-		void enable_mouse_hook_internal(); // for documentations
-		void disable_mouse_hook_internal(); // for documentations
-
-	private:
-		void update(); // for documentations
+		void enable_hook_internal(); // for documentations
+		void disable_hook_internal(); // for documentations
 
 	public:
 		void set_mouse_position(PA_vector2_i new_mouse_position); // for documentations

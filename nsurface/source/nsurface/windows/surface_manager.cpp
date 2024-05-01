@@ -57,7 +57,6 @@ namespace nsurface {
 
 		}
 
-        mouse_manager_.update();
         update_functor_(*this);
 
 	}
@@ -77,12 +76,12 @@ namespace nsurface {
 
 	void F_windows_surface_manager::enable_process_internal() {
 
-		mouse_manager().enable_mouse_hook_internal();
+		mouse_manager().enable_hook_internal();
 
 	}
 	void F_windows_surface_manager::disable_process_internal() {
 
-		mouse_manager().disable_mouse_hook_internal();
+		mouse_manager().disable_hook_internal();
 
 	}
 

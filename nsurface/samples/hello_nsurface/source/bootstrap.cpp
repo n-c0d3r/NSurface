@@ -51,6 +51,14 @@ NCPP_ENTRY_POINT() {
 
             }
         );
+		surface_p->T_get_event<F_key_down_event>().T_push_back_listener(
+			[](auto &e) {
+
+				if((u32)flag_combine(((F_key_down_event&)e).keycode(), E_keycode::A))
+			  		NCPP_INFO() << "A key pressed";
+
+			}
+		);
 
 
 
@@ -113,9 +121,6 @@ NCPP_ENTRY_POINT() {
 
         surface_manager.T_run(
             [](F_surface_manager &surface_manager) {
-
-                NCPP_INFO() << "update, surface manager: " << T_cout_value(&surface_manager);
-
             }
         );
 

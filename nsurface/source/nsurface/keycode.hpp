@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/surface_manager.hpp
+/** @file nsurface/keycode.hpp
 *
-*   Includes platform specified surface manager implement.
+*   Implement keycode.
 */
 
 
@@ -34,11 +34,18 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #ifdef EA_PLATFORM_WINDOWS
-#include <nsurface/windows/surface_manager.hpp>
-#endif
-
-#ifdef EA_PLATFORM_OSX
-#include <nsurface/macos/surface_manager.hpp>
+#include <nsurface/windows/keycode.hpp>
+#elif defined(EA_PLATFORM_OSX)
+#else
+#error "Unknown compiler, not supported by NSurface"
 #endif
 
 #pragma endregion
+
+
+
+namespace nsurface {
+
+	using E_keycode = E_windows_keycode;
+
+}

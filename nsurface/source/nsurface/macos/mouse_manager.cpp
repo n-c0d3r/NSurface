@@ -18,7 +18,7 @@ namespace nsurface {
 	}
 	F_macos_mouse_manager::~F_macos_mouse_manager() {
 
-		disable_mouse_hook_internal();
+		disable_hook_internal();
 
 	}
 
@@ -28,7 +28,7 @@ namespace nsurface {
     //  Internal platform specific interface
     ////////////////////////////////////////////////////////////////////////////////////
 
-	void F_macos_mouse_manager::enable_mouse_hook_internal() {
+	void F_macos_mouse_manager::enable_hook_internal() {
 
 		// if (mouse_hook_)
 		// 	return;
@@ -36,7 +36,7 @@ namespace nsurface {
 		// mouse_hook_ = SetWindowsHookEx(WH_MOUSE_LL, mouse_proc, NULL, 0);
 
 	}
-	void F_macos_mouse_manager::disable_mouse_hook_internal() {
+	void F_macos_mouse_manager::disable_hook_internal() {
 
 		// if (!mouse_hook_)
 		// 	return;

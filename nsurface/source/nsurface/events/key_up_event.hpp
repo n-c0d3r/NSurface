@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/mouse_manager.hpp
+/** @file nsurface/events/key_up_event.hpp
 *
-*   Implements Windows platform mouse manager.
+*   Implements key up event.
 */
 
 
@@ -33,8 +33,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/mouse_manager_base.hpp>
-#include <nsurface/windows/mouse_proc.hpp>
+#include <nsurface/events/surface_event.hpp>
+#include <nsurface/keycode.hpp>
 
 #pragma endregion
 
@@ -56,46 +56,30 @@
 
 namespace nsurface {
 
-    NSURFACE_USING_NLIB_NAMESPACES();
+	NSURFACE_USING_NLIB_NAMESPACES();
 
 
 
-    class F_windows_mouse_manager : 
-        public A_mouse_manager,
-        public utilities::TI_singleton<F_mouse_manager>
-    {
+	class F_key_up_event : public F_surface_event {
 
-    public:
-        NSURFACE_FRIEND_CLASSES;
-        NCPP_OBJECT_FRIEND_CLASSES();
+		NSURFACE_APPLY_SURFACE_EVENT_FRIENDS();
 
 
 
-    private:
-        HHOOK mouse_hook_ = 0;
-
-
-
-    protected:
-        F_windows_mouse_manager();
-
-    public:
-        ~F_windows_mouse_manager();
-
-
-
-        ////////////////////////////////////////////////////////////////////////////////////
-        //  Internal platform specific interface
-        ////////////////////////////////////////////////////////////////////////////////////
-
-    private:
-        void enable_hook_internal();
-        void disable_hook_internal();
+	private:
+		E_keycode keycode_;
 
 	public:
-		void set_mouse_position(PA_vector2_i new_mouse_position);
-		void set_mouse_visible(b8);
+		NCPP_FORCE_INLINE E_keycode keycode() const noexcept { return keycode_; }
 
-    };
+
+
+	public:
+		inline F_key_up_event(F_surface& surface) :
+			F_surface_event(surface)
+		{}
+		~F_key_up_event() {}
+
+	};
 
 }

@@ -85,8 +85,8 @@ namespace nsurface {
         ////////////////////////////////////////////////////////////////////////////////////
 
     private:
-        void enable_mouse_hook_internal();
-        void disable_mouse_hook_internal();
+        void enable_hook_internal();
+        void disable_hook_internal();
 
     };
 

@@ -114,6 +114,29 @@ namespace nsurface {
 				return 0;
 			}
 
+			case WM_KEYDOWN:
+			{
+
+				auto& e = surface_p->T_get_event<F_key_down_event>();
+
+				e.keycode_ = E_keycode(u32(wParam));
+
+				e.invoke();
+
+				return 0;
+			}
+			case WM_KEYUP:
+			{
+
+				auto& e = surface_p->T_get_event<F_key_up_event>();
+
+				e.keycode_ = E_keycode(u32(wParam));
+
+				e.invoke();
+
+				return 0;
+			}
+
 		}
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}
