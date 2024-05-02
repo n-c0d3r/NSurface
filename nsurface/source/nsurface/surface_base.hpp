@@ -93,9 +93,10 @@ namespace nsurface {
 		typename TG_list<TU<F_surface>>::iterator iterator_ = {};
 
     public:
-        NCPP_FORCE_INLINE const F_surface_desc& desc() const { return desc_; }
+        NCPP_FORCE_INLINE const F_surface_desc& desc() const noexcept { return desc_; }
 
-        NCPP_FORCE_INLINE b8 is_running() const { return is_running_; }
+        NCPP_FORCE_INLINE b8 is_running() const noexcept { return is_running_; }
+        NCPP_FORCE_INLINE f32 aspect_ratio() const noexcept { return ((f32)(desc_.size.x)) / ((f32)(desc_.size.y)); }
 
 
 
