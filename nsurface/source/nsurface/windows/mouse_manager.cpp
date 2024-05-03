@@ -118,7 +118,14 @@ namespace nsurface {
 	}
 	void F_windows_mouse_manager::set_mouse_visible(b8 value) {
 
-		ShowCursor(value);
+		if(value) {
+
+			while(ShowCursor(value) < 0);
+		}
+		else {
+
+			while(ShowCursor(value) >= 0);
+		}
 
 		is_visible_ = value;
 	}
