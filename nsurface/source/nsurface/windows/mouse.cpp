@@ -160,6 +160,10 @@ namespace nsurface {
 
 		position_ = new_mouse_position;
 	}
+	void F_windows_mouse::pre_process_msg() {
+
+		delta_position_ = F_vector2_i::zero();
+	}
 	void F_windows_mouse::set_mouse_visible(b8 value) {
 
 		if(value) {

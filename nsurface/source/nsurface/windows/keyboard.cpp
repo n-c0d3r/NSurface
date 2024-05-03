@@ -19,6 +19,8 @@ namespace nsurface {
 
 
 
+	void F_windows_keyboard::pre_process_msg() {
+	}
 	void F_windows_keyboard::process_msg(UINT message, WPARAM wParam, LPARAM lParam) {
 
 		switch (message)

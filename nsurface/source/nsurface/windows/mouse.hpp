@@ -85,6 +85,7 @@ namespace nsurface {
 
 
 	private:
+		void pre_process_msg();
 		void process_msg(UINT message, WPARAM wParam, LPARAM lParam);
 
 

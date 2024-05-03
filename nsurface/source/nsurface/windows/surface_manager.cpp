@@ -45,6 +45,9 @@ namespace nsurface {
 
 	void F_windows_surface_manager::process_internal() {
 
+		mouse_.pre_process_msg();
+		keyboard_.pre_process_msg();
+
 		while(true) {
 
 			MSG msg = { };
