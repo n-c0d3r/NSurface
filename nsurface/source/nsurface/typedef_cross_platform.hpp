@@ -59,6 +59,7 @@ namespace nsurface {
     class A_surface;
     class A_surface_manager;
     class A_mouse_manager;
+    class A_keyboard_manager;
 
 
 
@@ -69,10 +70,12 @@ namespace nsurface {
     class F_windows_surface;
     class F_windows_surface_manager;
     class F_windows_mouse_manager;
+    class F_windows_keyboard_manager;
 #elif defined(EA_PLATFORM_OSX)
     class F_macos_surface;
     class F_macos_surface_manager;
     class F_macos_mouse_manager;
+    class F_macos_keyboard_manager;
 #else
 #error "Unknown compiler, not supported by NSurface"
 #endif
@@ -86,21 +89,25 @@ namespace nsurface {
     using F_surface = F_windows_surface;
     using F_surface_manager = F_windows_surface_manager;
     using F_mouse_manager = F_windows_mouse_manager;
+    using F_keyboard_manager = F_windows_keyboard_manager;
 
 #define NSURFACE_PLATFORM_SPECIFIC_FRIEND_CLASSES \
             friend class nsurface::F_windows_surface;\
             friend class nsurface::F_windows_surface_manager;\
-            friend class nsurface::F_windows_mouse_manager;
+            friend class nsurface::F_windows_mouse_manager;\
+            friend class nsurface::F_windows_keyboard_manager;
 
 #elif defined(EA_PLATFORM_OSX)
     using F_surface = F_macos_surface;
     using F_surface_manager = F_macos_surface_manager;
     using F_mouse_manager = F_macos_mouse_manager;
+    using F_keyboard_manager = F_macos_keyboard_manager;
 
 #define NSURFACE_PLATFORM_SPECIFIC_FRIEND_CLASSES \
             friend class nsurface::F_macos_surface;\
             friend class nsurface::F_macos_surface_manager;\
-            friend class nsurface::F_macos_mouse_manager;
+            friend class nsurface::F_macos_mouse_manager;\
+            friend class nsurface::F_macos_keyboard_manager;
 
 #else
 #error "Unknown compiler, not supported by NSurface"
@@ -114,7 +121,8 @@ namespace nsurface {
 #define NSURFACE_BASE_FRIEND_CLASSES \
         friend class A_surface;\
         friend class A_surface_manager;\
-        friend class A_mouse_manager;
+        friend class A_mouse_manager;\
+        friend class A_keyboard_manager;
 
 
 

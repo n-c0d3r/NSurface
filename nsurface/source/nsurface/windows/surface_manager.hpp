@@ -98,10 +98,6 @@ namespace nsurface {
         void process_internal();
         void run_internal();
 
-    private:
-        void enable_process_internal();
-        void disable_process_internal();
-
     };
 
 }

@@ -61,18 +61,11 @@ namespace nsurface {
 
 
 
-	F_vector2_i& inject_mouse_position(A_mouse_manager& mouse_manager);
-	b8& inject_mouse_visibility(A_mouse_manager& mouse_manager);
-
-
-
 	class A_mouse_manager {
 
     public:
         NSURFACE_FRIEND_CLASSES;
         NCPP_OBJECT_FRIEND_CLASSES();
-		friend F_vector2_i& nsurface::inject_mouse_position(A_mouse_manager& mouse_manager);
-		friend b8& inject_mouse_visibility(A_mouse_manager& mouse_manager);
 
 
 
@@ -111,10 +104,6 @@ namespace nsurface {
         //  Internal platform specific interface
         ////////////////////////////////////////////////////////////////////////////////////
 
-    private:
-		void enable_hook_internal(); // for documentations
-		void disable_hook_internal(); // for documentations
-
 	public:
 		void set_mouse_position(PA_vector2_i new_mouse_position); // for documentations
 		void set_mouse_visible(b8); // for documentations
@@ -126,16 +115,5 @@ namespace nsurface {
 		inline F_mouse_manager& as_current_platform() { return *reinterpret_cast<F_mouse_manager*>(this); }
 
 	};
-
-
-
-	NCPP_FORCE_INLINE F_vector2_i& inject_mouse_position(A_mouse_manager& mouse_manager) {
-
-		return mouse_manager.mouse_position_;
-	}
-	NCPP_FORCE_INLINE b8& inject_mouse_visibility(A_mouse_manager& mouse_manager) {
-
-		return mouse_manager.is_visible_;
-	}
 
 }

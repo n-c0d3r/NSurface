@@ -33,7 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/events/surface_event.hpp>
+#include <nsurface/events/keyboard_event.hpp>
 #include <nsurface/keycode.hpp>
 
 #pragma endregion
@@ -60,9 +60,9 @@ namespace nsurface {
 
 
 
-	class F_key_up_event : public F_surface_event {
+	class F_key_up_event : public F_keyboard_event {
 
-		NSURFACE_APPLY_SURFACE_EVENT_FRIENDS();
+		NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS();
 
 
 
@@ -75,8 +75,7 @@ namespace nsurface {
 
 
 	public:
-		inline F_key_up_event(F_surface& surface) :
-			F_surface_event(surface)
+		inline F_key_up_event()
 		{}
 		~F_key_up_event() {}
 

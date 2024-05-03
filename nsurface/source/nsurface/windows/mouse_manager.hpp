@@ -34,7 +34,6 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #include <nsurface/mouse_manager_base.hpp>
-#include <nsurface/windows/mouse_proc.hpp>
 
 #pragma endregion
 
@@ -71,11 +70,6 @@ namespace nsurface {
 
 
 
-    private:
-        HHOOK mouse_hook_ = 0;
-
-
-
     protected:
         F_windows_mouse_manager();
 
@@ -84,13 +78,14 @@ namespace nsurface {
 
 
 
+	private:
+		void process_msg(const MSG* msg_p);
+
+
+
         ////////////////////////////////////////////////////////////////////////////////////
         //  Internal platform specific interface
         ////////////////////////////////////////////////////////////////////////////////////
-
-    private:
-        void enable_hook_internal();
-        void disable_hook_internal();
 
 	public:
 		void set_mouse_position(PA_vector2_i new_mouse_position);

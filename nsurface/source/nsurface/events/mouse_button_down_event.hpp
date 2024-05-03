@@ -68,9 +68,6 @@ namespace nsurface {
     public:
         inline F_mouse_button_down_event()
         {
-
-
-
         }
         ~F_mouse_button_down_event() {}
 

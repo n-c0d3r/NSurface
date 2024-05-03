@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/mouse_proc.hpp
+/** @file nsurface/windows/keyboard_manager.hpp
 *
-*   Implements mouse proc.
+*   Implements Windows platform keyboard manager.
 */
 
 
@@ -29,6 +29,12 @@
 
 #include <nsurface/prerequisites.hpp>
 
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+#include <nsurface/keyboard_manager_base.hpp>
+
 #pragma endregion
 
 
@@ -49,10 +55,32 @@
 
 namespace nsurface {
 
-    NSURFACE_USING_NLIB_NAMESPACES();
+	NSURFACE_USING_NLIB_NAMESPACES();
 
 
 
-    LRESULT mouse_proc(int nCode, WPARAM wParam, LPARAM lParam);
+	class F_windows_keyboard_manager :
+		public A_keyboard_manager,
+		public utilities::TI_singleton<F_keyboard_manager>
+	{
+
+	public:
+		NSURFACE_FRIEND_CLASSES;
+		NCPP_OBJECT_FRIEND_CLASSES();
+
+
+
+	protected:
+		F_windows_keyboard_manager();
+
+	public:
+		~F_windows_keyboard_manager();
+
+
+
+	private:
+		void process_msg(const MSG* msg_p);
+
+	};
 
 }

@@ -51,7 +51,14 @@ NCPP_ENTRY_POINT() {
 
             }
         );
-		surface_p->T_get_event<F_key_down_event>().T_push_back_listener(
+
+
+
+		// get keyboard manager
+		auto& keyboard_manager = surface_manager.keyboard_manager();
+
+		// keyboard events
+		keyboard_manager.T_get_event<F_key_down_event>().T_push_back_listener(
 			[](auto &e) {
 
 				if(((F_key_down_event&)e).keycode() == E_keycode::A)
@@ -59,7 +66,7 @@ NCPP_ENTRY_POINT() {
 
 			}
 		);
-		surface_p->T_get_event<F_text_character_event>().T_push_back_listener(
+		keyboard_manager.T_get_event<F_text_character_event>().T_push_back_listener(
 			[](auto &e) {
 
 				NCPP_WINFO() << ((F_text_character_event&)e).text_character();
@@ -69,9 +76,7 @@ NCPP_ENTRY_POINT() {
 
 
         // get mouse manager
-        auto &mouse_manager = surface_manager.mouse_manager();
-
-
+        auto& mouse_manager = surface_manager.mouse_manager();
 
         // mouse events
         mouse_manager.T_get_event<F_mouse_button_down_event>().T_push_back_listener(

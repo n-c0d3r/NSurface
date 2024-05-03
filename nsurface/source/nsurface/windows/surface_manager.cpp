@@ -55,6 +55,9 @@ namespace nsurface {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 
+			mouse_manager_.as_current_platform().process_msg(&msg);
+			keyboard_manager_.as_current_platform().process_msg(&msg);
+
 		}
 
         update_functor_(*this);
@@ -62,26 +65,11 @@ namespace nsurface {
 	}
 	void F_windows_surface_manager::run_internal(){
 
-		enable_process_internal();
-
 		while(is_there_any_surface_running()){
 
 			process_internal();
 
 		}
-
-		disable_process_internal();
-
-	}
-
-	void F_windows_surface_manager::enable_process_internal() {
-
-		mouse_manager().enable_hook_internal();
-
-	}
-	void F_windows_surface_manager::disable_process_internal() {
-
-		mouse_manager().disable_hook_internal();
 
 	}
 

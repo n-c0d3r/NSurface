@@ -1,5 +1,6 @@
 #include <nsurface/windows/mouse_manager.hpp>
-#include <nsurface/windows/mouse_proc.hpp>
+
+#include <windowsx.h>
 
 
 
@@ -12,9 +13,95 @@ namespace nsurface {
 	F_windows_mouse_manager::F_windows_mouse_manager()
 	{
 	}
-	F_windows_mouse_manager::~F_windows_mouse_manager() {
+	F_windows_mouse_manager::~F_windows_mouse_manager()
+	{
+	}
 
-		disable_hook_internal();
+
+
+	void F_windows_mouse_manager::process_msg(const MSG* msg_p) {
+
+		switch (msg_p->message)
+		{
+
+		case WM_LBUTTONDOWN:
+		{
+			auto& e = button_down_event_;
+			e.button_flag_ = E_mouse_button_flag::LEFT;
+			e.invoke();
+			break;
+		}
+		case WM_MBUTTONDOWN:
+		{
+			auto& e = button_down_event_;
+			e.button_flag_ = E_mouse_button_flag::MIDDLE;
+			e.invoke();
+			break;
+		}
+		case WM_RBUTTONDOWN:
+		{
+			auto& e = button_down_event_;
+			e.button_flag_ = E_mouse_button_flag::RIGHT;
+			e.invoke();
+			break;
+		}
+
+		case WM_LBUTTONUP:
+		{
+			auto& e = button_up_event_;
+			e.button_flag_ = E_mouse_button_flag::LEFT;
+			e.invoke();
+			break;
+		}
+		case WM_MBUTTONUP:
+		{
+			auto& e = button_up_event_;
+			e.button_flag_ = E_mouse_button_flag::MIDDLE;
+			e.invoke();
+			break;
+		}
+		case WM_RBUTTONUP:
+		{
+			auto& e = button_up_event_;
+			e.button_flag_ = E_mouse_button_flag::RIGHT;
+			e.invoke();
+			break;
+		}
+
+		case WM_MOUSEMOVE:
+		{
+			auto& e = move_event_;
+			e.position_.x = GET_X_LPARAM(msg_p->lParam);
+			e.position_.y = GET_Y_LPARAM(msg_p->lParam);
+
+			mouse_position_ = e.position_;
+
+			e.invoke();
+			break;
+		}
+
+		case WM_SETCURSOR:
+		{
+			// mouse visibility change
+			{
+				CURSORINFO ci = { sizeof(CURSORINFO) };
+				b8 new_visibility = GetCursorInfo(&ci);
+				if(new_visibility != is_visible_) {
+
+					auto& e = visibility_change_event_;
+
+					e.is_visible_ = new_visibility;
+
+					is_visible_ = new_visibility;
+
+					e.invoke();
+				}
+			}
+
+			break;
+		}
+
+		};
 	}
 
 
@@ -22,26 +109,6 @@ namespace nsurface {
     ////////////////////////////////////////////////////////////////////////////////////
     //  Internal platform specific interface
     ////////////////////////////////////////////////////////////////////////////////////
-
-	void F_windows_mouse_manager::enable_hook_internal() {
-
-		if (mouse_hook_)
-			return;
-
-		mouse_hook_ = SetWindowsHookEx(WH_MOUSE, mouse_proc, GetModuleHandle(0), GetCurrentThreadId());
-
-		set_mouse_visible(true);
-	}
-	void F_windows_mouse_manager::disable_hook_internal() {
-
-		if (!mouse_hook_)
-			return;
-
-		UnhookWindowsHookEx(mouse_hook_);
-
-		mouse_hook_ = 0;
-
-	}
 
 	void F_windows_mouse_manager::set_mouse_position(PA_vector2_i new_mouse_position) {
 

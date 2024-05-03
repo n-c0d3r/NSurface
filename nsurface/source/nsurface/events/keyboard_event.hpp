@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/events/text_character_event.hpp
+/** @file nsurface/events/keyboard_event.hpp
 *
-*   Implements text character event.
+*   Implements keyboard event base class.
 */
 
 
@@ -33,8 +33,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/events/keyboard_event.hpp>
-#include <nsurface/keycode.hpp>
+#include <nsurface/enums.hpp>
+#include <nsurface/typedef_cross_platform.hpp>
 
 #pragma endregion
 
@@ -60,25 +60,21 @@ namespace nsurface {
 
 
 
-	class F_text_character_event : public F_keyboard_event {
-
-		NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS();
-
-
-
-	private:
-		wchar_t text_character_;
+	class F_keyboard_event : public F_event {
 
 	public:
-		NCPP_FORCE_INLINE wchar_t text_character() const noexcept { return text_character_; }
-
-
-
-	public:
-		inline F_text_character_event()
-		{}
-		~F_text_character_event() {}
+		F_keyboard_event() = default;
+		~F_keyboard_event(){}
 
 	};
 
 }
+
+
+
+#ifdef EA_PLATFORM_WINDOWS
+#define NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS() \
+	friend class nsurface::F_keyboard_manager;
+#else
+#define NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS()
+#endif

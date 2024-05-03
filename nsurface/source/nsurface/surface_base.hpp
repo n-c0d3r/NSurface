@@ -105,19 +105,13 @@ namespace nsurface {
 		F_surface_user_destroy_request_event destroy_request_event_;
 		F_surface_resize_event resize_event_;
 		F_surface_move_event move_event_;
-		F_key_down_event key_down_event_;
-		F_key_up_event key_up_event_;
-		F_text_character_event text_character_event_;
 
 	public:
 		NCPP_DECLARE_STATIC_EVENTS(
 			destroy_event_,
 			destroy_request_event_,
 			resize_event_,
-			move_event_,
-			key_down_event_,
-			key_up_event_,
-			text_character_event_
+			move_event_
 		);
 
 

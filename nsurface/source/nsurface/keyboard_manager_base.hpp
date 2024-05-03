@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/events/text_character_event.hpp
+/** @file nsurface/keyboard_manager_base.hpp
 *
-*   Implements text character event.
+*   Implement base functionalities for keyboard manager.
 */
 
 
@@ -33,8 +33,9 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/events/keyboard_event.hpp>
-#include <nsurface/keycode.hpp>
+#include <nsurface/enums.hpp>
+#include <nsurface/events/.hpp>
+#include <nsurface/typedef_cross_platform.hpp>
 
 #pragma endregion
 
@@ -60,24 +61,39 @@ namespace nsurface {
 
 
 
-	class F_text_character_event : public F_keyboard_event {
+	class A_keyboard_manager {
 
-		NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS();
+	public:
+		NSURFACE_FRIEND_CLASSES;
+		NCPP_OBJECT_FRIEND_CLASSES();
 
 
 
 	private:
-		wchar_t text_character_;
+		F_key_down_event key_down_event_;
+		F_key_up_event key_up_event_;
+		F_text_character_event text_character_event_;
 
 	public:
-		NCPP_FORCE_INLINE wchar_t text_character() const noexcept { return text_character_; }
+		NCPP_DECLARE_STATIC_EVENTS(
+			key_down_event_,
+			key_up_event_,
+			text_character_event_
+		);
+
+
+
+	protected:
+		A_keyboard_manager();
+
+	public:
+		virtual ~A_keyboard_manager();
 
 
 
 	public:
-		inline F_text_character_event()
-		{}
-		~F_text_character_event() {}
+		inline F_keyboard_manager* as_current_platform_p() { return reinterpret_cast<F_keyboard_manager*>(this); }
+		inline F_keyboard_manager& as_current_platform() { return *reinterpret_cast<F_keyboard_manager*>(this); }
 
 	};
 

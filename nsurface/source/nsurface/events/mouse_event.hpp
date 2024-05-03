@@ -36,10 +36,6 @@
 #include <nsurface/enums.hpp>
 #include <nsurface/typedef_cross_platform.hpp>
 
-#ifdef EA_PLATFORM_WINDOWS
-#include <nsurface/windows/mouse_proc.hpp>
-#endif
-
 #pragma endregion
 
 
@@ -78,7 +74,7 @@ namespace nsurface {
 
 #ifdef EA_PLATFORM_WINDOWS
 #define NSURFACE_APPLY_MOUSE_EVENT_FRIENDS() \
-    friend LRESULT nsurface::mouse_proc(int nCode, WPARAM wParam, LPARAM lParam);
+	friend class nsurface::F_mouse_manager;
 #else
 #define NSURFACE_APPLY_MOUSE_EVENT_FRIENDS()
 #endif
