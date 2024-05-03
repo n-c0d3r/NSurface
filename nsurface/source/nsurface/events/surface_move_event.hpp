@@ -65,14 +65,6 @@ namespace nsurface {
 
 
 
-    private:
-        F_vector2_i offset_;
-
-    public:
-        inline F_vector2_i offset() const { return offset_; }
-
-
-
     public:
         inline F_surface_move_event(F_surface& surface) :
             F_surface_event(surface)

@@ -65,14 +65,6 @@ namespace nsurface {
 
 
 
-    private:
-        F_vector2_i size_;
-
-    public:
-        inline F_vector2_i size() const { return size_; }
-
-
-
     public:
         inline F_surface_resize_event(F_surface& surface) :
             F_surface_event(surface)

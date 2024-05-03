@@ -73,11 +73,7 @@ namespace nsurface {
     public:
         inline F_surface_user_destroy_request_event(F_surface& surface) :
             F_surface_event(surface)
-        {
-
-
-
-        }
+        {}
         ~F_surface_user_destroy_request_event() {}
 
     };

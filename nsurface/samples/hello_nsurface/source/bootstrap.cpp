@@ -34,18 +34,18 @@ NCPP_ENTRY_POINT() {
             }
         );
         surface_p->T_get_event<F_surface_resize_event>().T_push_back_listener(
-            [](auto &e) {
+            [&](auto &e) {
 
-                F_vector2_i size = ((F_surface_resize_event &) e).size();
+                F_vector2_i size = surface_p->desc().size;
 
                 NCPP_INFO() << "surface is resized " << size.x << " " << size.y;
 
             }
         );
         surface_p->T_get_event<F_surface_move_event>().T_push_back_listener(
-            [](auto &e) {
+            [&](auto &e) {
 
-                F_vector2_i offset = ((F_surface_move_event &) e).offset();
+			  	F_vector2_i offset = surface_p->desc().offset;
 
                 NCPP_INFO() << "surface is moved " << offset.x << " " << offset.y;
 
