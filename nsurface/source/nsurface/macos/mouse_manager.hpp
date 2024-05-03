@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/macos/mouse_manager.hpp
+/** @file nsurface/macos/mouse.hpp
 *
-*   Implements Macos platform mouse manager.
+*   Implements Macos platform mouse.
 */
 
 
@@ -33,7 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/mouse_manager_base.hpp>
+#include <nsurface/mouse_base.hpp>
 
 #pragma endregion
 
@@ -59,9 +59,9 @@ namespace nsurface {
 
 
 
-    class F_macos_mouse_manager : 
-        public A_mouse_manager,
-        public utilities::TI_singleton<F_mouse_manager>
+    class F_macos_mouse :
+        public A_mouse,
+        public utilities::TI_singleton<F_mouse>
     {
 
     public:
@@ -75,8 +75,8 @@ namespace nsurface {
 
 
     public:
-        F_macos_mouse_manager();
-        ~F_macos_mouse_manager();
+        F_macos_mouse();
+        ~F_macos_mouse();
 
 
 

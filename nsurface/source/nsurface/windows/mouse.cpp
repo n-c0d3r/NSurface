@@ -1,27 +1,38 @@
-#include <nsurface/windows/mouse_manager.hpp>
+#include <nsurface/windows/mouse.hpp>
+#include <nsurface/windows/surface.hpp>
 
 #include <windowsx.h>
 
 
 
-NCPP_DEFINE_SINGLETON(nsurface::F_mouse_manager);
+NCPP_DEFINE_SINGLETON(nsurface::F_mouse);
 
 
 
 namespace nsurface {
 
-	F_windows_mouse_manager::F_windows_mouse_manager()
+	F_windows_mouse::F_windows_mouse()
+	{
+		// register raw input device
+		RAWINPUTDEVICE raw_input_device;
+		raw_input_device.usUsagePage = 0x1 /* HID_USAGE_PAGE_GENERIC */;
+		raw_input_device.usUsage = 0x2 /* HID_USAGE_GENERIC_MOUSE */;
+		raw_input_device.dwFlags = 0;
+		raw_input_device.hwndTarget = 0;
+		if (!RegisterRawInputDevices(&raw_input_device, 1, sizeof(RAWINPUTDEVICE)))
+		{
+			NCPP_ASSERT(false) << "can't register raw input device for mouse";
+		}
+	}
+	F_windows_mouse::~F_windows_mouse()
 	{
 	}
-	F_windows_mouse_manager::~F_windows_mouse_manager()
-	{
-	}
 
 
 
-	void F_windows_mouse_manager::process_msg(const MSG* msg_p) {
+	void F_windows_mouse::process_msg(UINT message, WPARAM wParam, LPARAM lParam) {
 
-		switch (msg_p->message)
+		switch (message)
 		{
 
 		case WM_LBUTTONDOWN:
@@ -68,17 +79,10 @@ namespace nsurface {
 			break;
 		}
 
-		case WM_MOUSEMOVE:
-		{
-			auto& e = move_event_;
-			e.position_.x = GET_X_LPARAM(msg_p->lParam);
-			e.position_.y = GET_Y_LPARAM(msg_p->lParam);
-
-			mouse_position_ = e.position_;
-
-			e.invoke();
-			break;
-		}
+//		case WM_MOUSEMOVE:
+//		{
+//			break;
+//		}
 
 		case WM_SETCURSOR:
 		{
@@ -101,6 +105,46 @@ namespace nsurface {
 			break;
 		}
 
+		case WM_INPUT:
+		{
+			RAWINPUT raw_input;
+			u32 raw_input_size = sizeof(RAWINPUT);
+
+			if(
+				GetRawInputData(
+					reinterpret_cast<HRAWINPUT>(lParam),
+					RID_INPUT,
+					&raw_input,
+					&raw_input_size,
+					sizeof(RAWINPUTHEADER)
+				)
+				== u32(-1)
+			)
+			{
+				NCPP_ASSERT(false) << "can't get raw input data";
+			}
+
+			if (raw_input.header.dwType == RIM_TYPEMOUSE) {
+
+				auto& e = move_event_;
+
+				if(!(raw_input.data.mouse.usFlags & MOUSE_MOVE_ABSOLUTE)) {
+
+					delta_position_.x = raw_input.data.mouse.lLastX;
+					delta_position_.y = raw_input.data.mouse.lLastY;
+				}
+
+				POINT p;
+				GetCursorPos(&p);
+				position_.x = p.x;
+				position_.y = p.y;
+
+				e.invoke();
+			}
+
+			break;
+		}
+
 		};
 	}
 
@@ -110,13 +154,13 @@ namespace nsurface {
     //  Internal platform specific interface
     ////////////////////////////////////////////////////////////////////////////////////
 
-	void F_windows_mouse_manager::set_mouse_position(PA_vector2_i new_mouse_position) {
+	void F_windows_mouse::set_mouse_position(PA_vector2_i new_mouse_position) {
 
 		SetCursorPos(new_mouse_position.x, new_mouse_position.y);
 
-		mouse_position_ = new_mouse_position;
+		position_ = new_mouse_position;
 	}
-	void F_windows_mouse_manager::set_mouse_visible(b8 value) {
+	void F_windows_mouse::set_mouse_visible(b8 value) {
 
 		if(value) {
 

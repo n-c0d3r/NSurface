@@ -1,6 +1,6 @@
-#include <nsurface/macos/mouse_manager_backend.h>
+#include <nsurface/macos/mouse_backend.h>
 
-#include <nsurface/macos/mouse_manager.hpp>
+#include <nsurface/macos/mouse.hpp>
 
 
 

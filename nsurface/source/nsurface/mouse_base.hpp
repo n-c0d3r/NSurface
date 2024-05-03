@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/windows/mouse_manager.hpp
+/** @file nsurface/mouse_base.hpp
 *
-*   Implements Windows platform mouse manager.
+*   Implement base functionalities for mouse.
 */
 
 
@@ -33,7 +33,9 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/mouse_manager_base.hpp>
+#include <nsurface/enums.hpp>
+#include <nsurface/events/.hpp>
+#include <nsurface/typedef_cross_platform.hpp>
 
 #pragma endregion
 
@@ -55,14 +57,11 @@
 
 namespace nsurface {
 
-    NSURFACE_USING_NLIB_NAMESPACES();
+	NSURFACE_USING_NLIB_NAMESPACES();
 
 
 
-    class NSURFACE_API F_windows_mouse_manager :
-        public A_mouse_manager,
-        public utilities::TI_singleton<F_mouse_manager>
-    {
+	class NSURFACE_API A_mouse {
 
     public:
         NSURFACE_FRIEND_CLASSES;
@@ -70,16 +69,36 @@ namespace nsurface {
 
 
 
-    protected:
-        F_windows_mouse_manager();
+	private:
+		F_mouse_button_down_event button_down_event_;
+		F_mouse_button_up_event button_up_event_;
+		F_mouse_move_event move_event_;
+		F_mouse_visibility_change_event visibility_change_event_;
+
+	protected:
+		F_vector2_i position_;
+		F_vector2_i delta_position_;
+		b8 is_visible_ = true;
+
+	public:
+		NCPP_DECLARE_STATIC_EVENTS(
+			button_down_event_,
+			button_up_event_,
+			move_event_,
+			visibility_change_event_
+		);
+
+		NCPP_FORCE_INLINE PA_vector2_i position() const noexcept { return position_; }
+		NCPP_FORCE_INLINE PA_vector2_i delta_position() const noexcept { return delta_position_; }
+		NCPP_FORCE_INLINE b8 is_visible() const noexcept { return is_visible_; }
+
+
+
+	protected:
+		A_mouse();
 
     public:
-        ~F_windows_mouse_manager();
-
-
-
-	private:
-		void process_msg(const MSG* msg_p);
+		virtual ~A_mouse();
 
 
 
@@ -88,9 +107,15 @@ namespace nsurface {
         ////////////////////////////////////////////////////////////////////////////////////
 
 	public:
-		void set_mouse_position(PA_vector2_i new_mouse_position);
-		void set_mouse_visible(b8);
+		void set_mouse_position(PA_vector2_i new_mouse_position); // for documentations
+		void set_mouse_visible(b8); // for documentations
 
-    };
+
+
+	public:
+		inline F_mouse* as_current_platform_p() { return reinterpret_cast<F_mouse*>(this); }
+		inline F_mouse& as_current_platform() { return *reinterpret_cast<F_mouse*>(this); }
+
+	};
 
 }

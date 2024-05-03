@@ -55,7 +55,7 @@ namespace nsurface {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 
-			mouse_manager_.as_current_platform().process_msg(&msg);
+			mouse_.as_current_platform().process_msg(msg.message, msg.wParam, msg.lParam);
 			keyboard_manager_.as_current_platform().process_msg(&msg);
 
 		}

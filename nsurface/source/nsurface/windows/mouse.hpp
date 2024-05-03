@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/events/mouse_move_event.hpp
+/** @file nsurface/windows/mouse.hpp
 *
-*   Implements mouse button move event.
+*   Implements Windows platform mouse.
 */
 
 
@@ -33,7 +33,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/events/mouse_event.hpp>
+#include <nsurface/mouse_base.hpp>
+#include <nsurface/windows/window_proc.hpp>
 
 #pragma endregion
 
@@ -59,17 +60,42 @@ namespace nsurface {
 
 
 
-    class F_mouse_move_event : public F_mouse_event {
-
-        NSURFACE_APPLY_MOUSE_EVENT_FRIENDS();
-
-
+    class NSURFACE_API F_windows_mouse :
+        public A_mouse,
+        public utilities::TI_singleton<F_mouse>
+    {
 
     public:
-        inline F_mouse_move_event()
-        {
-        }
-        ~F_mouse_move_event() {}
+        NSURFACE_FRIEND_CLASSES;
+        NCPP_OBJECT_FRIEND_CLASSES();
+
+
+
+	public:
+		friend LRESULT window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+
+
+    protected:
+        F_windows_mouse();
+
+    public:
+        ~F_windows_mouse();
+
+
+
+	private:
+		void process_msg(UINT message, WPARAM wParam, LPARAM lParam);
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        //  Internal platform specific interface
+        ////////////////////////////////////////////////////////////////////////////////////
+
+	public:
+		void set_mouse_position(PA_vector2_i new_mouse_position);
+		void set_mouse_visible(b8);
 
     };
 

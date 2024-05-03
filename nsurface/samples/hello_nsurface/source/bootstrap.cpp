@@ -75,11 +75,11 @@ NCPP_ENTRY_POINT() {
 
 
 
-        // get mouse manager
-        auto& mouse_manager = surface_manager.mouse_manager();
+        // get mouse
+        auto& mouse = surface_manager.mouse();
 
         // mouse events
-        mouse_manager.T_get_event<F_mouse_button_down_event>().T_push_back_listener(
+        mouse.T_get_event<F_mouse_button_down_event>().T_push_back_listener(
             [&](auto &e) {
 
                 switch (((F_mouse_button_event &) e).button_flag()) {
@@ -99,7 +99,7 @@ NCPP_ENTRY_POINT() {
 
             }
         );
-        mouse_manager.T_get_event<F_mouse_button_up_event>().T_push_back_listener(
+        mouse.T_get_event<F_mouse_button_up_event>().T_push_back_listener(
             [&](auto &e) {
 
                 switch (((F_mouse_button_event &) e).button_flag()) {
@@ -119,10 +119,10 @@ NCPP_ENTRY_POINT() {
 
             }
         );
-        mouse_manager.T_get_event<F_mouse_move_event>().T_push_back_listener(
-            [](auto &e) {
+        mouse.T_get_event<F_mouse_move_event>().T_push_back_listener(
+            [&](auto &e) {
 
-                F_vector2_i position = ((F_mouse_move_event &) e).position();
+                F_vector2_i position = mouse.position();
 
                 NCPP_INFO() << "mouse move " << position.x << " " << position.y;
 

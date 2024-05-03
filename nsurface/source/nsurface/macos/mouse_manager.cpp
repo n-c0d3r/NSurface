@@ -1,22 +1,22 @@
-#include <nsurface/macos/mouse_manager.hpp>
+#include <nsurface/macos/mouse.hpp>
 
-#include <nsurface/macos/mouse_manager_backend.hpp>
+#include <nsurface/macos/mouse_backend.hpp>
 
 
 
-NCPP_DEFINE_SINGLETON(nsurface::F_mouse_manager);
+NCPP_DEFINE_SINGLETON(nsurface::F_mouse);
 
 
 
 namespace nsurface {
 
-	F_macos_mouse_manager::F_macos_mouse_manager()
+	F_macos_mouse::F_macos_mouse()
 	{
 
 
 
 	}
-	F_macos_mouse_manager::~F_macos_mouse_manager() {
+	F_macos_mouse::~F_macos_mouse() {
 
 		disable_hook_internal();
 
@@ -28,7 +28,7 @@ namespace nsurface {
     //  Internal platform specific interface
     ////////////////////////////////////////////////////////////////////////////////////
 
-	void F_macos_mouse_manager::enable_hook_internal() {
+	void F_macos_mouse::enable_hook_internal() {
 
 		// if (mouse_hook_)
 		// 	return;
@@ -36,7 +36,7 @@ namespace nsurface {
 		// mouse_hook_ = SetWindowsHookEx(WH_MOUSE_LL, mouse_proc, NULL, 0);
 
 	}
-	void F_macos_mouse_manager::disable_hook_internal() {
+	void F_macos_mouse::disable_hook_internal() {
 
 		// if (!mouse_hook_)
 		// 	return;

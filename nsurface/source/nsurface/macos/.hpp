@@ -35,7 +35,7 @@
 
 #include <nsurface/macos/surface.hpp>
 #include <nsurface/macos/surface_manager.hpp>
-#include <nsurface/macos/mouse_manager.hpp>
+#include <nsurface/macos/mouse.hpp>
 
 #pragma endregion
 

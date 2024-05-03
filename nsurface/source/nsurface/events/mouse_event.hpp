@@ -74,7 +74,7 @@ namespace nsurface {
 
 #ifdef EA_PLATFORM_WINDOWS
 #define NSURFACE_APPLY_MOUSE_EVENT_FRIENDS() \
-	friend class nsurface::F_mouse_manager;
+	friend class nsurface::F_mouse;
 #else
 #define NSURFACE_APPLY_MOUSE_EVENT_FRIENDS()
 #endif

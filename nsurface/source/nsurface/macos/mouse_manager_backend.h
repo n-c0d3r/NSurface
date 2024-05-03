@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/macos/mouse_manager_backend.h
+/** @file nsurface/macos/mouse_backend.h
 *
-*   Implements Macos platform mouse manager backend.
+*   Implements Macos platform mouse backend.
 */
 
 
@@ -33,7 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/macos/mouse_manager_backend.h>
+#include <nsurface/macos/mouse_backend.h>
 
 #pragma endregion
 
@@ -61,7 +61,7 @@ namespace nsurface {
 
 
 
-@interface F_mouse_manager_backend : NSObject
+@interface F_mouse_backend : NSObject
 
 
 

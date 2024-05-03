@@ -45,12 +45,12 @@ namespace nsurface {
 
 	void F_macos_surface_manager::enable_process_internal() {
 
-		mouse_manager().enable_hook_internal();
+		mouse().enable_hook_internal();
 
 	}
 	void F_macos_surface_manager::disable_process_internal() {
 
-		mouse_manager().disable_hook_internal();
+		mouse().disable_hook_internal();
 
 	}
 

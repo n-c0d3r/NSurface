@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/mouse_manager.hpp
+/** @file nsurface/mouse.hpp
 *
-*   Includes platform specified mouse manager implement.
+*   Includes platform specified mouse implement.
 */
 
 
@@ -34,11 +34,11 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 #ifdef EA_PLATFORM_WINDOWS
-#include <nsurface/windows/mouse_manager.hpp>
+#include <nsurface/windows/mouse.hpp>
 #endif
 
 #ifdef EA_PLATFORM_OSX
-#include <nsurface/macos/mouse_manager.hpp>
+#include <nsurface/macos/mouse.hpp>
 #endif
 
 #pragma endregion

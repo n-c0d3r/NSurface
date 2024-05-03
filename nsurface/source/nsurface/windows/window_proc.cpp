@@ -18,8 +18,9 @@ namespace nsurface {
 		F_surface* raw_surface_p = reinterpret_cast<F_surface*>(GetWindowLongPtr(hwnd, GWLP_USERDATA));
         TK<F_surface> surface_p;
 
-        if (raw_surface_p)
-            surface_p = TK<F_surface>::unsafe(raw_surface_p);
+        if (raw_surface_p) {
+			surface_p = TK<F_surface>::unsafe(raw_surface_p);
+		}
 
 		switch (uMsg)
 		{

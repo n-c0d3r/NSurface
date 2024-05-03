@@ -35,7 +35,7 @@
 
 #include <nsurface/windows/surface.hpp>
 #include <nsurface/windows/surface_manager.hpp>
-#include <nsurface/windows/mouse_manager.hpp>
+#include <nsurface/windows/mouse.hpp>
 
 #pragma endregion
 
