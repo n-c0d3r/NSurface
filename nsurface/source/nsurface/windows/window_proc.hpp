@@ -53,6 +53,6 @@ namespace nsurface {
 
 
 
-    LRESULT window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+	NSURFACE_API LRESULT window_proc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 }

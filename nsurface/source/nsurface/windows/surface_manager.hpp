@@ -60,7 +60,7 @@ namespace nsurface {
 
 
 
-    class F_windows_surface_manager : 
+    class NSURFACE_API F_windows_surface_manager :
         public A_surface_manager,
         public utilities::TI_singleton<F_surface_manager>
     {

@@ -61,7 +61,7 @@ namespace nsurface {
 
 
 
-	class A_mouse_manager {
+	class NSURFACE_API A_mouse_manager {
 
     public:
         NSURFACE_FRIEND_CLASSES;

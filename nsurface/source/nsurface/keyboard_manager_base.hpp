@@ -61,7 +61,7 @@ namespace nsurface {
 
 
 
-	class A_keyboard_manager {
+	class NSURFACE_API A_keyboard_manager {
 
 	public:
 		NSURFACE_FRIEND_CLASSES;

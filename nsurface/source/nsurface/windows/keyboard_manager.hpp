@@ -59,7 +59,7 @@ namespace nsurface {
 
 
 
-	class F_windows_keyboard_manager :
+	class NSURFACE_API F_windows_keyboard_manager :
 		public A_keyboard_manager,
 		public utilities::TI_singleton<F_keyboard_manager>
 	{

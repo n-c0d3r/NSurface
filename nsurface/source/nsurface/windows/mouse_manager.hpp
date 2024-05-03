@@ -59,7 +59,7 @@ namespace nsurface {
 
 
 
-    class F_windows_mouse_manager : 
+    class NSURFACE_API F_windows_mouse_manager :
         public A_mouse_manager,
         public utilities::TI_singleton<F_mouse_manager>
     {

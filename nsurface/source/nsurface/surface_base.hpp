@@ -70,7 +70,7 @@ namespace nsurface {
 
 
 
-	class A_surface {
+	class NSURFACE_API A_surface {
 
     public:
         NSURFACE_FRIEND_CLASSES;

@@ -64,7 +64,7 @@ namespace nsurface {
 
 
 
-	class A_surface_manager {
+	class NSURFACE_API A_surface_manager {
 
     public:
         NSURFACE_FRIEND_CLASSES;
