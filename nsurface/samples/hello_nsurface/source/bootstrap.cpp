@@ -59,6 +59,12 @@ NCPP_ENTRY_POINT() {
 
 			}
 		);
+		surface_p->T_get_event<F_text_character_event>().T_push_back_listener(
+			[](auto &e) {
+
+				NCPP_WINFO() << ((F_text_character_event&)e).text_character();
+			}
+		);
 
 
 

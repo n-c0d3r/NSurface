@@ -4,6 +4,10 @@
 
 #include <nsurface/events/.hpp>
 
+#include <locale>
+#include <codecvt>
+#include <string>
+
 
 
 namespace nsurface {
@@ -131,6 +135,18 @@ namespace nsurface {
 				auto& e = surface_p->T_get_event<F_key_up_event>();
 
 				e.keycode_ = E_keycode(u32(wParam));
+
+				e.invoke();
+
+				return 0;
+			}
+
+			case WM_CHAR:
+			{
+
+				auto& e = surface_p->T_get_event<F_text_character_event>();
+
+				e.text_character_ = (wchar_t)wParam;
 
 				e.invoke();
 

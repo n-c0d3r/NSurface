@@ -13,7 +13,9 @@ namespace nsurface {
 		move_event_(as_current_platform()),
 
 		key_down_event_(as_current_platform()),
-		key_up_event_(as_current_platform())
+		key_up_event_(as_current_platform()),
+
+		text_character_event_(as_current_platform())
 	{
 
 
