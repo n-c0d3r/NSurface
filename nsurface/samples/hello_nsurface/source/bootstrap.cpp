@@ -54,11 +54,11 @@ NCPP_ENTRY_POINT() {
 
 
 
-		// get keyboard manager
-		auto& keyboard_manager = surface_manager.keyboard_manager();
+		// get keyboard
+		auto& keyboard = surface_manager.keyboard();
 
 		// keyboard events
-		keyboard_manager.T_get_event<F_key_down_event>().T_push_back_listener(
+		keyboard.T_get_event<F_key_down_event>().T_push_back_listener(
 			[](auto &e) {
 
 				if(((F_key_down_event&)e).keycode() == E_keycode::A)
@@ -66,7 +66,7 @@ NCPP_ENTRY_POINT() {
 
 			}
 		);
-		keyboard_manager.T_get_event<F_text_character_event>().T_push_back_listener(
+		keyboard.T_get_event<F_text_character_event>().T_push_back_listener(
 			[](auto &e) {
 
 				NCPP_WINFO() << ((F_text_character_event&)e).text_character();

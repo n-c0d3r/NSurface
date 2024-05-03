@@ -38,7 +38,7 @@
 #include <nsurface/typedef_cross_platform.hpp>
 
 #include <nsurface/mouse.hpp>
-#include <nsurface/keyboard_manager.hpp>
+#include <nsurface/keyboard.hpp>
 
 #pragma endregion
 
@@ -82,14 +82,14 @@ namespace nsurface {
 		TF_list<TU<F_surface>> surface_p_list_;
 
 		F_mouse mouse_;
-		F_keyboard_manager keyboard_manager_;
+		F_keyboard keyboard_;
 
 	protected:
 		F_update_functor update_functor_;
 
 	public:
 		NCPP_FORCE_INLINE F_mouse& mouse() { return mouse_; }
-		NCPP_FORCE_INLINE F_keyboard_manager& keyboard_manager() { return keyboard_manager_; }
+		NCPP_FORCE_INLINE F_keyboard& keyboard() { return keyboard_; }
 
         b8 is_there_any_surface_running() const;
 

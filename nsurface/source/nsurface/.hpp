@@ -54,7 +54,7 @@ namespace nsurface { }
 #include <nsurface/surface.hpp>
 #include <nsurface/surface_manager.hpp>
 #include <nsurface/mouse.hpp>
-#include <nsurface/keyboard_manager.hpp>
+#include <nsurface/keyboard.hpp>
 #include <nsurface/keycode.hpp>
 
 #include <nsurface/events/.hpp>

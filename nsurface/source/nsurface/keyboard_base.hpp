@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/keyboard_manager_base.hpp
+/** @file nsurface/keyboard_base.hpp
 *
-*   Implement base functionalities for keyboard manager.
+*   Implement base functionalities for keyboard.
 */
 
 
@@ -61,7 +61,7 @@ namespace nsurface {
 
 
 
-	class NSURFACE_API A_keyboard_manager {
+	class NSURFACE_API A_keyboard {
 
 	public:
 		NSURFACE_FRIEND_CLASSES;
@@ -84,16 +84,16 @@ namespace nsurface {
 
 
 	protected:
-		A_keyboard_manager();
+		A_keyboard();
 
 	public:
-		virtual ~A_keyboard_manager();
+		virtual ~A_keyboard();
 
 
 
 	public:
-		inline F_keyboard_manager* as_current_platform_p() { return reinterpret_cast<F_keyboard_manager*>(this); }
-		inline F_keyboard_manager& as_current_platform() { return *reinterpret_cast<F_keyboard_manager*>(this); }
+		inline F_keyboard* as_current_platform_p() { return reinterpret_cast<F_keyboard*>(this); }
+		inline F_keyboard& as_current_platform() { return *reinterpret_cast<F_keyboard*>(this); }
 
 	};
 

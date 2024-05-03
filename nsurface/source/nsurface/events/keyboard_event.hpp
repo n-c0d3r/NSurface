@@ -74,7 +74,7 @@ namespace nsurface {
 
 #ifdef EA_PLATFORM_WINDOWS
 #define NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS() \
-	friend class nsurface::F_keyboard_manager;
+	friend class nsurface::F_keyboard;
 #else
 #define NSURFACE_APPLY_KEYBOARD_EVENT_FRIENDS()
 #endif
