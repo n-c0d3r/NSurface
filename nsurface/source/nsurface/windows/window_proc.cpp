@@ -101,6 +101,8 @@ namespace nsurface {
 				e.offset_.x = LOWORD(lParam);
 				e.offset_.y = HIWORD(lParam);
 
+				surface_p->desc_.offset = e.offset_;
+
 				e.invoke();
 
 				return 0;
@@ -112,6 +114,8 @@ namespace nsurface {
 
 				e.offset_.x = LOWORD(lParam);
 				e.offset_.y = HIWORD(lParam);
+
+				surface_p->desc_.offset = e.offset_;
 
 				e.invoke();
 
