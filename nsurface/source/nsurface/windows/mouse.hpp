@@ -82,6 +82,9 @@ namespace nsurface {
     public:
         ~F_windows_mouse();
 
+	public:
+		NCPP_DISABLE_COPY(F_windows_mouse);
+
 
 
 	private:

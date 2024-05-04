@@ -89,6 +89,9 @@ namespace nsurface {
 	public:
 		virtual ~A_keyboard();
 
+	public:
+		NCPP_DISABLE_COPY(A_keyboard);
+
 
 
 	public:

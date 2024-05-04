@@ -101,6 +101,9 @@ namespace nsurface {
     public:
 		virtual ~A_surface_manager();
 
+	public:
+		NCPP_DISABLE_COPY(A_surface_manager);
+
 
 
 	private:

@@ -90,6 +90,9 @@ namespace nsurface {
     public:
         ~F_windows_surface();
 
+	public:
+		NCPP_DISABLE_COPY(F_windows_surface);
+
 
 
     private:
