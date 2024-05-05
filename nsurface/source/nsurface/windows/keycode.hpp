@@ -39,6 +39,9 @@ namespace nsurface {
 
 		NONE = 0,
 
+		WINDOWS_L = (u32)VK_LWIN,
+		WINDOWS_R = (u32)VK_RWIN,
+
 		BACKSPACE = (u32)VK_BACK,
 		TAB = (u32)VK_TAB,
 		ENTER = (u32)VK_RETURN,
