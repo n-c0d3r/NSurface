@@ -39,6 +39,8 @@
 #include <nsurface/events/surface_user_destroy_request_event.hpp>
 #include <nsurface/events/surface_resize_event.hpp>
 #include <nsurface/events/surface_move_event.hpp>
+#include <nsurface/events/surface_focus_begin_event.hpp>
+#include <nsurface/events/surface_focus_end_event.hpp>
 
 #include <nsurface/events/key_down_event.hpp>
 #include <nsurface/events/key_up_event.hpp>

@@ -45,6 +45,17 @@ namespace nsurface {
 
 		if (handle_) {
 
+			if(desc_.is_has_focus) {
+				SetFocus(handle_);
+			}
+			else {
+				if(GetFocus() == handle_) {
+					SetFocus(NULL);
+				}
+				else {
+				}
+			}
+
 			is_running_ = true;
 
 		}
@@ -80,6 +91,8 @@ namespace nsurface {
 
 	void F_windows_surface::set_offset(PA_vector2_i offset) {
 
+		desc_.offset = offset;
+
         NCPP_ASSERT(
             SetWindowPos(
                 handle_,
@@ -92,10 +105,10 @@ namespace nsurface {
             )
         ) << "can't set surface's offset";
 
-        desc_.offset = offset;
-
 	}
 	void F_windows_surface::resize(PA_vector2_i size) {
+
+		desc_.size = size;
 
         NCPP_ASSERT(
 			SetWindowPos(
@@ -109,10 +122,11 @@ namespace nsurface {
 			)
 		) << "can't resize surface";
 
-        desc_.size = size;
-
 	}
 	void F_windows_surface::set_rect(PA_vector2_i offset, PA_vector2_i size) {
+
+		desc_.offset = offset;
+		desc_.size = size;
 
 		NCPP_ASSERT(
 			SetWindowPos(
@@ -126,9 +140,6 @@ namespace nsurface {
 			)
 		) << "can't set surface's rect";
 
-        desc_.offset = offset;
-        desc_.size = size;
-
 	}
 	void F_windows_surface::set_title(const G_wstring& title) {
 
@@ -136,6 +147,21 @@ namespace nsurface {
 			handle_,
 			title.c_str()
 		);
+	}
+	void F_windows_surface::set_focus(b8 value) {
+
+		desc_.is_has_focus = value;
+
+		if(value) {
+			SetFocus(handle_);
+		}
+		else {
+			if(GetFocus() == handle_) {
+				SetFocus(NULL);
+			}
+			else {
+			}
+		}
 	}
 
 }

@@ -27,7 +27,6 @@ namespace nsurface {
 
 			case WM_CREATE:
 			{
-
 				CREATESTRUCT* pCreate = reinterpret_cast<CREATESTRUCT*>(lParam);
 
 				SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pCreate->lpCreateParams));
@@ -37,7 +36,6 @@ namespace nsurface {
 
 			case WM_DESTROY:
 			{
-
                 auto valid_surface_p = F_valid_requirements::T_forward(surface_p);
 
                 auto& event = surface_p->T_get_event<F_surface_user_destroy_request_event>();
@@ -59,7 +57,6 @@ namespace nsurface {
 
 			case WM_SIZE:
 			{
-
 				auto& e = surface_p->T_get_event<F_surface_resize_event>();
 
                 RECT rect;
@@ -77,7 +74,6 @@ namespace nsurface {
 			}
 			case WM_SIZING:
 			{
-
 				auto& e = surface_p->T_get_event<F_surface_resize_event>();
 
                 RECT rect;
@@ -96,7 +92,6 @@ namespace nsurface {
 
 			case WM_MOVE:
 			{
-
 				auto& e = surface_p->T_get_event<F_surface_move_event>();
 
 				surface_p->desc_.offset = F_vector2_i {
@@ -110,13 +105,32 @@ namespace nsurface {
 			}
 			case WM_MOVING:
 			{
-
 				auto& e = surface_p->T_get_event<F_surface_move_event>();
 
 				surface_p->desc_.offset = F_vector2_i {
 					LOWORD(lParam),
 					HIWORD(lParam)
 				};
+
+				e.invoke();
+
+				return 0;
+			}
+			case WM_SETFOCUS:
+			{
+				auto& e = surface_p->T_get_event<F_surface_focus_begin_event>();
+
+				surface_p->desc_.is_has_focus = true;
+
+				e.invoke();
+
+				return 0;
+			}
+			case WM_KILLFOCUS :
+			{
+				auto& e = surface_p->T_get_event<F_surface_focus_end_event>();
+
+				surface_p->desc_.is_has_focus = false;
 
 				e.invoke();
 

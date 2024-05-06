@@ -1,8 +1,8 @@
 #pragma once
 
-/** @file nsurface/surface_base.hpp
+/** @file nsurface/events/surface_focus_begin_event.hpp
 *
-*   Implement base functionalities for surface.
+*   Implements surface_focus_begin_event.
 */
 
 
@@ -33,10 +33,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-#include <nsurface/events/.hpp>
-#include <nsurface/enums.hpp>
-#include <nsurface/surface_desc.hpp>
-#include <nsurface/typedef_cross_platform.hpp>
+#include <nsurface/events/surface_event.hpp>
 
 #pragma endregion
 
@@ -62,106 +59,19 @@ namespace nsurface {
 
 
 
-	namespace internal {
+	class F_surface_focus_begin_event : public F_surface_event {
 
-		NCPP_FORCE_INLINE b8& surface_inject_is_running(A_surface* surface_p);
-
-	}
-
-
-
-	class NSURFACE_API A_surface {
-
-    public:
-        NSURFACE_FRIEND_CLASSES;
-        NCPP_OBJECT_FRIEND_CLASSES();
+		NSURFACE_APPLY_SURFACE_EVENT_FRIENDS();
 
 
 
 	public:
-		friend class A_surface_manager;
-
-		friend b8& internal::surface_inject_is_running(A_surface* surface_p);
-
-
-
-    protected:
-        F_surface_desc desc_;
-
-        b8 is_running_ = false;
-
-		typename TG_list<TU<F_surface>>::iterator iterator_ = {};
-
-    public:
-        NCPP_FORCE_INLINE const F_surface_desc& desc() const noexcept { return desc_; }
-
-        NCPP_FORCE_INLINE b8 is_running() const noexcept { return is_running_; }
-        NCPP_FORCE_INLINE f32 aspect_ratio() const noexcept { return ((f32)(desc_.size.x)) / ((f32)(desc_.size.y)); }
-
-
-
-	private:
-		F_surface_destroy_event destroy_event_;
-		F_surface_user_destroy_request_event destroy_request_event_;
-		F_surface_resize_event resize_event_;
-		F_surface_move_event move_event_;
-		F_surface_focus_begin_event focus_begin_event_;
-		F_surface_focus_end_event focus_end_event_;
-
-	public:
-		NCPP_DECLARE_STATIC_EVENTS(
-			destroy_event_,
-			destroy_request_event_,
-			resize_event_,
-			move_event_,
-			focus_begin_event_,
-			focus_end_event_
-		);
-
-
-
-	protected:
-		A_surface(const F_surface_desc& desc);
-
-    public:
-		virtual ~A_surface();
-
-	public:
-		NCPP_DISABLE_COPY(A_surface);
-
-
-
-	public:
-		void set_visibility(E_surface_visibility visibility); // for documentations
-
-		void set_offset(PA_vector2_i offset); // for documentations
-		void resize(PA_vector2_i size); // for documentations
-		void set_rect(PA_vector2_i offset, PA_vector2_i size); // for documentations
-		void set_title(const G_wstring& title); // for documentations
-		void set_focus(b8); // for documentations
-
-
-
-	public:
-		NCPP_FORCE_INLINE F_surface* as_current_platform_p() { return reinterpret_cast<F_surface*>(this); }
-        NCPP_FORCE_INLINE F_surface& as_current_platform() { return *reinterpret_cast<F_surface*>(this); }
+		inline F_surface_focus_begin_event(F_surface& surface) :
+			F_surface_event(surface)
+		{
+		}
+		~F_surface_focus_begin_event() {}
 
 	};
-
-
-
-	namespace internal {
-
-		NCPP_FORCE_INLINE F_surface_desc& surface_inject_desc(A_surface* surface_p){
-
-            return (F_surface_desc&)(surface_p->desc());
-		}
-
-		NCPP_FORCE_INLINE b8& surface_inject_is_running(A_surface* surface_p){
-
-			return surface_p->is_running_;
-		}
-
-	}
 
 }

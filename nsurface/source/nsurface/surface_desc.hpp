@@ -68,6 +68,8 @@ namespace nsurface {
 
         E_surface_visibility visibility = E_surface_visibility::VISIBLE;
 
+		b8 is_has_focus = true;
+
     };
 
 }

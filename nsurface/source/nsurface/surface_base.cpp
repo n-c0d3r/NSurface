@@ -10,7 +10,9 @@ namespace nsurface {
 		destroy_event_(as_current_platform()),
 		destroy_request_event_(as_current_platform()),
 		resize_event_(as_current_platform()),
-		move_event_(as_current_platform())
+		move_event_(as_current_platform()),
+		focus_begin_event_(as_current_platform()),
+		focus_end_event_(as_current_platform())
 	{
 
 

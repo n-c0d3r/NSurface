@@ -108,6 +108,7 @@ namespace nsurface {
         void resize(PA_vector2_i size);
         void set_rect(PA_vector2_i offset, PA_vector2_i size);
 		void set_title(const G_wstring& title);
+		void set_focus(b8 value);
 
     };
 
