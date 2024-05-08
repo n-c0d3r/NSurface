@@ -90,7 +90,7 @@ if(NSURFACE_ENABLE_DOCUMENTATIONS)
         BRIEF "Ncoder's Learning Aimed C++ Surface Library."
 
         TARGET_NAME nsurface.documentations
-        TARGET_FOLDER nsurface
+        TARGET_FOLDER NCoder/nsurface
         TARGET_LABEL documentations
 
         INPUT_DIRS 
