@@ -18,7 +18,7 @@ add_executable(nsurface.samples.hello_nsurface
 # nsurface.samples.hello_nsurface target settings
 set_target_properties(nsurface.samples.hello_nsurface
     PROPERTIES 
-        FOLDER "nsurface/samples"
+        FOLDER "NCoder/nsurface/samples"
         PROJECT_LABEL "hello_nsurface"
 )
 target_link_libraries(nsurface.samples.hello_nsurface

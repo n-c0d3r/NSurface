@@ -77,7 +77,7 @@ add_library(nsurface STATIC
 #####################################################################################
 set_target_properties(nsurface
     PROPERTIES 
-        FOLDER "nsurface"
+        FOLDER "NCoder/nsurface"
 )
 
 target_precompile_headers(nsurface

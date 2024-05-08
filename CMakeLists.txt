@@ -83,9 +83,9 @@ option(NSURFACE_ENABLE_DOCUMENTATIONS "If enabled, creating a target being capab
 if(NSURFACE_ENABLE_DOCUMENTATIONS)
     option(NSURFACE_INTERNAL_DOCS "Generate docs for anything" OFF)
 
-    include(NCPP/DocsUtils)
+    include(NCPP/Utilities/DocsHelper)
 
-    NCPP_DocsUtils_CreateTarget(
+    NCPP_DocsHelper_CreateTarget(
         NAME NSURFACE
         BRIEF "Ncoder's Learning Aimed C++ Surface Library."
 
