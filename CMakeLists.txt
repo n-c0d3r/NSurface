@@ -5,7 +5,11 @@ cmake_minimum_required(VERSION 3.12)
 #####################################################################################
 #   Project NSURFACE
 #####################################################################################
-project(nsurface LANGUAGES C CXX OBJC OBJCXX)
+if(APPLE)
+    project(nsurface LANGUAGES C CXX OBJC OBJCXX)
+else()
+    project(nsurface LANGUAGES C CXX)
+endif()
 
 
 
