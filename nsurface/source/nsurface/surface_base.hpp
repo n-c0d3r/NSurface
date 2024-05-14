@@ -127,7 +127,7 @@ namespace nsurface {
 		virtual ~A_surface();
 
 	public:
-		NCPP_DISABLE_COPY(A_surface);
+		NCPP_OBJECT(A_surface);
 
 
 

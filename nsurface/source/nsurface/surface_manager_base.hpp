@@ -102,7 +102,7 @@ namespace nsurface {
 		virtual ~A_surface_manager();
 
 	public:
-		NCPP_DISABLE_COPY(A_surface_manager);
+		NCPP_OBJECT(A_surface_manager);
 
 
 

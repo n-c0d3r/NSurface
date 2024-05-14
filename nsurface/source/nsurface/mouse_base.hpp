@@ -101,7 +101,7 @@ namespace nsurface {
 		virtual ~A_mouse();
 
 	public:
-		NCPP_DISABLE_COPY(A_mouse);
+		NCPP_OBJECT(A_mouse);
 
 
 

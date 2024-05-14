@@ -84,7 +84,7 @@ namespace nsurface {
         ~F_windows_surface_manager();
 
 	public:
-		NCPP_DISABLE_COPY(F_windows_surface_manager);
+		NCPP_OBJECT(F_windows_surface_manager);
 
 
 

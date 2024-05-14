@@ -77,7 +77,7 @@ namespace nsurface {
 		~F_windows_keyboard();
 
 	public:
-		NCPP_DISABLE_COPY(F_windows_keyboard);
+		NCPP_OBJECT(F_windows_keyboard);
 
 
 
