@@ -164,4 +164,24 @@ namespace nsurface {
 		}
 	}
 
+	void F_windows_surface::set_mouse_capture(b8 value) {
+
+		if(value == is_enable_mouse_capture_)
+			return;
+
+		if(value) {
+			RECT rect;
+			GetWindowRect(
+				handle_,
+				&rect
+			);
+			ClipCursor(&rect);
+		}
+		else {
+			ClipCursor(0);
+		}
+
+		is_enable_mouse_capture_ = value;
+	}
+
 }

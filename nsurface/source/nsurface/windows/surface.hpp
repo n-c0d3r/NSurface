@@ -110,6 +110,8 @@ namespace nsurface {
 		void set_title(const G_wstring& title);
 		void set_focus(b8 value);
 
+		void set_mouse_capture(b8);
+
     };
 
 }

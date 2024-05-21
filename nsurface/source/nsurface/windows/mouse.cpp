@@ -130,8 +130,8 @@ namespace nsurface {
 
 				if(!(raw_input.data.mouse.usFlags & MOUSE_MOVE_ABSOLUTE)) {
 
-					delta_position_.x = raw_input.data.mouse.lLastX;
-					delta_position_.y = raw_input.data.mouse.lLastY;
+					delta_position_.x += raw_input.data.mouse.lLastX;
+					delta_position_.y += raw_input.data.mouse.lLastY;
 				}
 
 				POINT p;

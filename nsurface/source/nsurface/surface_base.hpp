@@ -92,11 +92,15 @@ namespace nsurface {
 
 		typename TG_list<TU<F_surface>>::iterator iterator_ = {};
 
+		b8 is_enable_mouse_capture_ = false;
+
     public:
         NCPP_FORCE_INLINE const F_surface_desc& desc() const noexcept { return desc_; }
 
         NCPP_FORCE_INLINE b8 is_running() const noexcept { return is_running_; }
         NCPP_FORCE_INLINE f32 aspect_ratio() const noexcept { return ((f32)(desc_.size.x)) / ((f32)(desc_.size.y)); }
+
+        NCPP_FORCE_INLINE b8 is_enable_mouse_capture() const noexcept { return is_enable_mouse_capture_; }
 
 
 
@@ -139,6 +143,8 @@ namespace nsurface {
 		void set_rect(PA_vector2_i offset, PA_vector2_i size); // for documentations
 		void set_title(const G_wstring& title); // for documentations
 		void set_focus(b8); // for documentations
+
+		void set_mouse_capture(b8); // for documentations
 
 
 
