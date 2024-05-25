@@ -28,11 +28,15 @@ namespace nsurface {
 
 		case WM_KEYDOWN:
 		{
-			auto& e = key_down_event_;
+			if(
+				!(lParam & (1 << 30))
+			) {
 
-			e.keycode_ = E_keycode(u32(wParam));
-			e.invoke();
+				auto& e = key_down_event_;
 
+				e.keycode_ = E_keycode(u32(wParam));
+				e.invoke();
+			}
 			break;
 		}
 		case WM_KEYUP:
