@@ -29,8 +29,13 @@ NCoder's Learning Aimed C++ NSurface Library.
 
 ## Supported Platforms
   + Windows
+
+---
+
+## Future-Compatible Platforms 
   + MacOS
-  + Unix Platforms
+  + Android
+  + IOS
 
 ---
 
