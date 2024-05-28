@@ -52,7 +52,7 @@ NCoder's Learning Aimed C++ NSurface Library.
     + Step 1: Clone [NSurface git repository](https://github.com/Abytek/NSurface) from GitHub
     + Step 2: Generate Visual Studio 2022 solution by running **scripts/generate_vs2022.bat**
     + Step 3: Navigate to **build/vs2022**
-    + Step 4: Open **npp.sln**
+    + Step 4: Open **nsurface.sln**
     + Step 5: Set **nsurface.samples.hello_nsurface** as startup project
     + Step 6: Run and enjoy!
   + **Xcode** (MacOS):
