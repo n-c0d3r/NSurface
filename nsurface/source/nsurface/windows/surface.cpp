@@ -184,4 +184,11 @@ namespace nsurface {
 		is_enable_mouse_capture_ = value;
 	}
 
+
+
+	void F_windows_surface::registry_custom_window_proc_handler(F_custom_window_proc_handler handler) {
+
+		custom_window_proc_handlers_.push_back(handler);
+	}
+
 }

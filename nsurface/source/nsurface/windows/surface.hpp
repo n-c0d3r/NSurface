@@ -60,6 +60,10 @@ namespace nsurface {
 
 
 
+	typedef LRESULT (*F_custom_window_proc_handler)(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+
+
     class NSURFACE_API F_windows_surface : public A_surface {
 
     public:
@@ -76,6 +80,8 @@ namespace nsurface {
     private:
         HWND handle_ = 0;
         b8 is_user_delete_ = false;
+
+		TG_vector<F_custom_window_proc_handler> custom_window_proc_handlers_;
 
     public:
         inline HWND handle() { return handle_; }
@@ -111,6 +117,11 @@ namespace nsurface {
 		void set_focus(b8 value);
 
 		void set_mouse_capture(b8);
+
+
+
+	public:
+		void registry_custom_window_proc_handler(F_custom_window_proc_handler handler);
 
     };
 
