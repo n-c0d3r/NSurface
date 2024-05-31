@@ -146,6 +146,9 @@ namespace nsurface {
 
 		void set_mouse_capture(b8); // for documentations
 
+		F_vector2_i client_offset(); // for documentations
+		F_vector2_i client_size(); // for documentations
+
 
 
 	public:

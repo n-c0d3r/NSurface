@@ -184,6 +184,33 @@ namespace nsurface {
 		is_enable_mouse_capture_ = value;
 	}
 
+	F_vector2_i F_windows_surface::client_offset() {
+
+		RECT rect;
+		GetClientRect(
+			handle_,
+			&rect
+		);
+
+		return {
+			rect.right - rect.left,
+			rect.bottom - rect.top
+		};
+	}
+	F_vector2_i F_windows_surface::client_size() {
+
+		RECT rect;
+		GetClientRect(
+			handle_,
+			&rect
+		);
+
+		return {
+			rect.right - rect.left,
+			rect.bottom - rect.top
+		};
+	}
+
 
 
 	void F_windows_surface::registry_custom_window_proc_handler(F_custom_window_proc_handler handler) {
