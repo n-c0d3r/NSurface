@@ -21,11 +21,12 @@ namespace nsurface {
         if (raw_surface_p) {
 			surface_p = TK<F_surface>::unsafe(raw_surface_p);
 
-			for(auto custom_window_proc_handler : surface_p->custom_window_proc_handlers_) {
+			if(surface_p)
+				for(auto custom_window_proc_handler : surface_p->custom_window_proc_handlers_) {
 
-				if(custom_window_proc_handler(hwnd, uMsg, wParam, lParam))
-					return true;
-			}
+					if(custom_window_proc_handler(hwnd, uMsg, wParam, lParam))
+						return true;
+				}
 		}
 
 		switch (uMsg)
