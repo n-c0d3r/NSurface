@@ -23,7 +23,8 @@ namespace nsurface {
 
 			for(auto custom_window_proc_handler : surface_p->custom_window_proc_handlers_) {
 
-				custom_window_proc_handler(hwnd, uMsg, wParam, lParam);
+				if(custom_window_proc_handler(hwnd, uMsg, wParam, lParam))
+					return true;
 			}
 		}
 
