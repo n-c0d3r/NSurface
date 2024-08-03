@@ -192,6 +192,16 @@ namespace nsurface {
 			&rect
 		);
 
+		POINT top_left_corner {
+			rect.left,
+			rect.top
+		};
+
+		ClientToScreen(
+			handle_,
+			&top_left_corner
+		);
+
 		return {
 			rect.left,
 			rect.top
