@@ -203,8 +203,8 @@ namespace nsurface {
 		);
 
 		return {
-			rect.left,
-			rect.top
+			top_left_corner.left,
+			top_left_corner.top
 		};
 	}
 	F_vector2_i F_windows_surface::client_size() {
